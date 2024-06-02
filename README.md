@@ -5,13 +5,13 @@
 
 ## 管理するファイル一覧
 
-| ディレクトリ | ソフトウェア | 環境依存ファイル |
+| ディレクトリ | ソフトウェア | 環境依存のある部分 |
 | :-- | :-- | :-- |
 | zsh | [zsh](https://www.zsh.org) | `.zsh_envcfg` |
-| nvim | [neovim](https://neovim.io) | `lua/envcnf.lua` |
-| git | [git](https://git-scm.com) |  |
+| nvim | [neovim](https://neovim.io) | `lua/envcfg.lua` |
+| git | [git](https://git-scm.com) | `.gitconfig.env` |
 | sheldon | [sheldon](https://github.com/rossmacarthur/sheldon) |  |
-| tealdeer | [tealdeer](https://github.com/dbrgn/tealdeer) | ファイルパス |
+| tealdeer | [tealdeer](https://github.com/dbrgn/tealdeer) | 設定ファイルのパス |
 
 ## 管理方法
 

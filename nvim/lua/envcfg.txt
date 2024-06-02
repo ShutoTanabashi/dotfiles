@@ -1,0 +1,26 @@
+--[[
+neovim settings dependent on environment
+]]
+
+-- Provider settings
+vim.g.python3_host_prog = "/Users/shoot/.pypenv/shims/python"
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+
+-- Visual Settings
+vim.o.termguicolors = true
+vim.o.guifont = "UDEV Gothic 35NF:h13"
+
+-- shell
+-- Configlation of "numToStr/FTerm.nvim". Windows doesn't have `$SHELL` environment variable, so must set them.
+function CfgFTerm()
+	local opts ={
+		-- cmd = 'pwsh.exe',
+		dimensions  = {
+			height = 0.9,
+			width = 0.9,
+		},
+	}
+	return opts
+end
+

@@ -1,0 +1,17 @@
+# .gitignore
+*
+
+# whitelist
+!.gitignore
+!README.md
+!setup.sh
+!init.lua
+!lua
+!lua/extensions.lua
+!lua/lspcfg.lua
+!lua/stlcfg.lua
+!lua/envcfg.txt
+!snippets
+!snippets/*.snippets
+!spell
+!spell/*.add
