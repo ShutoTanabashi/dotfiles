@@ -1,6 +1,6 @@
 # sheldon 設定ファイル
 
-## フォルダ構成
+## ファイル構成
 
 * `plugins.toml`  - sheldonの設定ファイル
 

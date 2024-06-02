@@ -1,0 +1,12 @@
+[user]
+	name = Shuto Tanabashi
+	email = shuuto570@outlook.com
+[core]
+	editor = nvim
+	quotePath = false
+[init]
+	defaultBranch = main
+[advice]
+	addIgnoredFile = false
+[include]
+	path = .gitignore.env

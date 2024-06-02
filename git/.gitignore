@@ -1,0 +1,9 @@
+# .gitignore
+*
+
+# whitelist
+!.gitignore
+!README.md
+!setup.sh
+!.gitconfig
+!gitconfig_env.txt
