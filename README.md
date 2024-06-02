@@ -9,8 +9,9 @@
 | :-- | :-- | :-- |
 | zsh | [zsh](https://www.zsh.org) | `.zsh_envcfg` |
 | nvim | [neovim](https://neovim.io) | `lua/envcnf.lua` |
+| git | [git](https://git-scm.com) |  |
 | sheldon | [sheldon](https://github.com/rossmacarthur/sheldon) |  |
-| tealdeer | [tealdeer](https://github.com/dbrgn/tealdeer) |  |
+| tealdeer | [tealdeer](https://github.com/dbrgn/tealdeer) | ファイルパス |
 
 ## 管理方法
 
