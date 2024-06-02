@@ -1,0 +1,9 @@
+# .gitignore
+*
+
+# whitelist
+!.gitignore
+!README.md
+!setup.sh
+!.zshrc
+!zsh_envcfg.txt
