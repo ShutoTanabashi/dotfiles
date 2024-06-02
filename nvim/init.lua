@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Load separated setting files
-require("envcnf")
+require("envcfg")
 require("extensions")
 require("lspcfg")
 Statuline = require("stlcfg").statusline

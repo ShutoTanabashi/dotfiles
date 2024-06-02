@@ -336,7 +336,17 @@ require("lazy").setup({
 		},
 		{
 			"williamboman/mason-lspconfig.nvim",
-			opts = {},
+			opts = {
+				ensure_installed = {
+					"clangd",
+					"lua_ls",
+					"pyright",
+					"ruff_lsp",
+					"rust_analyzer",
+					"taplo",
+					"texlab",
+				},
+			},
 			dependencies = {},
 		},
 		{
