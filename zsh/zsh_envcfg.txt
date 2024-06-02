@@ -2,6 +2,10 @@
 
 # zsh settings which related environments
 
+
+# Sideloaded apps to PATH
+export PATH="$PATH:/opt/nvim-linux64/bin:/opt/neovide"
+
 # File path shortcuts
 GDRIVE=~/'Google Drive'/マイドライブ
 
