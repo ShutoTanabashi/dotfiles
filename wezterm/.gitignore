@@ -1,0 +1,9 @@
+# .gitignore
+*
+
+# whitelist
+!.gitignore
+!README.md
+!setup.sh
+!wezterm.lua
+!envcfg.txt

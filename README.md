@@ -7,11 +7,14 @@
 
 | ディレクトリ | ソフトウェア | 環境依存のある部分 |
 | :-- | :-- | :-- |
-| zsh | [zsh](https://www.zsh.org) | `.zsh_envcfg` |
-| nvim | [neovim](https://neovim.io) | `lua/envcfg.lua` |
+| alacritty | [Alacritty](https://github.com/alacritty/alacritty) |  |
 | git | [git](https://git-scm.com) | `.gitconfig.env` |
+| goneovim | [goneovim](https://github.com/akiyosi/goneovim) |  |
+| nvim | [Neovim](https://neovim.io) | `lua/envcfg.lua` |
 | sheldon | [sheldon](https://github.com/rossmacarthur/sheldon) |  |
 | tealdeer | [tealdeer](https://github.com/dbrgn/tealdeer) | 設定ファイルのパス |
+| wezterm | [WezTerm](https://wezfurlong.org/wezterm/index.html) | `envcfg.lua` |
+| zsh | [zsh](https://www.zsh.org) | `.zsh_envcfg` |
 
 ## 管理方法
 

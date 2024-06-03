@@ -1,5 +1,7 @@
 # Neovim 設定
 
+[Lua](https://www.lua.org/docs.html)を用いた[Neovimの設定について](https://neovim.io/doc/user/lua.html)
+
 ## ファイル構成
 
 | ファイル名 | 役割 |

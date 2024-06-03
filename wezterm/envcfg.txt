@@ -1,0 +1,9 @@
+-- Environment dependent settings for wezterm
+local wezterm = require 'wezterm'
+
+local font = wezterm.font('UDEV Gothic NF')
+local font_size = 13.0
+return {
+	font = font,
+	font_size = font_size
+}

@@ -17,11 +17,15 @@ export FZF_DEFAULT_COMMAND='fd --unrestricted --type file --type directory'
 export FZF_DEFAULT_OPTS='--height=~60% --border=horizontal --preview="bat {} --color always"'
 
 # alias
-alias ls='eza --icons -a'
 alias cat='bat'
 alias grep='rg'
+alias ls='eza --icons'
+alias la='eza --icons -a'
+alias ll='eza --icons -al --git'
 alias vi='nvim'
+alias gvi='goneovim'
 alias llj="zellij"
+alias cati='img2sixel'
 
 # prompt
 PROMPT='%F{44}%n%f %C $GITSTATUS_PROMPT%F{44}%B %# %b%f'
