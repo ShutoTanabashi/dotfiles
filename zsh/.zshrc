@@ -3,7 +3,8 @@
 # zsh setting by sheldon
 eval "$(sheldon source)"
 
-# this variable used by zellij etc.
+# CLI editor settings
+export VISUAL="nvim"
 export EDITOR="nvim"
 
 # setting which related environments.
