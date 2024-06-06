@@ -6,6 +6,7 @@ eval "$(sheldon source)"
 # CLI editor settings
 export VISUAL="nvim"
 export EDITOR="nvim"
+export SUDO_EDITOR="/usr/bin/vi"
 
 # setting which related environments.
 source ~/.zsh_envcfg
@@ -26,7 +27,7 @@ alias ll='eza --icons -al --git'
 alias vi='nvim'
 alias gvi='goneovim'
 alias llj="zellij"
-alias cati='img2sixel'
+alias cati='img2sixel --height=600px'
 
 # prompt
 PROMPT='%F{44}%n%f %C $GITSTATUS_PROMPT%F{44}%B %# %b%f'
