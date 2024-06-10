@@ -20,12 +20,11 @@ export FZF_DEFAULT_OPTS='--height=~60% --border=horizontal --preview="bat {} --c
 
 # alias
 alias cat='bat'
-alias grep='rg'
 alias ls='eza --icons'
 alias la='eza --icons -a'
 alias ll='eza --icons -al --git'
+alias vim='/usr/bin/vi'
 alias vi='nvim'
-alias gvi='goneovim'
 alias llj="zellij"
 alias cati='img2sixel --height=600px'
 

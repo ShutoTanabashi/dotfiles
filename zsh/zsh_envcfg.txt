@@ -39,6 +39,9 @@ unset __conda_setup
 # setting for gitstatus (for zsh)
 source ~/.local/share/sheldon/repos/github.com/romkatv/gitstatus/gitstatus.prompt.zsh
 
+# setting for golang
+export PATH=$PATH:/usr/local/go/bin
+
 # setting for neovim
 alias gvi='goneovim'
 
