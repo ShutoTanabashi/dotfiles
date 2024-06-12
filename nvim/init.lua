@@ -10,11 +10,26 @@ vim.g.mapleader = ' ' -- Space key
 vim.o.wrap = true
 vim.o.number = true
 vim.o.splitbelow = true
+vim.o.clipboard = 'unnamedplus'
+vim.g.fileencodings = {'utf-8', 'sjis', 'utf-16le', 'default', 'ucs-bom', 'latin1'}
+
+-- tabstop settings
 vim.o.splitright = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
-vim.o.clipboard = 'unnamedplus'
-vim.g.fileencodings = {'utf-8', 'sjis', 'utf-16le', 'default', 'ucs-bom', 'latin1'}
+-- Change tabwidth by filetype
+local filetype_tabstop = {markdown=2}
+local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", {})
+vim.api.nvim_create_autocmd("FileType", {
+	group = usrftcfg,
+	callback = function ()
+		local ftts = filetype_tabstop[vim.bo.filetype]
+		if ftts then
+			vim.bo.tabstop = ftts
+			vim.bo.shiftwidth = ftts
+		end
+	end
+})
 
 -- Settngs for terminal
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])

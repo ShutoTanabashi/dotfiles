@@ -40,16 +40,16 @@ vim.fn.sign_define("DiagnosticSignHint", {
 })
 
 -- keymaps
-
+--[[
 vim.keymap.set("n", "<C-W>d", vim.diagnostic.open_float) -- Now builtined as `<C-W>d`
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev) -- Now builtined as `[d`
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next) -- Now builtined as `]d`
-
+]]
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = usrlspcfg,
 	callback = function(ev)
-		vim.keymap.set('n', 'K',  vim.lsp.buf.hover, { buffer = ev.buf }) -- Now builtined
+		-- vim.keymap.set('n', 'K',  vim.lsp.buf.hover, { buffer = ev.buf }) -- Now builtined
 		vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = ev.buf })
 		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = ev.buf })
 		vim.keymap.set('n', 'gD', function ()
