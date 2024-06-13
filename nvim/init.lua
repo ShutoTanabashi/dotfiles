@@ -19,11 +19,11 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 -- Change tabwidth by filetype
 local filetype_tabstop = {markdown=2}
-local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", {})
+-- local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", {})
 vim.api.nvim_create_autocmd("FileType", {
-	group = usrftcfg,
-	callback = function ()
-		local ftts = filetype_tabstop[vim.bo.filetype]
+	-- group = usrftcfg,
+	callback = function (args)
+		local ftts = filetype_tabstop[args.match]
 		if ftts then
 			vim.bo.tabstop = ftts
 			vim.bo.shiftwidth = ftts
