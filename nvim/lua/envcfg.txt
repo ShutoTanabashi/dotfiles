@@ -24,3 +24,6 @@ function CfgFTerm()
 	return opts
 end
 
+-- For macOS: replace '¥' to '\'
+--[[ vim.keymap.set('!', '¥', '\\', { noremap = true })
+vim.keymap.set('!', '\\', '¥', { noremap = true }) ]]
