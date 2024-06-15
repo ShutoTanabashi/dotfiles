@@ -32,6 +32,9 @@ alias cati='img2sixel --height=600px'
 PROMPT='%F{44}%n%f %c $GITSTATUS_PROMPT%F{44}%B %# %b%f'
 RPROMPT='%F{66}%3~%f %F{244}%m%f' 
 
+# completion
+autoload -Uz compinit && compinit
+
 # My functions
 
 # Make zip file for WindowsOS
