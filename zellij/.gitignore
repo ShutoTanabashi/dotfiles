@@ -1,0 +1,11 @@
+# .gitignore
+*
+
+# whitelist
+!.gitignore
+!README.md
+!setup.sh
+!config.kdl
+!themes
+!themes/*.kdl
+!themes/README.md

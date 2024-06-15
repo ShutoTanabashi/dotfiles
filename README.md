@@ -7,7 +7,7 @@
 
 | ディレクトリ | ソフトウェア | 環境依存のある部分 |
 | :-- | :-- | :-- |
-| alacritty | [Alacritty](https://github.com/alacritty/alacritty) |  |
+| alacritty | [Alacritty](https://github.com/alacritty/alacritty) | `envcfg.toml` |
 | git | [git](https://git-scm.com) | `.gitconfig.env` |
 | goneovim | [goneovim](https://github.com/akiyosi/goneovim) |  |
 | nvim | [Neovim](https://neovim.io) | `lua/envcfg.lua` |
