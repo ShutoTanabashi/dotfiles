@@ -3,7 +3,9 @@ local wezterm = require 'wezterm'
 
 local font = wezterm.font('UDEV Gothic NF')
 local font_size = 13.0
+local enable_wayland = false
 return {
 	font = font,
-	font_size = font_size
+	font_size = font_size,
+	senable_waylands= enable_wayland,
 }
