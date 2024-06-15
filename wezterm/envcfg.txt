@@ -7,5 +7,5 @@ local enable_wayland = false
 return {
 	font = font,
 	font_size = font_size,
-	senable_waylands= enable_wayland,
+	enable_wayland = enable_wayland,
 }
