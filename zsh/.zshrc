@@ -29,7 +29,7 @@ alias llj="zellij"
 alias cati='img2sixel --height=600px'
 
 # prompt
-PROMPT='%F{44}%n%f %C $GITSTATUS_PROMPT%F{44}%B %# %b%f'
+PROMPT='%F{44}%n%f %c $GITSTATUS_PROMPT%F{44}%B %# %b%f'
 RPROMPT='%F{66}%3~%f %F{244}%m%f' 
 
 # My functions
