@@ -1,7 +1,5 @@
 --[[
 NeoVim setting file
-
-Last update: 2024/05/21[00:29]
 ]]
 vim.loader.enable()
 
@@ -19,9 +17,9 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 -- Change tabwidth by filetype
 local filetype_tabstop = {markdown=2}
--- local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", {})
+local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true})
 vim.api.nvim_create_autocmd("FileType", {
-	-- group = usrftcfg,
+	group = usrftcfg,
 	callback = function (args)
 		local ftts = filetype_tabstop[args.match]
 		if ftts then
