@@ -1,0 +1,1 @@
+bat build-essential curl eza fastfetch fd-find gh git libsixel-bin mariadb-client mariadb-server nginx nodejp npm php-fpm php-mysql ripgrep p7zip-full tealdeer tree vim-common wget zsh
