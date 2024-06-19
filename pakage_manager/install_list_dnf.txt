@@ -1,1 +1,1 @@
-bat eza fastfetch fd-find google-chrome-stable gh ibus-mozc libsixel-utils mariadb mariadb-server neovim nginx openssl-devel p7zip p7zip-plugins perl-FindBin php-fpm php-mysqlnd python3-pip ripgrep tealdeer zsh
+bat eza fastfetch fd-find gh ibus-mozc libsixel-utils mariadb mariadb-server neovim nginx openssl-devel p7zip p7zip-plugins perl-FindBin php-fpm php-mysqlnd python3-pip ripgrep tealdeer zsh

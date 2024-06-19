@@ -9,4 +9,4 @@
 [advice]
 	addIgnoredFile = false
 [include]
-	path = .gitconfig.env
+	path = .gitconfig_env
