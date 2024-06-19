@@ -1,1 +1,0 @@
-bat build-essential curl eza fastfetch fd-find gh git libsixel-bin nodejs npm ripgrep p7zip-full tealdeer tree vim-common wget zsh
