@@ -24,3 +24,10 @@ snippetsの文法やテンプレートは[vim-snippets](https://github.com/honza
 ## 環境依存ファイル
 
 * `lua/envcfg.txt` - `lua/envcfg.lua`のテンプレート
+
+## 検討事項
+
+* [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)と[vim-matchup](https://github.com/andymass/vim-matchup)が干渉する
+  * 括弧系の入力のみ(例えば`[`や`<`)で補完しようとすると、次の項目を選択(`<C-n>`)が機能しない
+  * 一旦はvim-matchupを無効化することで対象
+    * 長期的にどうするかを検討する

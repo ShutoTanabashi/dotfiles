@@ -1,7 +1,5 @@
 --[[ 
 Extention settings for neovim
-
-Last update: 2024/06/01[23:58]
 ]]
 
 -- Related variables
@@ -24,10 +22,13 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 -- Extensions
-{
+--[[ {
 	"andymass/vim-matchup",
 	event = {"BufNewFile", "BufRead"},
-},
+  setup = function()
+    vim.g.matchup_matchparen_offscreen = { method = "popup" }
+  end,
+}, ]]
 {
 	"nvim-treesitter/nvim-treesitter",
 	event = "VeryLazy",
@@ -38,11 +39,11 @@ require("lazy").setup({
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = false,
-			-- Setting for vim-matchup
-			matchup = {
-				enable = true,
-			},
 		},
+    --[[ -- Setting for vim-matchup
+    matchup = {
+      enable = true,
+    }, ]]
 	},
 },
 {
@@ -249,9 +250,9 @@ require("lazy").setup({
 				end
 			},
 			mapping = cmp.mapping.preset.insert({
-			["<C-b>"] = cmp.mapping.scroll_docs(-4),
-			["<C-f>"] = cmp.mapping.scroll_docs(4),
-			["<A-Space>"] = cmp.mapping.complete(),
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<A-Space>"] = cmp.mapping.complete(),
 		  	["<C-e>"] = cmp.mapping.abort(),
 		  	["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 			}),
