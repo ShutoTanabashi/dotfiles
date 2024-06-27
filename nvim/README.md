@@ -27,6 +27,14 @@ snippetsの文法やテンプレートは[vim-snippets](https://github.com/honza
 
 ## 検討事項
 
+* [md-preview.nvim](https://github.com/topazape/md-preview.nvim)の動作確認
+  * 公式ではmacOSでのみ検証なので、他のOSで動くか確認する
+    * [ ] Linux
+    * [ ] Windows
+  * 動作には[glow](https://github.com/charmbracelet/glow)を利用する
+    * パッケージの配布状況一覧は[Repology](https://repology.org/project/glow/versions)にて確認
+    * go経由でもインストール可能：`go install github.com/charmbracelet/glow@latest`
+
 * [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)と[vim-matchup](https://github.com/andymass/vim-matchup)が干渉する
   * 括弧系の入力のみ(例えば`[`や`<`)で補完しようとすると、次の項目を選択(`<C-n>`)が機能しない
   * 一旦はvim-matchupを無効化することで対象

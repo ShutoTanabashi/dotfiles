@@ -506,6 +506,30 @@ require("lazy").setup({
 	end,
 	ft = "markdown",
 },
+{
+  "topazape/md-preview.nvim",
+  ft = {"md", "markdown", "mkd", "mkdn", "mdwn", "mdown", "mdtxt", "mdtext", "rmd", "wiki"},
+  opts = {
+    viewer = {
+            exec = "glow",
+            exec_path = "",
+            args = { "-s", "dark" },
+          },
+          -- Markdown preview term
+          term = {
+            -- reload term when rendered markdown file changed
+            reload = {
+              enable = true,
+              events = {"InsertLeave", "TextChanged"},
+            },
+            direction = "vertical", -- choices: vertical / horizontal
+            keys = {
+              close = {"q"},
+              refresh = "r",
+            },
+          },
+  }
+},
 -- colorschemes
 {
 	"rebelot/kanagawa.nvim",
