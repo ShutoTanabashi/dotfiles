@@ -25,14 +25,31 @@ if wezterm.config_builder then
 end
 --]]
 
+config.leader = { key = 'b', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   -- Pane control
-  {
+  -- These keymap are referenced tmux.
+  --[[ {
 	key = 'c',
 	mods = 'CTRL|SHIFT',
 	action = act.CloseCurrentPane {confirm = true},
+  }, ]]
+  {
+    key = '"',
+    mods = 'LEADER',
+    action = act.SplitVertical {},
   },
-  -- For macOS, the keymap for moving pane are option + hjkl.
+  {
+    key = '%',
+    mods = 'LEADER',
+    action = act.SplitHorizontal {},
+  },
+  {
+    key = 'x',
+    mods = 'LEADER',
+	  action = act.CloseCurrentPane {confirm = true},
+  },
+  -- The keymap for moving pane are option + hjkl.
   {
     key = 'h',
     mods = 'ALT',
