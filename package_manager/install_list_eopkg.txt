@@ -1,0 +1,1 @@
+eza fcitx-configtool fcitx-gtk2 fcitx-gtk3 fcitx-qt5 fcitx-mozc fd git github-cli neovim ripgrepeopng vivaldi-stable zsh
