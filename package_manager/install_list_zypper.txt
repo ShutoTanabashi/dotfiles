@@ -1,0 +1,1 @@
+bat eza extension-manager fastfetch fd gh glow go libopenssl-devel libsixel-utils mariadb neovim nginx php8-fpm php8-mysql ripgrep sheldon tealdeer wezterm zellij zsh
