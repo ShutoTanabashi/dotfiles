@@ -29,11 +29,6 @@ config.leader = { key = 'b', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   -- Pane control
   -- These keymap are referenced tmux.
-  --[[ {
-	key = 'c',
-	mods = 'CTRL|SHIFT',
-	action = act.CloseCurrentPane {confirm = true},
-  }, ]]
   {
     key = '"',
     mods = 'LEADER|SHIFT',
@@ -47,7 +42,17 @@ config.keys = {
   {
     key = 'x',
     mods = 'LEADER',
-	  action = act.CloseCurrentPane {confirm = true},
+    action = act.CloseCurrentPane {confirm = true},
+  },
+  {
+    key = 'n',
+    mods = 'LEADER',
+    action = act.ActivateTabRelative(1),
+  },
+  {
+    key = 'p',
+    mods = 'LEADER',
+    action = act.ActivateTabRelative(-1),
   },
   -- The keymap for moving pane are option + hjkl.
   {
