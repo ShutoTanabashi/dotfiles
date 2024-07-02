@@ -36,12 +36,12 @@ config.keys = {
   }, ]]
   {
     key = '"',
-    mods = 'LEADER',
+    mods = 'LEADER|SHIFT',
     action = act.SplitVertical {},
   },
   {
     key = '%',
-    mods = 'LEADER',
+    mods = 'LEADER|SHIFT',
     action = act.SplitHorizontal {},
   },
   {
