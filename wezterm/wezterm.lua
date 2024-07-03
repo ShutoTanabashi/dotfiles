@@ -1,9 +1,9 @@
 -- Pull in the wezterm API
-local wezterm = require 'wezterm'
-local act = wezterm.action
+-- local wezterm = require 'wezterm'
 
 -- Loading environment dependent settings
 local envcfg = require 'envcfg'
+local keybinds = require 'keybinds'
 
 -- This table will hold the configuration.
 local config = {
@@ -25,57 +25,8 @@ if wezterm.config_builder then
 end
 --]]
 
-config.leader = { key = 'b', mods = 'CTRL', timeout_milliseconds = 1000 }
-config.keys = {
-  -- Pane control
-  -- These keymap are referenced tmux.
-  {
-    key = '"',
-    mods = 'LEADER|SHIFT',
-    action = act.SplitVertical {},
-  },
-  {
-    key = '%',
-    mods = 'LEADER|SHIFT',
-    action = act.SplitHorizontal {},
-  },
-  {
-    key = 'x',
-    mods = 'LEADER',
-    action = act.CloseCurrentPane {confirm = true},
-  },
-  {
-    key = 'n',
-    mods = 'LEADER',
-    action = act.ActivateTabRelative(1),
-  },
-  {
-    key = 'p',
-    mods = 'LEADER',
-    action = act.ActivateTabRelative(-1),
-  },
-  -- The keymap for moving pane are option + hjkl.
-  {
-    key = 'h',
-    mods = 'ALT',
-    action = act.ActivatePaneDirection 'Left',
-  },
-  {
-    key = 'j',
-    mods = 'ALT',
-    action = act.ActivatePaneDirection 'Down',
-  },
-  {
-    key = 'k',
-    mods = 'ALT',
-    action = act.ActivatePaneDirection 'Up',
-  },
-  {
-    key = 'l',
-    mods = 'ALT',
-    action = act.ActivatePaneDirection 'Right',
-  },
-}
+config.leader = keybinds.leader
+config.keys = keybinds.keys
 
 -- and finally, return the configuration to wezterm
 return config
