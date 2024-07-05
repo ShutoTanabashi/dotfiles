@@ -341,6 +341,7 @@ require("lazy").setup({
 				ensure_installed = {
 					"clangd",
 					"lua_ls",
+          "marksman",
 					"pyright",
 					"ruff_lsp",
 					"rust_analyzer",
