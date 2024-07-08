@@ -6,7 +6,6 @@ eval "$(sheldon source)"
 # CLI editor settings
 export VISUAL="nvim"
 export EDITOR="nvim"
-export SUDO_EDITOR="/usr/bin/vi"
 
 # setting which related environments.
 source ~/.zsh_envcfg

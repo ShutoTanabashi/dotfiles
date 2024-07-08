@@ -1,1 +1,1 @@
-eza fcitx-configtool fcitx-gtk2 fcitx-gtk3 fcitx-qt5 fcitx-mozc fd git github-cli neovim ripgrepeopng vivaldi-stable zsh
+alacritty bat eza fastfetch fd git github-cli glow golang ibus-mozc neovim nodejs p7zip ripgrep tealdeer vivaldi-stable vscode zellij zsh

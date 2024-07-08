@@ -2,6 +2,8 @@
 
 # zsh settings which related environments
 
+# Set environment variables
+export SUDO_EDITOR="/usr/bin/nvim"
 
 # Sideloaded apps to PATH
 export PATH="$PATH:/opt/nvim-linux64/bin:/opt/neovide"
