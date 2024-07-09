@@ -18,7 +18,7 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 -- Change tabwidth by filetype
 local filetype_tabstop = {lua=2, markdown=2}
-local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true})
+local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
   group = usrftcfg,
   callback = function (args)
@@ -55,10 +55,6 @@ Statuline = require("stlcfg").statusline
 vim.api.nvim_set_option_value('statusline', '%!v:lua.Statuline()', {scope = 'global'})
 
 -- User defined functions
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function() vim.highlight.on_yank {higroup="DiagnosticUnderlineWarn"} end,
-  desc = "Briefly highlight yanked text",
-})
 function InsertLastUpdate ()
   -- Timestamp
   local lu = "Last update: " .. os.date("%Y/%m/%d[%H:%M]")

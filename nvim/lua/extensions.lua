@@ -22,13 +22,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 -- Extensions
---[[ {
-	"andymass/vim-matchup",
-	event = {"BufNewFile", "BufRead"},
-  setup = function()
-    vim.g.matchup_matchparen_offscreen = { method = "popup" }
-  end,
-}, ]]
 {
 	"nvim-treesitter/nvim-treesitter",
 	event = "VeryLazy",
@@ -40,10 +33,6 @@ require("lazy").setup({
 			enable = true,
 			additional_vim_regex_highlighting = false,
 		},
-    --[[ -- Setting for vim-matchup
-    matchup = {
-      enable = true,
-    }, ]]
 	},
 },
 {
@@ -443,33 +432,6 @@ require("lazy").setup({
 	opts = {},
 },
 {
-	"edluffy/specs.nvim",
-	-- event = "VeryLazy",
-	config = function()
-		local spc = require("specs")
-		spc.setup({
-			show_jumps  = true,
-			min_jump = 2,
-			popup = {
-				delay_ms = 0, -- delay before popup displays
-				inc_ms = 20, -- time increments used for fade/resize effects 
-				blend = 10, -- starting blend, between 0-100 (fully transparent), see :h winblend
-				width = 7,
-				winhl = "Search",
-				fader = spc.empty_fader,
-				resizer = spc.shrink_resizer,
-			},
-			ignore_filetypes = {},
-			ignore_buftypes = {
-				nofile = true,
-			},
-		})
-	end,
-	keys = {
-		{'<leader>cc', function() require("specs").show_specs() end,  noremap = true, silent = true },
-	},
-},
-{
 	"tpope/vim-fugitive",
 	cmd = "Git",
 },
@@ -487,18 +449,22 @@ require("lazy").setup({
 	},
 },
 {
-	"Decodetalkers/csv-tools.lua",
-	ft = "csv",
-	opts = {
-		before = 55,
-		after = 55,
-		clearafter = true,
-		-- this will clear the highlight of buf after move
-		showoverflow = false,
-		-- this will provide a overflow show
-		titleflow = true,
-		-- add an alone title
-	},
+  'hat0uma/csvview.nvim',
+  ft = "csv",
+  opts = {
+    parser = {
+      --- The number of lines that the asynchronous parser processes per cycle.
+      --- This setting is used to prevent monopolization of the main thread when displaying large files.
+      --- If the UI freezes, try reducing this value.
+      async_chunksize = 50,
+    },
+    view = {
+      --- minimum width of a column
+      min_column_width = 5,
+      --- spacing between columns
+      spacing = 2,
+    },
+  }
 },
 {
 	"iamcco/markdown-preview.nvim",
@@ -559,3 +525,21 @@ require("lazy").setup({
 }
 })
 
+-- Extension-related autocmd
+-- For yanky.nvim
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function() vim.highlight.on_yank {higroup="DiagnosticUnderlineWarn"} end,
+  desc = "Briefly highlight yanked text",
+  group = vim.api.nvim_create_augroup("YankSetting", { clear = true })
+})
+-- For csvview.nvim
+vim.api.nvim_create_autocmd("FileType", {
+  -- pattern = '*.csv',
+  -- command = "CsvViewEnable",
+  callback = function (args)
+    if args.match == "csv" then
+      vim.cmd("CsvViewEnable")
+    end
+  end,
+  group = vim.api.nvim_create_augroup("CSVInitialize", { clear = true })
+})
