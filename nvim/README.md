@@ -12,11 +12,11 @@
 | `lua/stlcfg.lua` | ステータスラインの設定 |
 | `lua/envcfg.lua` | 環境依存の設定 |
 
-### Nero vim本体以外の設定
+### Neovim本体以外の設定
 
 | ディレクトリ名 | 役割 |
 | :-- | :-- |
-| `snippets` | [nvim-snippy](https://github.com/dcampos/nvim-snippy)で用いるsnippets設定 |
+| `snippets` | [nvim-snippy](https://github.com/dcampos/nvim-snippy)用snippets設定 |
 | `spell` | (Neo)vimのスペルチェック用辞書 |
 
 snippetsの文法やテンプレートは[vim-snippets](https://github.com/honza/vim-snippets)を参照。
@@ -24,6 +24,21 @@ snippetsの文法やテンプレートは[vim-snippets](https://github.com/honza
 ## 環境依存ファイル
 
 * `lua/envcfg.txt` - `lua/envcfg.lua`のテンプレート
+
+## 追加でインストールが必要なもの
+
+### Rust LSP 関連ツール
+
+[mason.nvim](https://github.com/williamboman/mason.nvim)と
+[rustaceanvim](https://github.com/mrcjkb/rustaceanvim)の干渉問題および
+[mason.nvim](https://github.com/williamboman/mason.nvim)経由での
+[rustfmt](https://github.com/rust-lang/rustfmt)インストール非推奨に伴い、
+RustのLSP関連ツールはrustup経由でインストールする。
+
+```zsh
+rustup component add rust-analyzer
+rustup component add rustfmt
+```
 
 ## 検討事項
 
@@ -34,8 +49,3 @@ snippetsの文法やテンプレートは[vim-snippets](https://github.com/honza
   * 動作には[glow](https://github.com/charmbracelet/glow)を利用する
     * パッケージの配布状況一覧は[Repology](https://repology.org/project/glow/versions)にて確認
     * go経由でもインストール可能：`go install github.com/charmbracelet/glow@latest`
-
-* [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)と[vim-matchup](https://github.com/andymass/vim-matchup)が干渉する
-  * 括弧系の入力のみ(例えば`[`や`<`)で補完しようとすると、次の項目を選択(`<C-n>`)が機能しない
-  * 一旦はvim-matchupを無効化することで対象
-    * 長期的にどうするかを検討する

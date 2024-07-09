@@ -64,6 +64,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- -- Inlay hint
+vim.api.nvim_create_autocmd({ "LspAttach" }, {
+  group = usrlspcfg,
+  callback = function()
+    vim.lsp.inlay_hint.enable(true, { 0 })
+  end,
+})
+
 -- nvim-navic
 vim.api.nvim_create_autocmd("LspAttach", {
   group = usrlspcfg,
@@ -72,7 +80,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- Copmletion
+-- LSP config
 require("mason-lspconfig").setup_handlers({
   function(server)
     local opt = {
