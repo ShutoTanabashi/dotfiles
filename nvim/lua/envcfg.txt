@@ -14,14 +14,14 @@ vim.o.guifont = "UDEV Gothic 35NF:h13"
 -- shell
 -- Configlation of "numToStr/FTerm.nvim". Windows doesn't have `$SHELL` environment variable, so must set them.
 function CfgFTerm()
-	local opts ={
-		-- cmd = 'pwsh.exe',
-		dimensions  = {
-			height = 0.9,
-			width = 0.9,
-		},
-	}
-	return opts
+  local opts = {
+    -- cmd = 'pwsh.exe',
+    dimensions = {
+      height = 0.9,
+      width = 0.9,
+    },
+  }
+  return opts
 end
 
 -- For macOS: replace '¥' to '\'

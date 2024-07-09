@@ -10,18 +10,18 @@ vim.o.number = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.clipboard = 'unnamedplus'
-vim.g.fileencodings = {'utf-8', 'sjis', 'utf-16le', 'default', 'ucs-bom', 'latin1'}
+vim.g.fileencodings = { 'utf-8', 'sjis', 'utf-16le', 'default', 'ucs-bom', 'latin1' }
 
 -- tabstop settings
 vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 -- Change tabwidth by filetype
-local filetype_tabstop = {lua=2, markdown=2}
+local filetype_tabstop = { lua = 2, markdown = 2 }
 local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
   group = usrftcfg,
-  callback = function (args)
+  callback = function(args)
     local ftts = filetype_tabstop[args.match]
     if ftts then
       vim.bo.tabstop = ftts
@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd('TermOpen', {
 -- Spell settings
 vim.opt.spelllang = 'en,cjk'
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = {"text", "gitcommit", "markdown"},
+  pattern = { "text", "gitcommit", "markdown" },
   callback = function() vim.opt_local.spell = true end
 })
 
@@ -52,16 +52,17 @@ require("envcfg")
 require("extensions")
 require("lspcfg")
 Statuline = require("stlcfg").statusline
-vim.api.nvim_set_option_value('statusline', '%!v:lua.Statuline()', {scope = 'global'})
+vim.api.nvim_set_option_value('statusline', '%!v:lua.Statuline()', { scope = 'global' })
 
 -- User defined functions
-function InsertLastUpdate ()
+function InsertLastUpdate()
   -- Timestamp
   local lu = "Last update: " .. os.date("%Y/%m/%d[%H:%M]")
   local line = vim.fn.line(".")
   if line then
-    -- Use 'if' function to avoid nil value. 
+    -- Use 'if' function to avoid nil value.
     vim.fn.append(line, lu)
   end
 end
+
 vim.keymap.set('n', '<F5>', InsertLastUpdate)
