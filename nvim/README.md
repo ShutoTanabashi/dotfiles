@@ -44,7 +44,7 @@ rustup component add rustfmt
 
 * [md-preview.nvim](https://github.com/topazape/md-preview.nvim)の動作確認
   * 公式ではmacOSでのみ検証なので、他のOSで動くか確認する
-    * [ ] Linux
+    * [x] Linux
     * [ ] Windows
   * 動作には[glow](https://github.com/charmbracelet/glow)を利用する
     * パッケージの配布状況一覧は[Repology](https://repology.org/project/glow/versions)にて確認
