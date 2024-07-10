@@ -15,6 +15,9 @@ export BAT_THEME="ansi"
 export FZF_DEFAULT_COMMAND='fd --unrestricted --type file --type directory'
 export FZF_DEFAULT_OPTS='--height=~60% --border=horizontal --preview="bat {} --color always"'
 
+# setting for tre
+tre() {command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
+
 # alias
 alias ls='eza --icons'
 alias la='eza --icons -a'
