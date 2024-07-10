@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # zsh setting by sheldon
 eval "$(sheldon source)"
 
@@ -18,11 +16,9 @@ export FZF_DEFAULT_COMMAND='fd --unrestricted --type file --type directory'
 export FZF_DEFAULT_OPTS='--height=~60% --border=horizontal --preview="bat {} --color always"'
 
 # alias
-alias cat='bat'
 alias ls='eza --icons'
 alias la='eza --icons -a'
 alias ll='eza --icons -al --git'
-alias vim='/usr/bin/vi'
 alias vi='nvim'
 alias llj="zellij"
 alias cati='img2sixel --height=600px'

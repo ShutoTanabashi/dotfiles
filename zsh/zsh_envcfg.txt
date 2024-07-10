@@ -1,9 +1,11 @@
-#!/usr/bin/env zsh
-
 # zsh settings which related environments
 
 # Set environment variables
 export SUDO_EDITOR="/usr/bin/nvim"
+
+# Alias to rename the original command
+alias lso='/bin/ls'
+alias vim='/usr/bin/vim'
 
 # Sideloaded apps to PATH
 export PATH="$PATH:/opt/nvim-linux64/bin:/opt/neovide"
@@ -21,6 +23,19 @@ alias wezrc='$EDITOR ~/.config/wezterm/wezterm.lua'
 # Ubuntu only
 # setting for bat
 alias bat='batcat'
+
+# macOS only
+# completions settings related homebrew
+fpath+=~/.zfunc
+if type brew &>/dev/null; then
+	# for zsh-completions
+	FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+	# for homebrew
+	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+	
+	autoload -Uz compinit
+	compinit
+fi
 
 # setting for conda
 # >>> conda initialize >>>
@@ -61,4 +76,3 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
-
