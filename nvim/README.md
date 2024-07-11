@@ -42,6 +42,10 @@ rustup component add rustfmt
 
 ## 検討事項
 
+* [lsp-config](https://github.com/neovim/nvim-lspconfig?tab=readme-ov-file#suggested-configuration)に
+  基づいたkeymap設定の有効化
+  * 一部(definition)については既に有効であるが、全部ではない(formatなど)
+
 * [md-preview.nvim](https://github.com/topazape/md-preview.nvim)の動作確認
   * 公式ではmacOSでのみ検証なので、他のOSで動くか確認する
     * [x] Linux

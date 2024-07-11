@@ -42,9 +42,11 @@ vim.fn.sign_define("DiagnosticSignHint", {
 vim.api.nvim_create_autocmd("LspAttach", {
   group = usrlspcfg,
   callback = function(ev)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = ev.buf })
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = ev.buf })
-    vim.keymap.set('n', 'gD', function()
+    vim.keymap.set('n', 'grr', vim.lsp.buf.references, { buffer = ev.buf })
+    vim.keymap.set('n', 'grn', vim.lsp.buf.rename, { buffer = ev.buf })
+    vim.keymap.set({ 'n', 'v' }, 'gra', vim.lsp.buf.code_action, { buffer = ev.buf })
+    vim.keymap.set('n', '<C-w>]', function()
+      -- Orverwrite default keymap to adjust the location of new pane.
       if vim.fn.winwidth(0) > (2 * vim.fn.winheight(0)) then
         vim.cmd("vsplit")
       else
@@ -55,8 +57,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set('n', 'gC', vim.lsp.buf.declaration, { buffer = ev.buf })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = ev.buf })
     vim.keymap.set('n', 'ge', vim.lsp.buf.type_definition, { buffer = ev.buf })
-    vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { buffer = ev.buf })
-    vim.keymap.set({ 'n', 'v' }, 'ga', vim.lsp.buf.code_action, { buffer = ev.buf })
     vim.keymap.set("n", "gf", function()
       vim.lsp.buf.format({ async = true })
     end, { buffer = ev.buf })
