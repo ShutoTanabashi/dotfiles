@@ -4,5 +4,5 @@
 # whitelist
 !.gitignore
 !README.md
-!setup.sh
+!setup_linux.sh
 !config.toml

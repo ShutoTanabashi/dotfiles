@@ -7,7 +7,8 @@
 ## 設定ファイルに関する注意
 
 * 設定ファイルの場所がOSによって大きく異なる
-  * `setup.sh`はあえて作成せず。パスを確認して都度設定すること。
+  * パスを確認して都度設定すること。
+    * Linux向け(`$HOME/.config/tealdeer`に配置)の設定スクリプトを用意：`setup_linux.sh`
 
 ```sh
 ln -s ~/dotfiles/tealdeer/config.toml PathForTeadDeer
