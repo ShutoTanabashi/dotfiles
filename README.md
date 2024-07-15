@@ -10,6 +10,7 @@
 | alacritty | [Alacritty](https://github.com/alacritty/alacritty) | `envcfg.toml` |
 | git | [git](https://git-scm.com) | `.gitconfig.env` |
 | goneovim | [goneovim](https://github.com/akiyosi/goneovim) |  |
+| hhkb | [HHKB](https://happyhackingkb.com/jp/download/#tool) |  |
 | mozc | [mozc](https://github.com/google/mozc) |  |
 | nvim | [Neovim](https://neovim.io) | `lua/envcfg.lua` |
 | sheldon | [sheldon](https://github.com/rossmacarthur/sheldon) |  |
