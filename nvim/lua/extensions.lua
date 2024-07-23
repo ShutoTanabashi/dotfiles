@@ -50,12 +50,21 @@ require("lazy").setup({
     event = { "BufNewFile", "BufRead" },
   },
   {
+    "m4xshen/autoclose.nvim",
+    event = "InsertEnter",
+    opts = {
+      keys = {
+        ["<"] = { escape = true, close = true, pair = "<>", enabled_filetypes = { "rust" } },
+      },
+    },
+  },
+  --[[ {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     config = true
     -- use opts = {} for passing setup options
     -- this is equalent to setup({}) function
-  },
+  }, ]]
   {
     "lambdalisue/fern-hijack.vim",
     lazy = false,
