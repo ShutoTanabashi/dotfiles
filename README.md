@@ -11,6 +11,7 @@
 | git | [git](https://git-scm.com) | `.gitconfig.env` |
 | goneovim | [goneovim](https://github.com/akiyosi/goneovim) |  |
 | hhkb | [HHKB](https://happyhackingkb.com/jp/download/#tool) |  |
+| karabiner | [Karabiner-Elements](https://karabiner-elements.pqrs.org) |  |
 | mozc | [mozc](https://github.com/google/mozc) |  |
 | nvim | [Neovim](https://neovim.io) | `lua/envcfg.lua` |
 | sheldon | [sheldon](https://github.com/rossmacarthur/sheldon) |  |
@@ -29,4 +30,4 @@
 
 ## ToDo
 
-* [ ] zellijのREADME.md
+- [ ] zellijのREADME.md
