@@ -8,6 +8,7 @@
 | ディレクトリ | ソフトウェア | 環境依存のある部分 |
 | :-- | :-- | :-- |
 | alacritty | [Alacritty](https://github.com/alacritty/alacritty) | `envcfg.toml` |
+| fcitx | [fcitx5](https://fcitx-im.org/wiki/Fcitx_5) |  |
 | git | [git](https://git-scm.com) | `.gitconfig.env` |
 | goneovim | [goneovim](https://github.com/akiyosi/goneovim) |  |
 | hhkb | [HHKB](https://happyhackingkb.com/jp/download/#tool) |  |
