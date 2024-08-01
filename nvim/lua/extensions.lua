@@ -212,9 +212,9 @@ require("lazy").setup({
   {
     "roman/golden-ratio",
     keys = {
-      { "<leader>rs", "<Cmd>GoldenRatioToggle<CR>", silent = true, desc = 'Start/Stop auto apin size adjustment' }
+      { "<leader>rs", "<Cmd>GoldenRatioResize<CR>", silent = true, desc = 'Pane size adjustment' }
     },
-    cmd = "GoldenRatioToggle",
+    cmd = { "GoldenRatioResize", "GoldenRatioToggle" },
   },
   {
     "simeji/winresizer",
