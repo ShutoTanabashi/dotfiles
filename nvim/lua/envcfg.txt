@@ -24,6 +24,10 @@ function CfgFTerm()
   return opts
 end
 
+-- PDF viewer
+-- This setting is used for synctex.
+vim.g.pdf_viewer = "skim"
+
 -- For macOS: replace '¥' to '\'
 --[[ vim.keymap.set('!', '¥', '\\', { noremap = true })
 vim.keymap.set('!', '\\', '¥', { noremap = true }) ]]
