@@ -534,6 +534,59 @@ require("lazy").setup({
       },
     }
   },
+  {
+    "lervag/vimtex",
+    -- lazy = false,
+    ft = { "tex" },
+    tag = "v2.15",
+    init = function()
+      -- vim.g.vimtex_view_method = "skim" -- I want this setting move to environment.lua.
+      vim.g.vimtex_view_method = vim.g.pdf_viewer
+      -- Use llmk(Light LaTeX Make)
+      vim.g.vimtex_compiler_method = "generic"
+      vim.g.vimtex_compiler_generic = { command = "llmk" }
+    end
+  },
+  --[[ {
+    "jakewvincent/texmagic.nvim",
+    ft = { "tex" },
+    opts = {
+      engines = {
+        -- default
+        pdflatex = { -- This has the same name as a default engine but would
+          -- be preferred over the same-name default if defined
+          executable = "latexmk",
+          args = {
+            "-pdflatex",
+            "-interaction=nonstopmode",
+            "-synctex=1",
+            "-outdir=.build",
+            "-pv",
+            "%f"
+          },
+          isContinuous = false
+        },
+        lualatex = { -- This is *not* one of the defaults, but it can be
+          -- called via magic comment if defined here
+          executable = "latexmk",
+          args = {
+            "-pdflua",
+            "-interaction=nonstopmode",
+            "-synctex=1",
+            "-pv",
+            "%f"
+          },
+          isContinuous = false
+        },
+        -- original
+        llmk = {
+          executable = "llmk",
+          args = {},
+          isContinuous = false,
+        }
+      }
+    }
+  }, ]]
   -- colorschemes
   {
     "rebelot/kanagawa.nvim",
