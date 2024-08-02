@@ -55,6 +55,9 @@ require("lazy").setup({
     opts = {
       keys = {
         ["<"] = { escape = true, close = true, pair = "<>", enabled_filetypes = { "rust" } },
+        ["`"] = { escape = true, close = true, pair = "``", enabled_filetypes = { "markdown", "rust" } },
+        ["`"] = { escape = true, close = true, pair = "`'", enabled_filetypes = { "tex" } },
+        ["$"] = { escape = true, close = true, pair = "$$", enabled_filetypes = { "tex" } },
       },
     },
   },
