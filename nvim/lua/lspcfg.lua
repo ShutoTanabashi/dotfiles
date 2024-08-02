@@ -123,22 +123,6 @@ require("mason-lspconfig").setup_handlers({
       }
     })
   end,
-  --[[ ["texlab"] = function()
-    require("lspconfig").texlab.setup {
-      cmd = { "texlab" },
-      filetypes = { "tex", "bib" },
-      settings = {
-        texlab = {
-          rootDirectory = nil,
-          build = _G.TeXMagicBuildConfig,
-          forwardSearch = {
-            executable = "skim",
-            args = { "%p" }
-          }
-        }
-      }
-    }
-  end ]]
 })
 
 -- Linter and Formatter
