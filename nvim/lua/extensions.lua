@@ -592,3 +592,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   group = vim.api.nvim_create_augroup("CSVInitialize", { clear = true })
 })
+-- For VimTeX
+vim.api.nvim_create_autocmd("bufWritePost", {
+  pattern = "*.tex",
+  command = "VimtexCompile",
+  group = vim.api.nvim_create_augroup("EditTeX", { clear = true })
+})
