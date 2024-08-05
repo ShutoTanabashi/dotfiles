@@ -42,6 +42,23 @@ snippet align "Input amsmath equation environment"
 	\\end{align}
 	%
 
+snippet nnlf "New line in align environment without the equation number"
+	\\nonumber
+	\\\\
+	%
+	&
+
+snippet secapp "Add section at appendix"
+	\\section{${1:Title of section}}
+	\\label{app:${2:label}}
+	\\setcounter{equation}{0}
+
+snippet siki "Reference of equation, Japanese version"
+	式~(\\ref{${1}})
+
+snippet req "Reference of equation, English version"
+	eq.~(\\ref{${1}})
+
 # Sapmle snippets at https://github.com/honza/vim-snippets/blob/master/snippets/tex.snippets
 #PREAMBLE
 #documentclass without options
