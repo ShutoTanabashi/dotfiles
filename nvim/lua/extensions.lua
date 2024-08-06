@@ -4,6 +4,7 @@ Extention settings for neovim
 
 -- Related variables
 vim.g.sandwich_no_default_key_mappings = 1 -- for vim-sandwich
+vim.g.golden_ratio_autocommand = 0 -- for golden-ratio: Disable auto resize
 
 -- lazy.nvim: Package manager
 -- bootstrap
@@ -215,7 +216,8 @@ require("lazy").setup({
   {
     "roman/golden-ratio",
     keys = {
-      { "<leader>rs", "<Cmd>GoldenRatioResize<CR>", silent = true, desc = 'Pane size adjustment' }
+      { "<leader>rs", "<Plug>(golden_ratio_resize)", silent = true, desc = 'Pane size adjustment' },
+      { "<leader>rS", "<Plug>(golden_ratio_toggle)", silent = true, desc = 'Pane size adjustment' },
     },
     cmd = { "GoldenRatioResize", "GoldenRatioToggle" },
   },

@@ -7,7 +7,7 @@ local keybinds = require 'keybinds'
 
 -- This table will hold the configuration.
 local config = {
-	color_scheme = 'kanagawabones',
+	color_scheme = 'Smyck',
 	font = envcfg.font,
 	font_size = envcfg.font_size,
 	use_ime = true,
