@@ -18,8 +18,7 @@ snippet bxjstemplate "Template for bxjsclass"
 	\\usepackage{bm}
 	\\usepackage{xcolor}
 	\\usepackage{url}
-	% \\usepackage{hyperref}
-	% \\usepackage{pxjahyper} % platex，uplatexだとhyperrefが上手く動かない可能性あり．その場合はこのパッケージを併用する．
+	\\usepackage{bookmark}
 
 	\\begin{document}
 	\\title{${1:title}}
@@ -46,7 +45,7 @@ snippet nnlf "New line in align environment without the equation number"
 	\\nonumber
 	\\\\
 	%
-	&
+	${1}&
 
 snippet secapp "Add section at appendix"
 	\\section{${1:Title of section}}
