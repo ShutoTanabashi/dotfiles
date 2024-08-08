@@ -7,6 +7,7 @@ vim.loader.enable()
 vim.g.mapleader = ' ' -- Space key
 vim.o.wrap = true
 vim.o.number = true
+vim.o.relativenumber = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.clipboard = 'unnamedplus'
