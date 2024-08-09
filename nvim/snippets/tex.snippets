@@ -19,6 +19,8 @@ snippet bxjstemplate "Template for bxjsclass"
 	\\usepackage{xcolor}
 	\\usepackage{url}
 	\\usepackage{bookmark}
+    
+    \\allowdisplaybreaks[3]
 
 	\\begin{document}
 	\\title{${1:title}}
@@ -40,6 +42,11 @@ snippet align "Input amsmath equation environment"
 		$2
 	\\end{align}
 	%
+
+snippet textcolor "Colored text provided by xcolor package"
+	\\textcolor{${1:color}}{
+		${2:text}
+	}
 
 snippet nnlf "New line in align environment without the equation number"
 	\\nonumber
