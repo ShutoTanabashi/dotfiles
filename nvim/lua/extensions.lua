@@ -4,7 +4,7 @@ Extention settings for neovim
 
 -- Related variables
 vim.g.sandwich_no_default_key_mappings = 1 -- for vim-sandwich
-vim.g.golden_ratio_autocommand = 0 -- for golden-ratio: Disable auto resize
+vim.g.golden_ratio_autocommand = 0         -- for golden-ratio: Disable auto resize
 
 -- lazy.nvim: Package manager
 -- bootstrap
@@ -482,7 +482,29 @@ require("lazy").setup({
   {
     "Saecki/crates.nvim",
     ft = "toml",
-    opts = {},
+    opts = {
+      lsp = {
+        enabled = true,
+        on_attach = function(client, bufnr) end,
+        actions = true,
+        completion = true,
+        hover = true,
+      },
+      completion = {
+        cmp = {
+          enabled = true,
+        },
+        crates = {
+          enabled = true,
+          max_result = 10,
+          min_chars = 3,
+        }
+      },
+      null_ls = {
+        enabled = true,
+        name = "crates.nvim",
+      },
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
