@@ -1,1 +1,1 @@
-extension-manager google-chrome gibo goneovim-bin marp-cli tre-command visual-studio-code-bin webapp-manager
+extension-manager gdrive gibo goneovim-bin google-chrome marp-cli tre-command visual-studio-code-bin webapp-manager
