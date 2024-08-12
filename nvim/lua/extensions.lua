@@ -50,7 +50,7 @@ require("lazy").setup({
     "arnar/vim-matchopen",
     event = { "BufNewFile", "BufRead" },
   },
-  {
+  --[[ {
     "m4xshen/autoclose.nvim",
     event = "InsertEnter",
     opts = {
@@ -61,14 +61,14 @@ require("lazy").setup({
         ["$"] = { escape = true, close = true, pair = "$$", enabled_filetypes = { "tex" } },
       },
     },
-  },
-  --[[ {
+  }, ]]
+  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     config = true
     -- use opts = {} for passing setup options
     -- this is equalent to setup({}) function
-  }, ]]
+  },
   {
     "lambdalisue/fern-hijack.vim",
     lazy = false,
@@ -422,13 +422,13 @@ require("lazy").setup({
     },
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    event = { "BufNewFile", "BufRead" },
-    main = "ibl",
+    "shellRaining/hlchunk.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
-      -- Show only current indent
-      indent = { char = " " },
-      scope = { char = "▎" },
+      chunk = {
+        enable = true,
+        delay = 0,
+      },
     },
   },
   {
