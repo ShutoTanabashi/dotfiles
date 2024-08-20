@@ -11,8 +11,16 @@ vim.o.relativenumber = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.clipboard = 'unnamedplus'
-vim.opt.formatoptions:remove("o") -- Add new line without comment enviromnent.
 vim.g.fileencodings = { 'utf-8', 'sjis', 'utf-16le', 'default', 'ucs-bom', 'latin1' }
+
+-- Settings for comments environment
+vim.api.nvim_create_autocmd({"FileType"}, {
+  group = vim.api.nvim_create_augroup("FormatOptions", {clear = true}),
+  pattern = {"*"},
+  callback = function ()
+    vim.opt.formatoptions:remove("o") -- Add new line without comment enviromnent.
+  end,
+})
 
 -- tabstop settings
 vim.o.expandtab = true
