@@ -7,9 +7,6 @@ export SUDO_EDITOR="/usr/bin/nvim"
 alias lso='/bin/ls'
 alias vim='/usr/bin/vim'
 
-# Sideloaded apps to PATH
-export PATH="$PATH:/opt/nvim-linux64/bin:/opt/neovide"
-
 # File path shortcuts
 GDRIVE=~/'Google Drive'/マイドライブ
 
@@ -57,7 +54,7 @@ unset __conda_setup
 source ~/.local/share/sheldon/repos/github.com/romkatv/gitstatus/gitstatus.prompt.zsh
 
 # setting for golang
-export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
 
 # setting for neovim
 alias gvi='goneovim'

@@ -1,0 +1,2 @@
+chromium glow
+--clasic alacritty neovim
