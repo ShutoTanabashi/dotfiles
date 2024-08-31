@@ -2,7 +2,7 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
-local leader = { key = 'b', mods = 'CTRL', timeout_milliseconds = 1000 }
+local leader = { key = 't', mods = 'CTRL', timeout_milliseconds = 1000 }
 
 local keys = {
   -- Pane control
