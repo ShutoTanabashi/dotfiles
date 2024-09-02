@@ -564,7 +564,12 @@ require("lazy").setup({
     -- Detail: https://github.com/lervag/vimtex/issues/2876
     lazy = false,
     init = function()
-      vim.g.vimtex_view_method = vim.g.pdf_viewer
+      if vim.g.pdf_viewer_options then
+        vim.g.vimtex_view_general_viewer = vim.g.pdf_viewer
+        vim.g.vimtex_view_general_options = vim.g.pdf_viewer_options
+      else
+        vim.g.vimtex_view_method = vim.g.pdf_viewer
+      end
       -- Use llmk(Light LaTeX Make)
       vim.g.vimtex_compiler_method = "generic"
       vim.g.vimtex_compiler_generic = { command = "llmk" }

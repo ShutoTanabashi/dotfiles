@@ -27,6 +27,10 @@ end
 -- PDF viewer
 -- This setting is used for synctex.
 vim.g.pdf_viewer = "skim"
+-- Sample for SumatraPDF
+--[[ vim.g.pdf_viewer = "SumatraPDF"
+vim.g.pdf_viewer_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
+
 
 -- For macOS: replace '¥' to '\'
 --[[ vim.keymap.set('!', '¥', '\\', { noremap = true })
