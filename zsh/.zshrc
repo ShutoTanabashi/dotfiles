@@ -27,10 +27,6 @@ alias llj="zellij"
 # alias cati='img2sixel --height=600px' # Using libsixel
 alias cati='chafa --colors full --size x19' # Using chafa
 
-# prompt
-PROMPT='%F{44}%n%f %c $GITSTATUS_PROMPT%F{44}%B %# %b%f'
-RPROMPT='%F{66}%3~%f %F{244}%m%f' 
-
 # completion
 autoload -Uz compinit && compinit
 
