@@ -17,6 +17,7 @@
 | sheldon | [sheldon](https://github.com/rossmacarthur/sheldon) |  |
 | tealdeer | [tealdeer](https://github.com/dbrgn/tealdeer) | 設定ファイルのパス |
 | wezterm | [WezTerm](https://wezfurlong.org/wezterm/index.html) | `envcfg.lua` |
+| zathura | [zathura](https://pwmt.org/projects/zathura/) |  |
 | zsh | [zsh](https://www.zsh.org) | `.zsh_envcfg` |
 
 ## 管理方法
