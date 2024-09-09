@@ -15,6 +15,7 @@
 | homebrew | [Homebrew](https://brew.sh/ja/) |  |
 | mozc | [mozc](https://github.com/google/mozc) |  |
 | nvim | [Neovim](https://neovim.io) | `lua/envcfg.lua` |
+| rclone | [Rclone](https://rclone.org) | `*.service` |
 | sheldon | [sheldon](https://github.com/rossmacarthur/sheldon) |  |
 | tealdeer | [tealdeer](https://github.com/dbrgn/tealdeer) | 設定ファイルのパス |
 | wezterm | [WezTerm](https://wezfurlong.org/wezterm/index.html) | `envcfg.lua` |
