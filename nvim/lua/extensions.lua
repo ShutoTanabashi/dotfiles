@@ -50,18 +50,6 @@ require("lazy").setup({
     "arnar/vim-matchopen",
     event = { "BufNewFile", "BufRead" },
   },
-  --[[ {
-    "m4xshen/autoclose.nvim",
-    event = "InsertEnter",
-    opts = {
-      keys = {
-        ["<"] = { escape = true, close = true, pair = "<>", enabled_filetypes = { "rust" } },
-        ["`"] = { escape = true, close = true, pair = "``", enabled_filetypes = { "markdown", "rust" } },
-        ["`"] = { escape = true, close = true, pair = "`'", enabled_filetypes = { "tex" } },
-        ["$"] = { escape = true, close = true, pair = "$$", enabled_filetypes = { "tex" } },
-      },
-    },
-  }, ]]
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
@@ -129,9 +117,9 @@ require("lazy").setup({
   {
     "akinsho/bufferline.nvim",
     version = "*",
-    dependencies = {
+    --[[ dependencies = {
       "nvim-tree/nvim-web-devicons",
-    },
+    }, ]]
     event = "TabNew",
     opts = {
       options = {
@@ -149,6 +137,10 @@ require("lazy").setup({
         always_show_bufferline = false,
       }
     },
+  },
+  {
+    "nvim-tree/nvim-web-devicons",
+    lazy = true,
   },
   {
     "numToStr/Comment.nvim",
@@ -231,7 +223,7 @@ require("lazy").setup({
   {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
-    dependencies = {
+    --[[ dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-path",
@@ -255,7 +247,7 @@ require("lazy").setup({
       },
       "dcampos/cmp-snippy",
       "onsails/lspkind.nvim",
-    },
+    }, ]]
     config = function()
       local cmp = require("cmp")
       local lspkind = require("lspkind")
@@ -312,6 +304,30 @@ require("lazy").setup({
       })
     end,
   },
+  { "hrsh7th/cmp-buffer",                   lazy = true, },
+  { "hrsh7th/cmp-cmdline",                  lazy = true, },
+  { "hrsh7th/cmp-path",                     lazy = true, },
+  { "hrsh7th/cmp-nvim-lsp",                 lazy = true, },
+  { "hrsh7th/cmp-nvim-lsp-signature-help",  lazy = true, },
+  { "hrsh7th/cmp-nvim-lsp-document-symbol", lazy = true, },
+  { "f3fora/cmp-spell",                     lazy = true, },
+  {
+    "dcampos/nvim-snippy",
+    lazy = true,
+    opts = {
+      mappings = {
+        is = {
+          ['<Tab>'] = 'expand_or_advance',
+          ['<S-Tab>'] = 'previous',
+        },
+        nx = {
+          ['<leader>x'] = 'cut_text',
+        },
+      },
+    },
+  },
+  { "dcampos/cmp-snippy",   lazy = true, },
+  { "onsails/lspkind.nvim", lazy = true, },
   {
     "gbprod/yanky.nvim",
     opts = {
@@ -370,9 +386,9 @@ require("lazy").setup({
       {
         "nvimtools/none-ls.nvim",
         -- Module name is `null-ls`
-        dependencies = {
+        --[[ dependencies = {
           "nvim-lua/plenary.nvim",
-        },
+        }, ]]
         -- Initial settings are defined at `lua/lspconf.lua`
       },
       {
@@ -394,9 +410,10 @@ require("lazy").setup({
           },
         },
       },
-      "hrsh7th/cmp-nvim-lsp",
+      -- "hrsh7th/cmp-nvim-lsp",
     },
   },
+  { "nvim-lua/plenary.nvim", lazy = true, },
   {
     "j-hui/fidget.nvim",
     event = "LspAttach",
@@ -406,9 +423,9 @@ require("lazy").setup({
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
-    dependencies = {
+    --[[ dependencies = {
       "nvim-lua/plenary.nvim",
-    },
+    }, ]]
     opts = {},
     cmd = "Telescope",
     keys = {
@@ -466,9 +483,9 @@ require("lazy").setup({
     'mrcjkb/rustaceanvim',
     version = '^4', -- Recommended
     lazy = false,   -- This plugin is already lazy
-    dependencies = {
+    --[[ dependencies = {
       "mfussenegger/nvim-dap"
-    },
+    }, ]]
     config = function()
       vim.g.rustaceanvim = {
         server = {
@@ -479,6 +496,7 @@ require("lazy").setup({
       }
     end
   },
+  { "mfussenegger/nvim-dap", lazy = true, },
   {
     "Saecki/crates.nvim",
     ft = "toml",
@@ -505,9 +523,9 @@ require("lazy").setup({
         name = "crates.nvim",
       },
     },
-    dependencies = {
+    --[[ dependencies = {
       "nvim-lua/plenary.nvim",
-    },
+    }, ]]
   },
   {
     'hat0uma/csvview.nvim',
