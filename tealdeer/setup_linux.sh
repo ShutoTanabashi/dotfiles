@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/sh
 
 # Make simboliclink for tealdeer setting on Linux
 mkdir ~/.config/tealdeer
