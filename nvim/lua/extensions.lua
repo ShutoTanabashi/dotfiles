@@ -48,7 +48,7 @@ require("lazy").setup({
   },
   {
     "arnar/vim-matchopen",
-    event = { "BufNewFile", "BufRead" },
+    event = "VeryLazy",
   },
   {
     'windwp/nvim-autopairs',
@@ -223,11 +223,11 @@ require("lazy").setup({
   {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
-    --[[ dependencies = {
+    dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-path",
-      -- "hrsh7th/cmp-nvim-lsp", -- This plugin load at "mason-lspconfig"
+      "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
       "f3fora/cmp-spell",
@@ -247,7 +247,7 @@ require("lazy").setup({
       },
       "dcampos/cmp-snippy",
       "onsails/lspkind.nvim",
-    }, ]]
+    },
     config = function()
       local cmp = require("cmp")
       local lspkind = require("lspkind")
@@ -281,6 +281,10 @@ require("lazy").setup({
               end,
             },
           },
+          {
+            name = "lazydev",
+            group_index = 0,
+          },
         }),
         formatting = {
           format = lspkind.cmp_format({
@@ -304,30 +308,6 @@ require("lazy").setup({
       })
     end,
   },
-  { "hrsh7th/cmp-buffer",                   lazy = true, },
-  { "hrsh7th/cmp-cmdline",                  lazy = true, },
-  { "hrsh7th/cmp-path",                     lazy = true, },
-  { "hrsh7th/cmp-nvim-lsp",                 lazy = true, },
-  { "hrsh7th/cmp-nvim-lsp-signature-help",  lazy = true, },
-  { "hrsh7th/cmp-nvim-lsp-document-symbol", lazy = true, },
-  { "f3fora/cmp-spell",                     lazy = true, },
-  {
-    "dcampos/nvim-snippy",
-    lazy = true,
-    opts = {
-      mappings = {
-        is = {
-          ['<Tab>'] = 'expand_or_advance',
-          ['<S-Tab>'] = 'previous',
-        },
-        nx = {
-          ['<leader>x'] = 'cut_text',
-        },
-      },
-    },
-  },
-  { "dcampos/cmp-snippy",   lazy = true, },
-  { "onsails/lspkind.nvim", lazy = true, },
   {
     "gbprod/yanky.nvim",
     opts = {
@@ -356,13 +336,21 @@ require("lazy").setup({
     },
   },
   {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  { "Bilal2453/luvit-meta",  lazy = true }, -- optional `vim.uv` typings
+  {
     "neovim/nvim-lspconfig",
     lazy = false,
     dependencies = {
-      {
-        "folke/neodev.nvim",
-        opts = {},
-      },
       {
         "williamboman/mason.nvim",
         build = ":MasonUpdate",
@@ -381,17 +369,16 @@ require("lazy").setup({
             "texlab",
           },
         },
-        dependencies = {},
       },
       {
         "nvimtools/none-ls.nvim",
         -- Module name is `null-ls`
-        --[[ dependencies = {
+        dependencies = {
           "nvim-lua/plenary.nvim",
-        }, ]]
+        },
         -- Initial settings are defined at `lua/lspconf.lua`
       },
-      {
+      --[[ {
         "SmiteshP/nvim-navbuddy",
         dependencies = {
           {
@@ -409,10 +396,40 @@ require("lazy").setup({
             auto_attach = true,
           },
         },
-      },
-      -- "hrsh7th/cmp-nvim-lsp",
+      }, ]]
     },
   },
+  {
+    "SmiteshP/nvim-navbuddy",
+    --[[ dependencies = {
+      {
+        "SmiteshP/nvim-navic",
+        opts = {
+          lsp = {
+            auto_attach = true,
+          },
+        },
+      },
+      "MunifTanjim/nui.nvim",
+    }, ]]
+    keys = {{"gl" , "<Cmd>Navbuddy<CR>", mode = "n", desc = "Show table of contents."}},
+    cmd = "Navbuddy",
+    opts = {
+      lsp = {
+        auto_attach = true,
+      },
+    },
+  },
+  {
+    "SmiteshP/nvim-navic",
+    event = "VeryLazy",
+    opts = {
+      lsp = {
+        auto_attach = true,
+      },
+    },
+  },
+  { "MunifTanjim/nui.nvim",  lazy = true, },
   { "nvim-lua/plenary.nvim", lazy = true, },
   {
     "j-hui/fidget.nvim",
@@ -440,7 +457,8 @@ require("lazy").setup({
   },
   {
     "shellRaining/hlchunk.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    -- event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     opts = {
       chunk = {
         enable = true,

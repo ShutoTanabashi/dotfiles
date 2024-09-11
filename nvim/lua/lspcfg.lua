@@ -60,7 +60,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gf", function()
       vim.lsp.buf.format({ async = true })
     end, { buffer = ev.buf })
-    vim.keymap.set("n", "gl", require("nvim-navbuddy").open)
   end,
 })
 
