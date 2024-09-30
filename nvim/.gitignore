@@ -5,6 +5,7 @@
 !.gitignore
 !README.md
 !setup.sh
+!setup.ps1
 !init.lua
 !lua
 !lua/extensions.lua
