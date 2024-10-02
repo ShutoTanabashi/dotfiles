@@ -1,0 +1,8 @@
+# .gitignore
+*
+
+# Whitelist
+!.gitignore
+!README.md
+!setup.sh
+!settings.toml
