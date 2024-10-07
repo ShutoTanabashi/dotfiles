@@ -360,7 +360,7 @@ require("lazy").setup({
         "williamboman/mason-lspconfig.nvim",
         opts = {
           ensure_installed = {
-            "clangd",
+            -- "clangd",
             "lua_ls",
             "marksman",
             "pyright",

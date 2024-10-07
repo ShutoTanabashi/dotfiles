@@ -80,15 +80,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- LSP config
+local lspcfg = require("lspconfig")
 require("mason-lspconfig").setup_handlers({
   function(server)
     local opt = {
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
     }
-    require("lspconfig")[server].setup(opt)
+    lspcfg[server].setup(opt)
   end,
   ["pyright"] = function()
-    require("lspconfig").pyright.setup({
+    lspcfg.pyright.setup({
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
       handlers = {
         ["textDocument/publishDiagnostics"] = function() end,
@@ -111,7 +112,7 @@ require("mason-lspconfig").setup_handlers({
     })
   end,
   ["lua_ls"] = function()
-    require("lspconfig").lua_ls.setup({
+    lspcfg.lua_ls.setup({
       settings = {
         Lua = {
           diagnostics = {
@@ -123,6 +124,11 @@ require("mason-lspconfig").setup_handlers({
     })
   end,
 })
+
+-- LSP config installed outside of Mason
+if not require("mason-registry").is_installed("clangd") then
+  lspcfg.clangd.setup{}
+end
 
 -- Linter and Formatter
 local null_ls = require("null-ls")
