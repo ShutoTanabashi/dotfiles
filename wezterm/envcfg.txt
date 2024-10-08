@@ -4,8 +4,10 @@ local wezterm = require 'wezterm'
 local font = wezterm.font('UDEV Gothic NF')
 local font_size = 13.0
 local enable_wayland = false
+local path_dotfiles = "/home/shoot/dotfiles"
 return {
-	font = font,
-	font_size = font_size,
-	enable_wayland = enable_wayland,
+  font = font,
+  font_size = font_size,
+  enable_wayland = enable_wayland,
+  path_dotfiles = path_dotfiles,
 }

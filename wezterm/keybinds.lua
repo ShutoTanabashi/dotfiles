@@ -20,7 +20,7 @@ local keys = {
   {
     key = 'x',
     mods = 'LEADER',
-    action = act.CloseCurrentPane {confirm = true},
+    action = act.CloseCurrentPane { confirm = true },
   },
   {
     key = 'c',
@@ -32,8 +32,8 @@ local keys = {
     key = 'C',
     mods = 'LEADER|SHIFT',
     action = act.SpawnCommandInNewTab {
-            cwd = wezterm.home_dir,
-        },
+      cwd = wezterm.home_dir,
+    },
   },
   {
     key = 'n',
@@ -67,8 +67,24 @@ local keys = {
     action = act.ActivatePaneDirection 'Right',
   },
 }
+
+local function add_env_keys(tgt_keys, envcfg)
+  table.insert(tgt_keys,
+    -- Open new tab at dotfiles
+    {
+      key = ',',
+      mods = 'LEADER',
+      action = act.SpawnCommandInNewTab {
+        cwd = envcfg.path_dotfiles
+      }
+    }
+  )
+  return tgt_keys
+end
+
 -- return keys
 return {
   leader = leader,
   keys = keys,
+  add_local_keys = add_env_keys,
 }
