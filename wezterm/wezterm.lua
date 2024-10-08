@@ -26,7 +26,8 @@ end
 --]]
 
 config.leader = keybinds.leader
-config.keys = keybinds.keys
+local all_keys = keybinds.add_local_keys(keybinds.keys, envcfg)
+config.keys = all_keys
 
 -- and finally, return the configuration to wezterm
 return config
