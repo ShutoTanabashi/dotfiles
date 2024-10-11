@@ -8,5 +8,7 @@
 	defaultBranch = main
 [advice]
 	addIgnoredFile = false
+[pull]
+	rebase = false
 [include]
 	path = .gitconfig_env
