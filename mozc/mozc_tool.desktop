@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Mozc設定
+Exec=/usr/lib/mozc/mozc_tool --mode=config_dialog
+Comment=GUI setting tool for mozc
+Type=Application

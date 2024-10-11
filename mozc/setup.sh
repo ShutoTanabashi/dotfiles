@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/sh
 
-# Make simboliclink for mozc setting
-ln -sf ~/dotfiles/mozc/keymap.tsv ~/.config/mozc/keymap.tsv
+# Make simboliclink for mozc setting tool
+ln -sf ~/dotfiles/mozc/mozc_tool.desktop ~/.local/share/applications/mozc_tool.desktop
