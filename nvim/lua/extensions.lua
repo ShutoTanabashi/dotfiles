@@ -21,7 +21,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+-- require("lazy").setup({
+local extensions = {
   -- Extensions
   {
     "nvim-treesitter/nvim-treesitter",
@@ -571,30 +572,6 @@ require("lazy").setup({
     ft = "markdown",
   },
   {
-    "topazape/md-preview.nvim",
-    ft = { "md", "markdown", "mkd", "mkdn", "mdwn", "mdown", "mdtxt", "mdtext", "rmd", "wiki" },
-    opts = {
-      viewer = {
-        exec = "glow",
-        exec_path = "",
-        args = { "-s", "dark" },
-      },
-      -- Markdown preview term
-      term = {
-        -- reload term when rendered markdown file changed
-        reload = {
-          enable = true,
-          events = { "InsertLeave", "TextChanged" },
-        },
-        direction = "vertical", -- choices: vertical / horizontal
-        keys = {
-          close = { "q" },
-          refresh = "r",
-        },
-      },
-    }
-  },
-  {
     "lervag/vimtex",
     -- Lazy load causes an error of synctex's inverse search.
     -- Detail: https://github.com/lervag/vimtex/issues/2876
@@ -637,7 +614,41 @@ require("lazy").setup({
     name = "catppuccin",
     lazy = true,
   }
-})
+-- })
+}
+
+-- Only Unix like system
+if vim.fn.has("unix") then
+  table.insert(extensions,
+    {
+      "topazape/md-preview.nvim",
+      ft = { "md", "markdown", "mkd", "mkdn", "mdwn", "mdown", "mdtxt", "mdtext", "rmd", "wiki" },
+      opts = {
+        viewer = {
+          exec = "glow",
+          exec_path = "",
+          args = { "-s", "dark" },
+        },
+        -- Markdown preview term
+        term = {
+          -- reload term when rendered markdown file changed
+          reload = {
+            enable = true,
+            events = { "InsertLeave", "TextChanged" },
+          },
+          direction = "vertical", -- choices: vertical / horizontal
+          keys = {
+            close = { "q" },
+            refresh = "r",
+          },
+        },
+      }
+    }
+  )
+end
+
+
+require("lazy").setup(extensions)
 
 -- Extension-related autocmd
 -- For yanky.nvim
