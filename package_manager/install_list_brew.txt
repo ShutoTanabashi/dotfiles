@@ -1,1 +1,0 @@
-bat cpufetch eza fastfetch fd fzf gh gibo git libsixel node p7zip ripgrep tealdeer tre-command wget

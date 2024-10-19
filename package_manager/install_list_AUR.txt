@@ -1,1 +1,0 @@
-extension-manager gdrive gibo goneovim-bin google-chrome marp-cli tre-command ttf-ibm-plex ttf-moralerspace ttf-udev-gothic visual-studio-code-bin webapp-manager

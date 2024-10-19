@@ -1,1 +1,1 @@
-alacritty bat build-essential chafa clang curl eza fastfetch fd-find fzf gh ghostscript git lua5.1 luarocks nodejs npm rclone ripgrep p7zip-full tealdeer texlive-full tmux tree tre-command vim-common wget xdotool zathura zathura-pdf-poppler zsh
+alacritty bat build-essential chafa clang cmake curl eza fastfetch fd-find fzf gh ghostscript git golang lua5.1 luarocks nodejs npm rclone ripgrep p7zip-full tealdeer texlive-full tmux tree tre-command vim-common wget xdotool zathura zathura-pdf-poppler zsh

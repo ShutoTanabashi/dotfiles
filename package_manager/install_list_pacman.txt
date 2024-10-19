@@ -1,1 +1,0 @@
-alacritty bat eza fastfetch fcitx5-configtool fcitx5-gtk fcitx5-lua fcitx5-mozc fcitx5-qt fd fzf ghostscript github-cli glow go libsixel luarocks neovide neovim nodejs npm python-pynvim ripgrep sheldon tealdeer texlive texlive-langjapanese tree-sitter-cli tmux vim vivaldi wezterm wl-clipboard zathura zathura-pdf-poppler zed zellij zsh
