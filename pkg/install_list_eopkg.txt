@@ -1,0 +1,1 @@
+alacritty bat eza fastfetch fd git github-cli glow golang ibus-mozc neovim nodejs p7zip ripgrep tealdeer vivaldi-stable vscode zellij zsh

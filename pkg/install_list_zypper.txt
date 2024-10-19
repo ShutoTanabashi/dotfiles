@@ -1,0 +1,1 @@
+bat eza extension-manager fastfetch fd gh glow go libopenssl-devel libsixel-utils neovim nodejs npm ripgrep sheldon tealdeer wezterm zellij zsh

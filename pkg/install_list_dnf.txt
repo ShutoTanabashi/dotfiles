@@ -1,0 +1,1 @@
+bat chafa eza fastfetch fd-find gh ibus-mozc luarocks neovim openssl-devel p7zip p7zip-plugins python3-pip rclone ripgrep tealdeer texlive-scheme-full zathura zathura-pdf-mupdf zsh
