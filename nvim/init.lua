@@ -14,10 +14,10 @@ vim.o.clipboard = 'unnamedplus'
 vim.g.fileencodings = { 'utf-8', 'sjis', 'utf-16le', 'default', 'ucs-bom', 'latin1' }
 
 -- Settings for comments environment
-vim.api.nvim_create_autocmd({"FileType"}, {
-  group = vim.api.nvim_create_augroup("FormatOptions", {clear = true}),
-  pattern = {"*"},
-  callback = function ()
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = vim.api.nvim_create_augroup("FormatOptions", { clear = true }),
+  pattern = { "*" },
+  callback = function()
     vim.opt.formatoptions:remove("o") -- Add new line without comment enviromnent.
   end,
 })
@@ -76,3 +76,10 @@ function InsertLastUpdate()
 end
 
 vim.keymap.set('n', '<F5>', InsertLastUpdate)
+
+vim.keymap.set('n', '<Leader>st', function()
+  vim.wo.scrolloff = 999
+end)
+vim.keymap.set('n', '<Leader>sf', function()
+  vim.wo.scrolloff = 0
+end)
