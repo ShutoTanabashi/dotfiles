@@ -76,6 +76,9 @@ export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 
+# Setting for TeX
+export PDFVIEWER_texdoc="open -a Skim.app" # for macOS
+
 # Setting for wsl
 export DESKTOP=/mnt/c/Users/ShutoTanabashi/Desktop
 
