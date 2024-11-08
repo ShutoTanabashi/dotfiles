@@ -81,12 +81,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- LSP config
 local lspcfg = require("lspconfig")
+local opt_lsp = {
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
+}
+
 require("mason-lspconfig").setup_handlers({
   function(server)
-    local opt = {
-      capabilities = require("cmp_nvim_lsp").default_capabilities(),
-    }
-    lspcfg[server].setup(opt)
+    lspcfg[server].setup(opt_lsp)
   end,
   ["pyright"] = function()
     lspcfg.pyright.setup({
@@ -113,6 +114,7 @@ require("mason-lspconfig").setup_handlers({
   end,
   ["lua_ls"] = function()
     lspcfg.lua_ls.setup({
+      capabilities = require("cmp_nvim_lsp").default_capabilities(),
       settings = {
         Lua = {
           diagnostics = {
@@ -127,7 +129,7 @@ require("mason-lspconfig").setup_handlers({
 
 -- LSP config installed outside of Mason
 if not require("mason-registry").is_installed("clangd") then
-  lspcfg.clangd.setup{}
+  lspcfg.clangd.setup(opt_lsp)
 end
 
 -- Linter and Formatter
