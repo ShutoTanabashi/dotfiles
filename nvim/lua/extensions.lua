@@ -365,7 +365,7 @@ local extensions = {
             "lua_ls",
             "marksman",
             "pyright",
-            "ruff_lsp",
+            "ruff",
             "taplo",
             "texlab",
           },
