@@ -1,5 +1,5 @@
 -- Pull in the wezterm API
--- local wezterm = require 'wezterm'
+local wezterm = require 'wezterm'
 
 -- Loading environment dependent settings
 local envcfg = require 'envcfg'
@@ -28,6 +28,12 @@ end
 config.leader = keybinds.leader
 local all_keys = keybinds.add_local_keys(keybinds.keys, envcfg)
 config.keys = all_keys
+
+-- For Windows
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  local windows = require 'windows'
+  config.default_prog = windows.prog_win
+end
 
 -- and finally, return the configuration to wezterm
 return config
