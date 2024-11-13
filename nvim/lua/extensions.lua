@@ -309,7 +309,7 @@ local extensions = {
       })
     end,
   },
-  {
+  --[[ {
     "gbprod/yanky.nvim",
     opts = {
       ring = {
@@ -335,7 +335,7 @@ local extensions = {
       { "<c-p>", "<Plug>(YankyCycleForward)" },
       { "<c-n>", "<Plug>(YankyCycleBackward)" },
     },
-  },
+  }, ]]
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
@@ -413,7 +413,7 @@ local extensions = {
       },
       "MunifTanjim/nui.nvim",
     }, ]]
-    keys = {{"gl" , "<Cmd>Navbuddy<CR>", mode = "n", desc = "Show table of contents."}},
+    keys = { { "gl", "<Cmd>Navbuddy<CR>", mode = "n", desc = "Show table of contents." } },
     cmd = "Navbuddy",
     opts = {
       lsp = {
@@ -614,8 +614,41 @@ local extensions = {
     name = "catppuccin",
     lazy = true,
   }
--- })
+  -- })
 }
+
+-- Except for WSL
+if not vim.fn.has("wsl") then
+  table.insert(extensions,
+    {
+      "gbprod/yanky.nvim",
+      opts = {
+        ring = {
+          history_length = 20,
+        },
+        highlight = {
+          on_put = false,
+          on_yank = false, -- The highlighting at yank is set by myself.
+        },
+        system_clipboard = {
+          sync_with_ring = true,
+        },
+      },
+      keys = {
+        { "p",     "<Plug>(YankyPutAfter)",               mode = { "n", "x" } },
+        { "P",     "<Plug>(YankyPutBefore)",              mode = { "n", "x" } },
+        { "gp",    "<Plug>(YankyGPutAfter)",              mode = { "n", "x" } },
+        { "gP",    "<Plug>(YankyGPutBefore)",             mode = { "n", "x" } },
+        { "]p",    "<Plug>(YankyPutIndentAfterLinewise)" },
+        { "[p",    "<Plug>(YankyPutIndentBeforeLinewise)" },
+        { "]P",    "<Plug>(YankyPutIndentAfterLinewise)" },
+        { "[P",    "<Plug>(YankyPutIndentBeforeLinewise)" },
+        { "<c-p>", "<Plug>(YankyCycleForward)" },
+        { "<c-n>", "<Plug>(YankyCycleBackward)" },
+      },
+    }
+  )
+end
 
 -- Only Unix like system
 if vim.fn.has("unix") then
