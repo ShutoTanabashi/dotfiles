@@ -12,12 +12,20 @@
 | `lua/stlcfg.lua` | ステータスラインの設定 |
 | `lua/envcfg.lua` | 環境依存の設定 |
 
-### Neovim本体以外の設定
-
 | ディレクトリ名 | 役割 |
 | :-- | :-- |
 | `snippets` | [nvim-snippy](https://github.com/dcampos/nvim-snippy)用snippets設定 |
 | `spell` | (Neo)vimのスペルチェック用辞書 |
+
+### Neovim本体以外の設定
+
+| ファイル名 | 役割 |
+| `sumatrapdf.sh` | [WSLでSumatraPDFを利用するための設定](https://github.com/lervag/vimtex/issues/2566#issuecomment-1322886643) |
+| `setup.sh` | Unix系のためのセットアップスクリプト |
+| `setup.ps1` | Windowsのためのセットアップスクリプト |
+| `setup_wsl.sh` | WSLのためのセットアップスクリプト |
+
+### Notion
 
 snippetsの文法やテンプレートは[vim-snippets](https://github.com/honza/vim-snippets)を参照。
 
@@ -45,11 +53,3 @@ rustup component add rustfmt
 * [lsp-config](https://github.com/neovim/nvim-lspconfig?tab=readme-ov-file#suggested-configuration)に
   基づいたkeymap設定の有効化
   * 一部(definition)については既に有効であるが、全部ではない(formatなど)
-
-* [md-preview.nvim](https://github.com/topazape/md-preview.nvim)の動作確認
-  * 公式ではmacOSでのみ検証なので、他のOSで動くか確認する
-    * [x] Linux
-    * [ ] Windows
-  * 動作には[glow](https://github.com/charmbracelet/glow)を利用する
-    * パッケージの配布状況一覧は[Repology](https://repology.org/project/glow/versions)にて確認
-    * go経由でもインストール可能：`go install github.com/charmbracelet/glow@latest`
