@@ -86,5 +86,9 @@ export DESKTOP=/mnt/c/Users/ShutoTanabashi/Desktop
 export BROWSER=wslview
 
 # prompt
+## Default(Blue)
 PROMPT='%F{44}%n%f %c $GITSTATUS_PROMPT%F{44}%B %# %b%f'
 RPROMPT='%F{66}%3~%f %F{244}%m%f' 
+## For SUSE
+# PROMPT='%F{46}%n%f %c $GITSTATUS_PROMPT%F{46}%B %# %b%f'
+# RPROMPT='%F{107}%3~%f %F{244}%m%f' 
