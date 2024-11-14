@@ -1,5 +1,5 @@
 [font]
-size = 14.0
+size = 12.0
 
 [font.normal]
 family = "UDEV Gothic 35NF"
@@ -9,23 +9,16 @@ x = 0
 y = 7
 
 [[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Control"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Control"
-
-[[keyboard.bindings]]
 chars = '\'
 key = "Backslash"
 mods = "Alt"
 
 [window]
-option_as_alt = "Both"
+option_as_alt = "Both" # for macOS
 
-[window.padding]
-x = 10
-y = 0
+[general]
+working_directory = "C:\\Users\\ShutoTanabashi"
+
+[terminal.shell]
+program = "pwsh.exe"
+args = ["-NoLogo"]

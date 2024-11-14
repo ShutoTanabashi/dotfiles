@@ -1,4 +1,5 @@
-import = ["~/.config/alacritty/envcfg.toml"]
+[general]
+import = ["envcfg.toml"]
 
 [colors.primary]
 background = "#1e1e1e"
@@ -9,3 +10,7 @@ TERM = "xterm-256color"
 
 [scrolling]
 history = 5000
+
+[window.padding]
+x = 10
+y = 0
