@@ -80,7 +80,7 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 export PDFVIEWER_texdoc="open -a Skim.app" # for macOS
 
 # Setting for wsl
-export DESKTOP=/mnt/c/Users/ShutoTanabashi/Desktop
+export WINHOME=/mnt/c/Users/ShutoTanabashi
 
 # Setting for wslu
 export BROWSER=wslview
