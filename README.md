@@ -16,6 +16,7 @@
 | ibus | [ibus](https://github.com/ibus/ibus) |  |
 | mozc | [mozc](https://github.com/google/mozc) |  |
 | nvim | [Neovim](https://neovim.io) | `lua/envcfg.lua` |
+| PowerShell | [PowerShell](https://github.com/PowerShell/PowerShell) | |
 | rclone | [Rclone](https://rclone.org) | `*.service` |
 | sheldon | [sheldon](https://github.com/rossmacarthur/sheldon) |  |
 | tealdeer | [tealdeer](https://github.com/dbrgn/tealdeer) | 設定ファイルのパス |
