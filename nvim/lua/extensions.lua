@@ -379,25 +379,6 @@ local extensions = {
         },
         -- Initial settings are defined at `lua/lspconf.lua`
       },
-      --[[ {
-        "SmiteshP/nvim-navbuddy",
-        dependencies = {
-          {
-            "SmiteshP/nvim-navic",
-            opts = {
-              lsp = {
-                auto_attach = true,
-              },
-            },
-          },
-          "MunifTanjim/nui.nvim",
-        },
-        opts = {
-          lsp = {
-            auto_attach = true,
-          },
-        },
-      }, ]]
     },
   },
   {
@@ -413,7 +394,7 @@ local extensions = {
       },
       "MunifTanjim/nui.nvim",
     }, ]]
-    keys = { { "gl", "<Cmd>Navbuddy<CR>", mode = "n", desc = "Show table of contents." } },
+    keys = { { "gn", "<Cmd>Navbuddy<CR>", mode = "n", desc = "Show table of contents." } },
     cmd = "Navbuddy",
     opts = {
       lsp = {
