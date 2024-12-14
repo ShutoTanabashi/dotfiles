@@ -1,6 +1,6 @@
 [Editor]
 
-StartFullscreen = true
+# StartFullscreen = true
 SmoothScroll  = true
 
 [Cursor]
