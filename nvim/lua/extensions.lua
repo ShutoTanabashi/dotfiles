@@ -382,26 +382,55 @@ local extensions = {
     },
   },
   {
-    "SmiteshP/nvim-navbuddy",
-    --[[ dependencies = {
-      {
-        "SmiteshP/nvim-navic",
-        opts = {
-          lsp = {
-            auto_attach = true,
-          },
-        },
-      },
-      "MunifTanjim/nui.nvim",
-    }, ]]
-    keys = { { "gn", "<Cmd>Navbuddy<CR>", mode = "n", desc = "Show table of contents." } },
-    cmd = "Navbuddy",
+    "hedyhli/outline.nvim",
+    cmd = { "Outline", "OutlineOpen"},
+    keys = {
+      { "gn", "<cmd>Outline<CR>", mode = "n", desc = "Show table of contens on the side." },
+    },
     opts = {
-      lsp = {
-        auto_attach = true,
+      outline_window = {
+        auto_close = true,
+        -- auto_jump = true,
+        shou_cursorline = true,
+        hide_cursor = true,
+      },
+      preview_window = {
+        auto_preview = true,
+        open_hover_on_preview = true,
+        width = 50,
+        height = 80,
+        winblend = 15,
+      },
+      providers = {
+        priority = {'lsp', 'treesitter', 'coc', 'markdown', 'norg'},
+        lsp = {
+          blacklist_clients = {'texlab'},
+        },
       },
     },
   },
+  { "epheien/outline-treesitter-provider.nvim" },
+  -- {
+  --   "SmiteshP/nvim-navbuddy",
+  --   --[[ dependencies = {
+  --     {
+  --       "SmiteshP/nvim-navic",
+  --       opts = {
+  --         lsp = {
+  --           auto_attach = true,
+  --         },
+  --       },
+  --     },
+  --     "MunifTanjim/nui.nvim",
+  --   }, ]]
+  --   keys = { { "gn", "<Cmd>Navbuddy<CR>", mode = "n", desc = "Show table of contents." } },
+  --   cmd = "Navbuddy",
+  --   opts = {
+  --     lsp = {
+  --       auto_attach = true,
+  --     },
+  --   },
+  -- },
   {
     "SmiteshP/nvim-navic",
     event = "VeryLazy",
