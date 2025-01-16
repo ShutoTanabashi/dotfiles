@@ -39,6 +39,16 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end
 })
+-- Use tab charactor for indent
+local filetype_usetab = {latex = true, tex = true}
+vim.api.nvim_create_autocmd("FileType", {
+  group = usrftcfg,
+  callback = function (args)
+    if filetype_usetab[args.match] then
+      vim.bo.expandtab = false
+    end
+  end
+})
 
 -- Settngs for terminal
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])

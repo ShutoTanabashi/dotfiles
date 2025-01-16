@@ -376,6 +376,7 @@ local extensions = {
         -- Module name is `null-ls`
         dependencies = {
           "nvim-lua/plenary.nvim",
+          "nvimtools/none-ls-extras.nvim"
         },
         -- Initial settings are defined at `lua/lspconf.lua`
       },
