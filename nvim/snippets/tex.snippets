@@ -48,6 +48,15 @@ snippet textcolor "Colored text provided by xcolor package"
 		${2:text}
 	}
 
+snippet fig figure environment (includegraphics)
+	\\begin{figure}
+		\\centering
+		\\includegraphics[width=${1}\\linewidth]{${2}}
+		\\caption{${3}}
+		\\label{fig:${4}}
+	\\end{figure}
+	${0}
+
 snippet nnlf "New line in align environment without the equation number"
 	\\nonumber
 	\\\\
@@ -345,15 +354,15 @@ snippet ms mathscr
 #misc
 snippet ft \footnote
 	\\footnote{${1:${VISUAL:text}}}${0}
-snippet fig figure environment (includegraphics)
-	\\begin{figure}
-	\\begin{center}
-		\\includegraphics[scale=${1}]{Figures/${2}}
-	\\end{center}
-	\\caption{${3}}
-	\\label{fig:${4}}
-	\\end{figure}
-	${0}
+# snippet fig figure environment (includegraphics)
+# 	\\begin{figure}
+# 	\\begin{center}
+# 		\\includegraphics[scale=${1}]{Figures/${2}}
+# 	\\end{center}
+# 	\\caption{${3}}
+# 	\\label{fig:${4}}
+# 	\\end{figure}
+# 	${0}
 snippet tikz figure environment (tikzpicture)
 	\\begin{figure}[htpb]
 	\\begin{center}

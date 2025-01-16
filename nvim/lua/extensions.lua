@@ -404,9 +404,9 @@ local extensions = {
       },
       providers = {
         priority = {'lsp', 'treesitter', 'coc', 'markdown', 'norg'},
-        lsp = {
+        --[[ lsp = {
           blacklist_clients = {'texlab'},
-        },
+        }, ]]
       },
     },
   },
