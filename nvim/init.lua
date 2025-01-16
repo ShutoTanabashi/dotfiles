@@ -29,6 +29,8 @@ vim.o.shiftwidth = 4
 -- Change tabwidth by filetype
 local filetype_tabstop = { lua = 2, markdown = 2, c = 2, cpp = 2 }
 local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true })
+-- Use tab charactor for indent
+local filetype_usetab = {latex = true, tex = true}
 vim.api.nvim_create_autocmd("FileType", {
   group = usrftcfg,
   callback = function(args)
@@ -36,15 +38,7 @@ vim.api.nvim_create_autocmd("FileType", {
     if ftts then
       vim.bo.tabstop = ftts
       vim.bo.shiftwidth = ftts
-    end
-  end
-})
--- Use tab charactor for indent
-local filetype_usetab = {latex = true, tex = true}
-vim.api.nvim_create_autocmd("FileType", {
-  group = usrftcfg,
-  callback = function (args)
-    if filetype_usetab[args.match] then
+    elseif filetype_usetab[args.match] then
       vim.bo.expandtab = false
     end
   end
