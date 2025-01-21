@@ -57,6 +57,26 @@ snippet fig figure environment (includegraphics)
 	\\end{figure}
 	${0}
 
+snippet tabular tabular (or arbitrary) environment
+	\\begin{${1:tabular}}{${2:c}}
+		${0:${VISUAL}}
+	\\end{$1}
+
+snippet tab table environment
+	\\begin{table}
+		\\centering
+		\\caption{${2}}
+        ${1}
+		\\label{tab:${3}}
+	\\end{table}
+	${0}
+
+snippet frame frame environment
+	\\begin{frame}
+		\frametitle{${1:title}}
+		${0:${VISUAL}}
+	\\end{frame}
+
 snippet nnlf "New line in align environment without the equation number"
 	\\nonumber
 	\\\\
@@ -128,10 +148,10 @@ snippet mkt maketitle
 	\\maketitle
 	
 # Tabular
-snippet tab tabular (or arbitrary) environment
-	\\begin{${1:tabular}}{${2:c}}
-		${0:${VISUAL}}
-	\\end{$1}
+# snippet tab tabular (or arbitrary) environment
+# 	\\begin{${1:tabular}}{${2:c}}
+# 		${0:${VISUAL}}
+# 	\\end{$1}
 snippet thm thm (or arbitrary) environment with optional argument
 	\\begin[${1:author}]{${2:thm}}
 		${0:${VISUAL}}
@@ -406,12 +426,12 @@ snippet sum \sum^{}_{}
 	\\sum^{${1:n}}_{${2:i=1}} ${0}
 snippet lim \lim_{}
 	\\lim_{${1:n \\to \\infty}} ${0}
-snippet frame frame environment
-	\\begin{frame}[${1:t}]
-		\frametitle{${2:title}}
-		\framesubtitle{${3:subtitle}}
-		${0:${VISUAL}}
-	\\end{frame}
+# snippet frame frame environment
+# 	\\begin{frame}[${1:t}]
+# 		\frametitle{${2:title}}
+# 		\framesubtitle{${3:subtitle}}
+# 		${0:${VISUAL}}
+# 	\\end{frame}
 snippet block block environment
 	\\begin{block}{${1:title}}
 		${0:${VISUAL}}
