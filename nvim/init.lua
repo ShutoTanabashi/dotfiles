@@ -87,3 +87,8 @@ end)
 vim.keymap.set('n', '<Leader>sf', function()
   vim.wo.scrolloff = 0
 end)
+
+vim.api.nvim_create_user_command("ConvTohten", function()
+  vim.cmd(":%s/．/。/g")
+  vim.cmd(":%s/，/、/g")
+end, {desc="Convert from \"．，\" to \"。、\"."})
