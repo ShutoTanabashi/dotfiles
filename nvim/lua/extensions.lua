@@ -38,20 +38,6 @@ local extensions = {
     },
   },
   {
-    "David-Kunz/treesitter-unit",
-    event = "ModeChanged",
-    config = function()
-      vim.keymap.set("x", "iu", ":lua require('treesitter-unit').select()<CR>", { noremap = true })
-      vim.keymap.set("x", "au", ":lua require('treesitter-unit').select(true)<CR>", { noremap = true })
-      vim.keymap.set("o", "iu", ":<C-u>lua require('treesitter-unit').select()<CR>", { noremap = true })
-      vim.keymap.set("o", "au", ":<C-u>lua require('treesitter-unit').select(true)<CR>", { noremap = true })
-    end
-  },
-  {
-    "arnar/vim-matchopen",
-    event = "VeryLazy",
-  },
-  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     config = true
@@ -343,11 +329,10 @@ local extensions = {
       library = {
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
   },
-  { "Bilal2453/luvit-meta",                    lazy = true }, -- optional `vim.uv` typings
   {
     "neovim/nvim-lspconfig",
     lazy = false,
@@ -361,13 +346,9 @@ local extensions = {
         "williamboman/mason-lspconfig.nvim",
         opts = {
           ensure_installed = {
-            -- "clangd",
             "lua_ls",
             "marksman",
             "pyright",
-            -- "ruff",
-            "taplo",
-            "texlab",
           },
         },
       },
@@ -376,7 +357,6 @@ local extensions = {
         -- Module name is `null-ls`
         dependencies = {
           "nvim-lua/plenary.nvim",
-          "nvimtools/none-ls-extras.nvim"
         },
         -- Initial settings are defined at `lua/lspconf.lua`
       },
@@ -391,7 +371,6 @@ local extensions = {
     opts = {
       outline_window = {
         auto_close = true,
-        -- auto_jump = true,
         shou_cursorline = true,
         hide_cursor = true,
       },
@@ -405,13 +384,9 @@ local extensions = {
       providers = {
         -- priority = {'lsp', 'treesitter', 'coc', 'markdown', 'norg'},
         priority = { 'lsp', 'treesitter' },
-        --[[ lsp = {
-          blacklist_clients = {'texlab'},
-        }, ]]
       },
     },
   },
-  { "epheien/outline-treesitter-provider.nvim" },
   {
     "SmiteshP/nvim-navic",
     event = "VeryLazy",
@@ -477,107 +452,16 @@ local extensions = {
     },
   },
   {
-    "norcalli/nvim-colorizer.lua",
-    cmd = {
-      "ColorizerAttachToBuffer",
-      "ColorizerReloadAllBuffer",
-      "ColorizerToggle",
-    },
-    opts = {},
-  },
-  {
     "tpope/vim-fugitive",
     cmd = "Git",
   },
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
-    lazy = false,   -- This plugin is already lazy
-    --[[ dependencies = {
-      "mfussenegger/nvim-dap"
-    }, ]]
-    config = function()
-      vim.g.rustaceanvim = {
-        server = {
-          on_attach = function()
-            vim.lsp.inlay_hint.enable(true)
-          end,
-        },
-      }
-    end
-  },
   { "mfussenegger/nvim-dap", lazy = true, },
-  {
-    "Saecki/crates.nvim",
-    ft = "toml",
-    opts = {
-      lsp = {
-        enabled = true,
-        on_attach = function(client, bufnr) end,
-        actions = true,
-        completion = true,
-        hover = true,
-      },
-      completion = {
-        cmp = {
-          enabled = true,
-        },
-        crates = {
-          enabled = true,
-          max_result = 10,
-          min_chars = 3,
-        }
-      },
-      null_ls = {
-        enabled = true,
-        name = "crates.nvim",
-      },
-    },
-    --[[ dependencies = {
-      "nvim-lua/plenary.nvim",
-    }, ]]
-  },
-  {
-    'hat0uma/csvview.nvim',
-    ft = "csv",
-    opts = {
-      parser = {
-        --- The number of lines that the asynchronous parser processes per cycle.
-        --- This setting is used to prevent monopolization of the main thread when displaying large files.
-        --- If the UI freezes, try reducing this value.
-        async_chunksize = 50,
-      },
-      view = {
-        --- minimum width of a column
-        min_column_width = 5,
-        --- spacing between columns
-        spacing = 2,
-      },
-    }
-  },
   {
     "iamcco/markdown-preview.nvim",
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
     ft = "markdown",
-  },
-  {
-    "lervag/vimtex",
-    -- Lazy load causes an error of synctex's inverse search.
-    -- Detail: https://github.com/lervag/vimtex/issues/2876
-    lazy = false,
-    init = function()
-      if vim.g.pdf_viewer_options then
-        vim.g.vimtex_view_general_viewer = vim.g.pdf_viewer
-        vim.g.vimtex_view_general_options = vim.g.pdf_viewer_options
-      else
-        vim.g.vimtex_view_method = vim.g.pdf_viewer
-      end
-      -- Use llmk(Light LaTeX Make)
-      vim.g.vimtex_compiler_method = "generic"
-      vim.g.vimtex_compiler_generic = { command = "llmk" }
-    end
   },
   -- colorschemes
   {
@@ -588,56 +472,7 @@ local extensions = {
       vim.cmd("colorscheme kanagawa-dragon")
     end,
   },
-  {
-    "cocopon/iceberg.vim",
-    lazy = true,
-  },
-  {
-    "aktersnurra/no-clown-fiesta.nvim",
-    lazy = true,
-  },
-  {
-    "machakann/vim-colorscheme-reki",
-    lazy = true,
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = true,
-  }
-  -- })
 }
-
--- Only Unix like system
-if vim.fn.has("unix") then
-  table.insert(extensions,
-    {
-      "topazape/md-preview.nvim",
-      ft = { "md", "markdown", "mkd", "mkdn", "mdwn", "mdown", "mdtxt", "mdtext", "rmd", "wiki" },
-      opts = {
-        viewer = {
-          exec = "glow",
-          exec_path = "",
-          args = { "-s", "dark" },
-        },
-        -- Markdown preview term
-        term = {
-          -- reload term when rendered markdown file changed
-          reload = {
-            enable = true,
-            events = { "InsertLeave", "TextChanged" },
-          },
-          direction = "vertical", -- choices: vertical / horizontal
-          keys = {
-            close = { "q" },
-            refresh = "r",
-          },
-        },
-      }
-    }
-  )
-end
-
 
 require("lazy").setup(extensions)
 
@@ -647,21 +482,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.highlight.on_yank { higroup = "DiagnosticUnderlineWarn" } end,
   desc = "Briefly highlight yanked text",
   group = vim.api.nvim_create_augroup("YankSetting", { clear = true })
-})
--- For csvview.nvim
-vim.api.nvim_create_autocmd("FileType", {
-  -- pattern = '*.csv',
-  -- command = "CsvViewEnable",
-  callback = function(args)
-    if args.match == "csv" then
-      vim.cmd("CsvViewEnable")
-    end
-  end,
-  group = vim.api.nvim_create_augroup("CSVInitialize", { clear = true })
-})
--- For VimTeX
-vim.api.nvim_create_autocmd("bufWritePost", {
-  pattern = "*.tex",
-  command = "VimtexCompile",
-  group = vim.api.nvim_create_augroup("EditTeX", { clear = true })
 })

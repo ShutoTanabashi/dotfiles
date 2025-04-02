@@ -17,14 +17,6 @@
 | `snippets` | [nvim-snippy](https://github.com/dcampos/nvim-snippy)用snippets設定 |
 | `spell` | (Neo)vimのスペルチェック用辞書 |
 
-### Neovim本体以外の設定
-
-| ファイル名 | 役割 |
-| `sumatrapdf.sh` | [WSLでSumatraPDFを利用するための設定](https://github.com/lervag/vimtex/issues/2566#issuecomment-1322886643) |
-| `setup.sh` | Unix系のためのセットアップスクリプト |
-| `setup.ps1` | Windowsのためのセットアップスクリプト |
-| `setup_wsl.sh` | WSLのためのセットアップスクリプト |
-
 ### Notion
 
 snippetsの文法やテンプレートは[vim-snippets](https://github.com/honza/vim-snippets)を参照。
