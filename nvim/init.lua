@@ -5,13 +5,15 @@ vim.loader.enable()
 
 -- Editor settings
 vim.g.mapleader = ' ' -- Space key
-vim.o.wrap = true
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.splitbelow = true
-vim.o.splitright = true
 vim.o.clipboard = 'unnamedplus'
-vim.g.fileencodings = { 'utf-8', 'sjis', 'utf-16le', 'default', 'ucs-bom', 'latin1' }
+if not vim.g.vscode then
+  vim.o.wrap = true
+  vim.o.number = true
+  vim.o.relativenumber = true
+  vim.o.splitbelow = true
+  vim.o.splitright = true
+  vim.g.fileencodings = { 'utf-8', 'sjis', 'utf-16le', 'default', 'ucs-bom', 'latin1' }
+end
 
 -- Settings for comments environment
 vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -23,36 +25,39 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- tabstop settings
-vim.o.expandtab = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
--- Change tabwidth by filetype
-local filetype_tabstop = { lua = 2, markdown = 2, c = 2, cpp = 2 }
-local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true })
--- Use tab charactor for indent
-local filetype_usetab = {latex = true, tex = true}
-vim.api.nvim_create_autocmd("FileType", {
-  group = usrftcfg,
-  callback = function(args)
-    local ftts = filetype_tabstop[args.match]
-    if ftts then
-      vim.bo.tabstop = ftts
-      vim.bo.shiftwidth = ftts
-    elseif filetype_usetab[args.match] then
-      vim.bo.expandtab = false
+if not vim.g.vscode then
+  vim.o.expandtab = true
+  vim.o.tabstop = 4
+  vim.o.shiftwidth = 4
+  -- Change tabwidth by filetype
+  local filetype_tabstop = { lua = 2, markdown = 2, c = 2, cpp = 2 }
+  local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true })
+  -- Use tab charactor for indent
+  local filetype_usetab = { latex = true, tex = true }
+  vim.api.nvim_create_autocmd("FileType", {
+    group = usrftcfg,
+    callback = function(args)
+      local ftts = filetype_tabstop[args.match]
+      if ftts then
+        vim.bo.tabstop = ftts
+        vim.bo.shiftwidth = ftts
+      elseif filetype_usetab[args.match] then
+        vim.bo.expandtab = false
+      end
     end
-  end
-})
-
+  })
+end
 -- Settngs for terminal
-vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = vim.api.nvim_create_augroup('term', { clear = true }),
-  callback = function()
-    vim.opt_local.number = false
-    vim.cmd("startinsert")
-  end,
-})
+if not vim.g.vscode then
+  vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
+  vim.api.nvim_create_autocmd('TermOpen', {
+    group = vim.api.nvim_create_augroup('term', { clear = true }),
+    callback = function()
+      vim.opt_local.number = false
+      vim.cmd("startinsert")
+    end,
+  })
+end
 
 -- Spell settings
 vim.opt.spelllang = 'en,cjk'
@@ -64,9 +69,11 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Load separated setting files
 require("envcfg")
 require("extensions")
-require("lspcfg")
-Statuline = require("stlcfg").statusline
-vim.api.nvim_set_option_value('statusline', '%!v:lua.Statuline()', { scope = 'global' })
+if not vim.g.vscode then
+  require("lspcfg")
+  Statuline = require("stlcfg").statusline
+  vim.api.nvim_set_option_value('statusline', '%!v:lua.Statuline()', { scope = 'global' })
+end
 
 -- User defined functions
 function InsertLastUpdate()
@@ -91,4 +98,4 @@ end)
 vim.api.nvim_create_user_command("ConvTohten", function()
   vim.cmd(":%s/．/。/g")
   vim.cmd(":%s/，/、/g")
-end, {desc="Convert from \"．，\" to \"。、\"."})
+end, { desc = "Convert from \"．，\" to \"。、\"." })

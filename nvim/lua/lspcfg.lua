@@ -71,14 +71,6 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
   end,
 })
 
--- nvim-navic
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = usrlspcfg,
-  callback = function()
-    vim.wo.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-  end,
-})
-
 -- LSP config
 local lspcfg = require("lspconfig")
 local opt_lsp = {
