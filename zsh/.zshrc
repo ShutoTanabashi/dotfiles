@@ -19,12 +19,10 @@ export FZF_DEFAULT_OPTS='--height=~60% --border=horizontal --preview="bat {} --c
 tre() {command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
 
 # alias
-alias ls='eza --icons'
-alias la='eza --icons -a'
-alias ll='eza --icons -al --git'
+# alias ls='eza --icons'
+# alias la='eza --icons -a'
+# alias ll='eza --icons -al --git'
 alias vi='nvim'
-alias llj="zellij"
-# alias cati='img2sixel --height=600px' # Using libsixel
 alias cati='chafa --colors full --size x19' # Using chafa
 
 # completion

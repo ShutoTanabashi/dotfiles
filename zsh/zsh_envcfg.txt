@@ -7,83 +7,21 @@ export SUDO_EDITOR="/usr/bin/nvim"
 alias lso='/bin/ls'
 alias vim='/usr/bin/vim'
 
-# File path shortcuts
-GDRIVE=~/'Google Drive'/マイドライブ
-
-# Open setting files
-alias zshrc='$EDITOR ~/.zshrc'
-alias vimrc='nvim ~/.config/nvim/init.lua'
-alias alarc='$EDITOR ~/.config/alacritty/alacritty.yml'
-alias lljrc='$EDITOR ~/.config/zellij/config.kdl'
-alias wezrc='$EDITOR ~/.config/wezterm/wezterm.lua'
-
 # Ubuntu only
 # setting for bat
 alias bat='batcat'
-
-# macOS only
-# completions settings related homebrew
-fpath+=~/.zfunc
-if type brew &>/dev/null; then
-	# for zsh-completions
-	FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-	# for homebrew
-	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-	
-	autoload -Uz compinit
-	compinit
-fi
-
-# setting for conda
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/shoot/.pypenv/versions/anaconda3-2022.05/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/shoot/.pypenv/versions/anaconda3-2022.05/etc/profile.d/conda.sh" ]; then
-        . "/Users/shoot/.pypenv/versions/anaconda3-2022.05/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/shoot/.pypenv/versions/anaconda3-2022.05/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # setting for gitstatus (for zsh)
 source ~/.local/share/sheldon/repos/github.com/romkatv/gitstatus/gitstatus.prompt.zsh
 
 # setting for golang
-export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
-
-# setting for neovim
-alias gvi='goneovim'
-
-# Settings for OpenJDK(Java)
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-# export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
-export JAVA_HOME=/opt/homebrew/opt/openjdk
-
-# setting for pyenv
-export PYENV_ROOT="$HOME/.pypenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
-# setting for ruby
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
-
-# Setting for TeX
-export PDFVIEWER_texdoc="open -a Skim.app" # for macOS
+# export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
 
 # Setting for wsl
 export WINHOME=/mnt/c/Users/ShutoTanabashi
 
 # Setting for wslu
-export BROWSER=wslview
+# export BROWSER=wslview
 
 # prompt
 ## Default(Blue)
