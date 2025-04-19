@@ -54,7 +54,7 @@ unset __conda_setup
 source ~/.local/share/sheldon/repos/github.com/romkatv/gitstatus/gitstatus.prompt.zsh
 
 # setting for golang
-export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
+# export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
 
 # setting for neovim
 alias gvi='goneovim'
@@ -83,7 +83,7 @@ export PDFVIEWER_texdoc="open -a Skim.app" # for macOS
 export WINHOME=/mnt/c/Users/ShutoTanabashi
 
 # Setting for wslu
-export BROWSER=wslview
+# export BROWSER=wslview
 
 # prompt
 ## Default(Blue)

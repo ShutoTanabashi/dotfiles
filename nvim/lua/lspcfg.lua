@@ -72,12 +72,12 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 })
 
 -- nvim-navic
-vim.api.nvim_create_autocmd("LspAttach", {
+--[[ vim.api.nvim_create_autocmd("LspAttach", {
   group = usrlspcfg,
   callback = function()
     vim.wo.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
   end,
-})
+}) ]]
 
 -- LSP config
 local lspcfg = require("lspconfig")
@@ -128,9 +128,9 @@ require("mason-lspconfig").setup_handlers({
 })
 
 -- LSP config installed outside of Mason
-if not require("mason-registry").is_installed("clangd") then
-  lspcfg.clangd.setup(opt_lsp)
-end
+-- if not require("mason-registry").is_installed("clangd") then
+--   lspcfg.clangd.setup(opt_lsp)
+-- end
 
 -- Linter and Formatter
 local null_ls = require("null-ls")
@@ -138,6 +138,6 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.markdownlint,
     null_ls.builtins.diagnostics.markdownlint,
-    require("none-ls.formatting.latexindent"),
+    -- require("none-ls.formatting.latexindent"),
   },
 })

@@ -11,6 +11,9 @@ vim.g.loaded_perl_provider = 0
 vim.o.termguicolors = true
 vim.o.guifont = "UDEV Gothic 35NF:h13"
 
+-- Use extra settings
+vim.g.use_extra = false
+
 -- shell
 -- Configlation of "numToStr/FTerm.nvim". Windows doesn't have `$SHELL` environment variable, so must set them.
 function CfgFTerm()
@@ -24,18 +27,20 @@ function CfgFTerm()
   return opts
 end
 
--- PDF viewer
--- This setting is used for synctex.
-vim.g.pdf_viewer = "skim"
--- Sample for SumatraPDF
---[[ vim.g.pdf_viewer = "SumatraPDF"
-vim.g.pdf_viewer_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
--- Sample for WSL with SmatraPDF
--- Must make ~/.local/bin/sumatrapdf.sh.
---[[ let g:vimtex_view_general_viewer = '~/.local/bin/sumatrapdf.sh'
-let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
+if vim.g.extra then
+  -- PDF viewer
+  -- This setting is used for synctex.
+  vim.g.pdf_viewer = "skim"
+  -- Sample for SumatraPDF
+  --[[ vim.g.pdf_viewer = "SumatraPDF"
+    vim.g.pdf_viewer_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
+  -- Sample for WSL with SmatraPDF
+  -- Must make ~/.local/bin/sumatrapdf.sh.
+  --[[ let g:vimtex_view_general_viewer = '~/.local/bin/sumatrapdf.sh'
+    let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
+end
 
--- Clipboard for WLS 
+-- Clipboard for WLS
 -- Require WSLg and wl-clipboard.
 vim.g.clipboard = {
   name = "wl-clipboard(wsl)",
@@ -44,11 +49,11 @@ vim.g.clipboard = {
     ["*"] = 'wl-copy --foreground --primary --type text/plain',
   },
   paste = {
-    ["+"] = (function ()
-      return vim.fn.systemlist('wl-paste --no-newline|sed -e "s/\r$//"', {''}, 1)
+    ["+"] = (function()
+      return vim.fn.systemlist('wl-paste --no-newline|sed -e "s/\r$//"', { '' }, 1)
     end),
-    ["*"] = (function ()
-      return vim.fn.systemlist('wl-paste --primary --no-newline|sed -e "s/\r$//"', {''}, 1)
+    ["*"] = (function()
+      return vim.fn.systemlist('wl-paste --primary --no-newline|sed -e "s/\r$//"', { '' }, 1)
     end),
   },
   cache_enabled = true,

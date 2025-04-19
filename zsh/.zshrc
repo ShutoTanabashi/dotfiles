@@ -23,7 +23,7 @@ alias ls='eza --icons'
 alias la='eza --icons -a'
 alias ll='eza --icons -al --git'
 alias vi='nvim'
-alias llj="zellij"
+# alias llj="zellij"
 # alias cati='img2sixel --height=600px' # Using libsixel
 alias cati='chafa --colors full --size x19' # Using chafa
 
