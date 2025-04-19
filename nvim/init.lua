@@ -30,7 +30,7 @@ if not vim.g.vscode then
   vim.o.tabstop = 4
   vim.o.shiftwidth = 4
   -- Change tabwidth by filetype
-  local filetype_tabstop = { lua = 2, markdown = 2, c = 2, cpp = 2 }
+  local filetype_tabstop = { lua = 2, c = 2, cpp = 2 }
   local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true })
   -- Use tab charactor for indent
   local filetype_usetab = { latex = true, tex = true }
