@@ -10,5 +10,9 @@
 	addIgnoredFile = false
 [pull]
 	rebase = false
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -R -d \"$LOCAL\" \"$REMOTE\""
 [include]
 	path = .gitconfig_env
