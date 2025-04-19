@@ -12,7 +12,7 @@
 	rebase = false
 [diff]
     tool = nvimdiff
-[difftool "nvimdiff"]
-    cmd = "nvim -R -d \"$LOCAL\" \"$REMOTE\""
+[merge]
+    tool = nvimdiff3
 [include]
 	path = .gitconfig_env
