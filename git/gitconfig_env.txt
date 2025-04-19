@@ -7,3 +7,11 @@
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = !/usr/bin/gh auth git-credential
+# With bat
+[core]
+    pager = "bat --style=numbers,grid"
+# With delta
+[pager]
+    diff = delta
+[delta]
+    navigate = true
