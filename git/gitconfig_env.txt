@@ -2,6 +2,8 @@
 [credential]
 	# macOS
 	helper = osxkeychain
+    # windows
+	helper = wincred
 # gh at linux
 [credential "https://github.com"]
 	helper = !/usr/bin/gh auth git-credential
