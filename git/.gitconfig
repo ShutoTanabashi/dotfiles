@@ -1,6 +1,5 @@
 [user]
 	name = Shuto Tanabashi
-	email = shuuto570@outlook.com
 [core]
 	editor = nvim
 	quotePath = false

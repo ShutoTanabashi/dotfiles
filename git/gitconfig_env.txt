@@ -1,4 +1,6 @@
 # enviromnent related git settings
+[user]
+	email = shuuto570@outlook.com
 [credential]
 	# macOS
 	helper = osxkeychain
