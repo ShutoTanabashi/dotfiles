@@ -474,7 +474,7 @@ if not vim.g.vscode then
 end
 
 -- Only Unix like system
-if vim.fn.has("unix") then
+if (vim.fn.has("unix") == 1) then
   table.insert(extensions,
     {
       "topazape/md-preview.nvim",
