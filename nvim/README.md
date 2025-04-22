@@ -33,6 +33,11 @@ snippetsの文法やテンプレートは[vim-snippets](https://github.com/honza
 
 * `lua/envcfg.txt` - `lua/envcfg.lua`のテンプレート
 
+### ハードコーディングされた環境依存
+
+* markdownlintの設定ファイル
+    * `dotfiles`リポジトリがホームディレクトリ直下にある前提でパスを記述
+
 ## 追加でインストールが必要なもの
 
 ### Rust LSP 関連ツール

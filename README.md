@@ -14,6 +14,7 @@
 | hhkb | [HHKB](https://happyhackingkb.com/jp/download/#tool) |  |
 | homebrew | [Homebrew](https://brew.sh/ja/) |  |
 | ibus | [ibus](https://github.com/ibus/ibus) |  |
+| markdownlint | [markdownlint](https://github.com/DavidAnson/markdownlint) |
 | mozc | [mozc](https://github.com/google/mozc) |  |
 | nvim | [Neovim](https://neovim.io) | `lua/envcfg.lua` |
 | PowerShell | [PowerShell](https://github.com/PowerShell/PowerShell) | |
