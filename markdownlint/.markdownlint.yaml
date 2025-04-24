@@ -1,0 +1,37 @@
+# MD004/ul-style : Unordered list style : https://github.com/DavidAnson/markdownlint/blob/v0.37.4/doc/md004.md
+MD004:
+  # List style
+  style: "asterisk"
+
+# MD007/ul-indent : Unordered list indentation : https://github.com/DavidAnson/markdownlint/blob/v0.37.4/doc/md007.md
+MD007:
+  # Spaces for indent
+  indent: 4
+
+# MD013/line-length : Line length : https://github.com/DavidAnson/markdownlint/blob/v0.37.4/doc/md013.md
+MD013: false
+
+# MD014/commands-show-output : Dollar signs used before commands without showing output : https://github.com/DavidAnson/markdownlint/blob/v0.37.4/doc/md014.md
+MD014: false
+
+# MD030/list-marker-space : Spaces after list markers : https://github.com/DavidAnson/markdownlint/blob/v0.37.4/doc/md030.md
+MD030:
+  # Spaces for single-line unordered list items
+  ul_single: 3
+  # Spaces for single-line ordered list items
+  ol_single: 2
+  # Spaces for multi-line unordered list items
+  ul_multi: 3
+  # Spaces for multi-line ordered list items
+  ol_multi: 2
+
+# MD031/blanks-around-fences : Fenced code blocks should be surrounded by blank lines : https://github.com/DavidAnson/markdownlint/blob/v0.37.4/doc/md031.md
+MD031:
+  # Include list items
+  list_items: false
+
+# MD037/no-space-in-emphasis : Spaces inside emphasis markers : https://github.com/DavidAnson/markdownlint/blob/v0.37.4/doc/md037.md
+MD037: true
+
+# MD041/first-line-heading/first-line-h1 : First line in a file should be a top-level heading : https://github.com/DavidAnson/markdownlint/blob/v0.37.4/doc/md041.md
+MD041: false
