@@ -34,6 +34,8 @@ if vim.g.extra then
   -- Sample for SumatraPDF
   --[[ vim.g.pdf_viewer = "SumatraPDF"
     vim.g.pdf_viewer_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
+  -- Sample for zathura
+  -- vim.g.pdf_viewer = "zathura"
   -- Sample for WSL with SmatraPDF
   -- Must make ~/.local/bin/sumatrapdf.sh.
   --[[ let g:vimtex_view_general_viewer = '~/.local/bin/sumatrapdf.sh'
