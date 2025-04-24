@@ -4,7 +4,7 @@
 
 rcloneの設定ファイルも`~/.config/rclone`以下に存在するが、認証に用いる秘密鍵が記載されているためリポジトリには保存しない。
 
-* `rclone-googledrive.txt` - [Google Drive](https://drive.google.com)を`~/GoogleDrive`に自動でマウントするためのsystemd用設定ファイル`rclone-googledrive.service`のテンプレート
+*   `rclone-googledrive.txt` - [Google Drive](https://drive.google.com)を`~/GoogleDrive`に自動でマウントするためのsystemd用設定ファイル`rclone-googledrive.service`のテンプレート
 
 ### 環境依存ファイル
 

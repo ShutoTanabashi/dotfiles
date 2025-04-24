@@ -4,7 +4,7 @@
 
 ### ソフトウェア設定
 
-* `setting.toml` - 設定ファイル
+*   `setting.toml` - 設定ファイル
 
 設定方法の詳細は
 
@@ -14,11 +14,10 @@
 
 ### デスクトップエントリ
 
-* `goneovim.desktop` - デスクトップエントリ
-* `goneovim.ico` - アイコン
+*   `goneovim.desktop` - デスクトップエントリ
+*   `goneovim.ico` - アイコン
 
 ### スクリプト
 
-* `setup.sh` - ソフトウェア設定
-* `unzip_goneovim.sh` - [github](https://github.com/akiyosi/goneovim/releases)で配布された圧縮ファイルからgoneovimを実行できるよう配置
-
+*   `setup.sh` - ソフトウェア設定
+*   `unzip_goneovim.sh` - [github](https://github.com/akiyosi/goneovim/releases)で配布された圧縮ファイルからgoneovimを実行できるよう配置

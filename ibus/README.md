@@ -2,4 +2,4 @@
 
 ## ファイル一覧
 
-* `.xprofile` - Wayland/X11用設定ファイル
+*   `.xprofile` - Wayland/X11用設定ファイル

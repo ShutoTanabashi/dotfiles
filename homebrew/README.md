@@ -2,7 +2,7 @@
 
 ## ファイル構成
 
-* `brew.env` - Homebrewの環境変数用設定ファイル
+*   `brew.env` - Homebrewの環境変数用設定ファイル
 
 ### 設定場所について
 

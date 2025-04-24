@@ -9,10 +9,10 @@
 
 ## shell向けソフトウェア設定の方針
 
-- `export` で変数を定義するだけのもの → `.zshrc`
-- ファイルパスが関係するもの → `.zsh_envcfg`
-- CLIコマンドの`alias` → `.zshrc`
-- GUIコマンドの`alias` → `.zsh_env`
+*   `export` で変数を定義するだけのもの → `.zshrc`
+*   ファイルパスが関係するもの → `.zsh_envcfg`
+*   CLIコマンドの`alias` → `.zshrc`
+*   GUIコマンドの`alias` → `.zsh_env`
 
 ## 検討中
 

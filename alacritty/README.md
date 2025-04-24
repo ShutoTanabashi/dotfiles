@@ -11,4 +11,4 @@
 
 ## 環境依存ファイル
 
-* `envcfg.txt` - `envcfg.toml`のテンプレート
+*   `envcfg.txt` - `envcfg.toml`のテンプレート

@@ -2,13 +2,13 @@
 
 ## 構成ファイル
 
-* `config.toml`
+*   `config.toml`
 
 ## 設定ファイルに関する注意
 
-* 設定ファイルの場所がOSによって大きく異なる
-  * パスを確認して都度設定すること。
-    * Linux向け(`$HOME/.config/tealdeer`に配置)の設定スクリプトを用意：`setup_linux.sh`
+*   設定ファイルの場所がOSによって大きく異なる
+    *   パスを確認して都度設定すること。
+        *   Linux向け(`$HOME/.config/tealdeer`に配置)の設定スクリプトを用意：`setup_linux.sh`
 
 ```sh
 ln -s ~/dotfiles/tealdeer/config.toml PathForTeadDeer

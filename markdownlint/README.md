@@ -4,4 +4,4 @@
 
 ## ファイル構成
 
-* `.markdownlint.yaml` - markdownlintの解析オプション
+*   `.markdownlint.yaml` - markdownlintの解析オプション

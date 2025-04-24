@@ -2,4 +2,4 @@
 
 ## ファイル構成
 
-* `zathurarc` - メイン設定
+*   `zathurarc` - メイン設定

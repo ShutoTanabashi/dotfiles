@@ -2,7 +2,7 @@
 
 ## ファイル構成
 
-* `plugins.toml`  - sheldonの設定ファイル
+*   `plugins.toml`  - sheldonの設定ファイル
 
 ## 設定方法
 

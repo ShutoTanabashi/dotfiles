@@ -31,12 +31,12 @@ snippetsの文法やテンプレートは[vim-snippets](https://github.com/honza
 
 ## 環境依存ファイル
 
-* `lua/envcfg.txt` - `lua/envcfg.lua`のテンプレート
+*   `lua/envcfg.txt` - `lua/envcfg.lua`のテンプレート
 
 ### ハードコーディングされた環境依存
 
-* markdownlintの設定ファイル
-    * `dotfiles`リポジトリがホームディレクトリ直下にある前提でパスを記述
+*   markdownlintの設定ファイル
+    *   `dotfiles`リポジトリがホームディレクトリ直下にある前提でパスを記述
 
 ## 追加でインストールが必要なもの
 
@@ -55,6 +55,6 @@ rustup component add rustfmt
 
 ## 検討事項
 
-* [lsp-config](https://github.com/neovim/nvim-lspconfig?tab=readme-ov-file#suggested-configuration)に
+*   [lsp-config](https://github.com/neovim/nvim-lspconfig?tab=readme-ov-file#suggested-configuration)に
   基づいたkeymap設定の有効化
-  * 一部(definition)については既に有効であるが、全部ではない(formatなど)
+    *   一部(definition)については既に有効であるが、全部ではない(formatなど)

@@ -14,7 +14,7 @@
 | hhkb | [HHKB](https://happyhackingkb.com/jp/download/#tool) |  |
 | homebrew | [Homebrew](https://brew.sh/ja/) |  |
 | ibus | [ibus](https://github.com/ibus/ibus) |  |
-| markdownlint | [markdownlint](https://github.com/DavidAnson/markdownlint) |
+| markdownlint | [markdownlint](https://github.com/DavidAnson/markdownlint) |  |
 | mozc | [mozc](https://github.com/google/mozc) |  |
 | nvim | [Neovim](https://neovim.io) | `lua/envcfg.lua` |
 | PowerShell | [PowerShell](https://github.com/PowerShell/PowerShell) | |
@@ -27,17 +27,17 @@
 
 ## 管理方法
 
-* 本リポジトリはホームディレクトリに置くこと
-* ソフトウェア毎に`README.md`を記載する
-* 環境依存ファイルはテンプレートを`ドットを除いたファイル名.txt`として保存
-* 環境依存ファイルは適宜書き換えて利用する
-* ソフトウェア毎に`.gitignore`を作成してホワイトリスト管理
-* シンボリックリンクの貼り方は各ディレクトリの`setup.sh`に記載
+*   本リポジトリはホームディレクトリに置くこと
+*   ソフトウェア毎に`README.md`を記載する
+*   環境依存ファイルはテンプレートを`ドットを除いたファイル名.txt`として保存
+*   環境依存ファイルは適宜書き換えて利用する
+*   ソフトウェア毎に`.gitignore`を作成してホワイトリスト管理
+*   シンボリックリンクの貼り方は各ディレクトリの`setup.sh`に記載
 
 ## リポジトリ自体の管理に関するファイル
 
-* `gentemplate.sh` - 管理に必要なファイルを用意するスクリプト
+*   `gentemplate.sh` - 管理に必要なファイルを用意するスクリプト
 
 ## ToDo
 
-* [ ] zellijのREADME.md
+*   [ ] zellijのREADME.md
