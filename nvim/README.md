@@ -20,10 +20,10 @@
 ### Neovim本体以外の設定
 
 | ファイル名 | 役割 |
+| :-- | :-- |
 | `sumatrapdf.sh` | [WSLでSumatraPDFを利用するための設定](https://github.com/lervag/vimtex/issues/2566#issuecomment-1322886643) |
 | `setup.sh` | Unix系のためのセットアップスクリプト |
 | `setup.ps1` | Windowsのためのセットアップスクリプト |
-| `setup_wsl.sh` | WSLのためのセットアップスクリプト |
 
 ### Notion
 
