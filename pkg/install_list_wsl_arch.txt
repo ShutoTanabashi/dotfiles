@@ -1,1 +1,1 @@
-base-devel bat biber chafa clang eza fastfetch fd fzf ghostscript github-cli glow go lua51 luarocks man-db man-pages neovim nodejs npm python-pynvim ripgrep sheldon tealdeer texlive texlive-langjapanese tree-sitter-cli tmux vim wget zsh
+base-devel bat biber chafa clang eza fastfetch fd fzf ghostscript github-cli git-delta glow go lua51 luarocks man-db man-pages neovim nodejs npm pacman-contrib perl-file-mimeinfo python-pynvim ripgrep sheldon sudo tealdeer texlive texlive-langjapanese tree-sitter-cli tmux vim wget wl-clipboard xdg-utils zsh
