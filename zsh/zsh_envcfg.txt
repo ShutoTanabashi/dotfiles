@@ -79,8 +79,13 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 # Setting for TeX
 export PDFVIEWER_texdoc="open -a Skim.app" # for macOS
 
-# Setting for wsl
+# Setting for WSL
 export WINHOME=/mnt/c/Users/ShutoTanabashi
+
+# Setting for Wayland server on WSL
+if [ ! -S "$XDG_RUNTIME_DIR/wayland-0" ]; then
+    ln -s /mnt/wslg/runtime-dir/wayland-0* "$XDG_RUNTIME_DIR"
+fi
 
 # Setting for wslu
 # export BROWSER=wslview
