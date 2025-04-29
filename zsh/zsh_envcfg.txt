@@ -23,7 +23,6 @@ alias bat='batcat'
 
 # macOS only
 # completions settings related homebrew
-fpath+=~/.zfunc
 if type brew &>/dev/null; then
 	# for zsh-completions
 	FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -55,6 +54,10 @@ source ~/.local/share/sheldon/repos/github.com/romkatv/gitstatus/gitstatus.promp
 
 # setting for golang
 # export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
+
+# Add shell completion for rust tools
+# See detail `rustup completions --help`
+fpath+=~/.zfunc
 
 # setting for neovim
 alias gvi='goneovim'
