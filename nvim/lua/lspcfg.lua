@@ -128,9 +128,9 @@ require("mason-lspconfig").setup_handlers({
 })
 
 -- LSP config installed outside of Mason
--- if not require("mason-registry").is_installed("clangd") then
---   lspcfg.clangd.setup(opt_lsp)
--- end
+if not require("mason-registry").is_installed("clangd") then
+  lspcfg.clangd.setup(opt_lsp)
+end
 
 -- Linter and Formatter
 local null_ls = require("null-ls")
