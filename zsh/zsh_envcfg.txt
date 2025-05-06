@@ -49,6 +49,11 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# setting for cuda
+export CUDA_HOME=/opt/cuda                  
+export LD_LIBRARY_PATH=$LD_LIBRARY:/opt/cuda/lib64:/opt/cuda/extras/CUPTI/lib64
+export PATH=$PATH:$CUDA_HOME/bin
+
 # setting for gitstatus (for zsh)
 source ~/.local/share/sheldon/repos/github.com/romkatv/gitstatus/gitstatus.prompt.zsh
 
