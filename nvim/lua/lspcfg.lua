@@ -80,67 +80,58 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 }) ]]
 
 -- LSP config
-local lspcfg = require("lspconfig")
-local opt_lsp = {
-  capabilities = require("cmp_nvim_lsp").default_capabilities(),
-}
+local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-require("mason-lspconfig").setup_handlers({
-  function(server)
-    lspcfg[server].setup(opt_lsp)
-  end,
-  ["pyright"] = function()
-    lspcfg.pyright.setup({
-      capabilities = require("cmp_nvim_lsp").default_capabilities(),
-      handlers = {
-        ["textDocument/publishDiagnostics"] = function() end,
+vim.lsp.config("pyright", {
+  settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        typeCheckingMode = "basic",
+        useLibraryCodeForTypes = true,
       },
-      on_attach = function(client, _)
-        client.server_capabilities.codeActionProvider = false
-      end,
-      settings = {
-        pyright = {
-          disableOrganizeImports = true,
-        },
-        python = {
-          analysis = {
-            autoSearchPaths = true,
-            typeCheckingMode = "basic",
-            useLibraryCodeForTypes = true,
-          },
-        },
-      },
-    })
+    },
+  },
+  on_attach = function(client, _)
+    client.server_capabilities.codeActionProvider = false
   end,
-  ["lua_ls"] = function()
-    lspcfg.lua_ls.setup({
-      capabilities = require("cmp_nvim_lsp").default_capabilities(),
-      settings = {
-        Lua = {
-          diagnostics = {
-            -- Get the language server to recognize the 'vim' global
-            globals = { 'vim' }
-          }
-        }
-      }
-    })
-  end,
+  capabilities = cmp_capabilities,
+  handlers = {
+    ["textDocument/publishDiagnostics"] = function() end,
+  },
 })
 
+vim.lsp.config("lua_ls", {
+  capabilities = cmp_capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the 'vim' global
+        globals = { 'vim' }
+      }
+    }
+  }
+}
+)
+
 -- LSP config installed outside of Mason
-if not require("mason-registry").is_installed("clangd") then
-  lspcfg.clangd.setup(opt_lsp)
-end
+vim.lsp.config("clangd", {
+  capabilities = cmp_capabilities,
+})
+vim.lsp.enable("clangd")
 
 -- Linter and Formatter
 local null_ls = require("null-ls")
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.markdownlint.with({
-      extra_args = { "--config", vim.fn.expand("~/dotfiles/markdownlint/.markdownlint.yaml")},
+      extra_args = { "--config", vim.fn.expand("~/dotfiles/markdownlint/.markdownlint.yaml") },
     }),
     null_ls.builtins.diagnostics.markdownlint.with({
-      extra_args = { "--config", vim.fn.expand("~/dotfiles/markdownlint/.markdownlint.yaml")},
+      extra_args = { "--config", vim.fn.expand("~/dotfiles/markdownlint/.markdownlint.yaml") },
     }),
     -- require("none-ls.formatting.latexindent"),
   },
