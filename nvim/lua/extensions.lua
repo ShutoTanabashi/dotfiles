@@ -345,7 +345,7 @@ if not vim.g.vscode then
       lazy = false,
       dependencies = {
         {
-          "williamboman/mason.nvim",
+          "mason-org/mason.nvim",
           build = ":MasonUpdate",
           opts = {},
           lazy = false,
