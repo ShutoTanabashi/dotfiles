@@ -21,7 +21,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- require("lazy").setup({
 local extensions = {
   -- Extensions
   {
@@ -349,6 +348,7 @@ if not vim.g.vscode then
           "williamboman/mason.nvim",
           build = ":MasonUpdate",
           opts = {},
+          lazy = false,
         },
         {
           "williamboman/mason-lspconfig.nvim",
@@ -359,13 +359,15 @@ if not vim.g.vscode then
               "pyright",
             },
           },
+          lazy = false,
         },
         {
           "nvimtools/none-ls.nvim",
           -- Module name is `null-ls`
-          dependencies = {
+          --[[ dependencies = {
             "nvim-lua/plenary.nvim",
-          },
+          }, ]]
+          lazy = false,
           -- Initial settings are defined at `lua/lspconf.lua`
         },
       },
@@ -521,15 +523,6 @@ if vim.g.use_extra then
       event = "VeryLazy",
     },
     { "epheien/outline-treesitter-provider.nvim" },
-    --[[ {
-    "SmiteshP/nvim-navic",
-    event = "VeryLazy",
-    opts = {
-      lsp = {
-        auto_attach = true,
-      },
-    },
-  }, ]]
     {
       "norcalli/nvim-colorizer.lua",
       cmd = {

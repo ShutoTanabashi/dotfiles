@@ -71,14 +71,6 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
   end,
 })
 
--- nvim-navic
---[[ vim.api.nvim_create_autocmd("LspAttach", {
-  group = usrlspcfg,
-  callback = function()
-    vim.wo.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-  end,
-}) ]]
-
 -- LSP config
 local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -133,6 +125,5 @@ null_ls.setup({
     null_ls.builtins.diagnostics.markdownlint.with({
       extra_args = { "--config", vim.fn.expand("~/dotfiles/markdownlint/.markdownlint.yaml") },
     }),
-    -- require("none-ls.formatting.latexindent"),
   },
 })
