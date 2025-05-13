@@ -42,8 +42,6 @@ vim.fn.sign_define("DiagnosticSignHint", {
 vim.api.nvim_create_autocmd("LspAttach", {
   group = usrlspcfg,
   callback = function(ev)
-    vim.keymap.set('n', 'grr', vim.lsp.buf.references, { buffer = ev.buf })
-    vim.keymap.set('n', 'grn', vim.lsp.buf.rename, { buffer = ev.buf })
     vim.keymap.set({ 'n', 'v' }, 'gra', vim.lsp.buf.code_action, { buffer = ev.buf })
     vim.keymap.set('n', '<C-w>]', function()
       -- Orverwrite default keymap to adjust the location of new pane.
