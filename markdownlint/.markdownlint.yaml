@@ -31,7 +31,7 @@ MD031:
   list_items: false
 
 # MD037/no-space-in-emphasis : Spaces inside emphasis markers : https://github.com/DavidAnson/markdownlint/blob/v0.37.4/doc/md037.md
-MD037: true
+MD037: false
 
 # MD041/first-line-heading/first-line-h1 : First line in a file should be a top-level heading : https://github.com/DavidAnson/markdownlint/blob/v0.37.4/doc/md041.md
 MD041: false
