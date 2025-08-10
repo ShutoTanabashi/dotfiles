@@ -15,7 +15,9 @@ function allupgrade() {
 	cargo install-update -a
 	Write-Host "# msys2" -ForegroundColor Magenta
 	C:\msys64\usr\bin\bash.exe -l -c "pacman -Syu"
-	Write-Host "Upgrade Complete!" -ForegroundColor Magenta
+	Write-Host "# winget" -ForegroundColor 'Magenta'
+	sudo winget upgrade --all
+	Write-Host "Upgrade Complete!" -ForegroundColor 'Magenta'
 }
 
 # which command
@@ -36,6 +38,12 @@ Import-Module posh-cargo
 
 # Completion GitHub CLI
 Invoke-Expression -Command $(gh completion -s powershell | Out-String)
+
+# Completion for scoop
+Import-Module "$($(Get-Item $(Get-Command scoop.ps1).Path).Directory.Parent.FullName)\modules\scoop-completion"
+
+# Use nerd icon
+Import-Module Terminal-Icons
 
 # Completion rustup
 Register-ArgumentCompleter -Native -CommandName 'rustup' -ScriptBlock {
