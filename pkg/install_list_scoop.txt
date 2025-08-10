@@ -1,0 +1,1 @@
+7zip bat cacert cmake cpufetch dark delta fastfetch fd foxit-pdf-reader gh gibo go goneovim innounp julia lua luajit luarocks make marp neovide neovim nvy okular perl php posh-git ripgrep rstudio scoop-completion stack sudo terminal-icons vim wget zstd
