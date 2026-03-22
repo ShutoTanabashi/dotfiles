@@ -17,6 +17,7 @@ config.use_ime = true
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.enable_scroll_bar = true
+config.front_end = 'WebGpu'
 
 envcfg.apply_to(config, env)
 keybinds.apply_to(config, env)
