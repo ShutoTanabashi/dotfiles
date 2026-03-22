@@ -8,6 +8,10 @@ local keybinds = require 'keybinds'
 -- This table will hold the configuration.
 local config = {
 	color_scheme = 'Smyck',
+  colors = {
+    -- IME background color
+    compose_cursor = 'none',
+  },
 	font = envcfg.font,
 	font_size = envcfg.font_size,
 	use_ime = true,
