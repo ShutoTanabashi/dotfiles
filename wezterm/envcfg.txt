@@ -1,13 +1,21 @@
 -- Environment dependent settings for wezterm
 local wezterm = require 'wezterm'
 
-local font = wezterm.font('UDEV Gothic NF')
-local font_size = 13.0
-local enable_wayland = false
-local path_dotfiles = "/home/shoot/dotfiles"
-return {
-  font = font,
-  font_size = font_size,
-  enable_wayland = enable_wayland,
-  path_dotfiles = path_dotfiles,
-}
+local M = {}
+
+function M.load()
+  return {
+    font = wezterm.font('UDEV Gothic NF'),
+    font_size = 13.0,
+    enable_wayland = false,
+    path_dotfiles = '/home/shoot/dotfiles',
+  }
+end
+
+function M.apply_to(config, envcfg)
+  config.font = envcfg.font
+  config.font_size = envcfg.font_size
+  config.enable_wayland = envcfg.enable_wayland
+end
+
+return M
