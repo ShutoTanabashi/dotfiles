@@ -6,9 +6,10 @@
 
 | ファイル名 | 役割 |
 | :-- | :-- |
-| `wezterm.lua` | メイン設定ファイル |
-| `envcfg.lua` | 環境依存の設定 |
-| `keybinds.lua` | キーボードショートカット定義 |
+| `wezterm.lua` | `wezterm.config_builder()` で設定を組み立てるメイン設定ファイル |
+| `envcfg.lua` | 環境依存の値を読み込み、`config` に反映する |
+| `keybinds.lua` | キーボードショートカットを `config` に反映する |
+| `windows.lua` | Windows 固有設定を `config` に反映する |
 
 ## 環境依存ファイル
 
