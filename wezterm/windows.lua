@@ -1,8 +1,8 @@
 -- Settings for windows
-local wezterm = require 'wezterm'
+local M = {}
 
-local prog_win = {'pwsh.exe', '-NoLogo'}
+function M.apply_to(config)
+  config.default_prog = { 'pwsh.exe', '-NoLogo' }
+end
 
-return {
-    prog_win = prog_win,
-}
+return M
