@@ -68,7 +68,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Load separated setting files
 require("envcfg")
-require("extensions")
+require("config.lazy")
 if not vim.g.vscode then
   require("lspcfg")
   Statuline = require("stlcfg").statusline
