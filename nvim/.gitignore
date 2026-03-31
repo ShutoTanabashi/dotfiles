@@ -10,7 +10,10 @@
 !sumatrapdf.sh
 !init.lua
 !lua
-!lua/extensions.lua
+!lua/config
+!lua/config/lazy.lua
+!lua/plugins
+!lua/plugins/*.lua
 !lua/lspcfg.lua
 !lua/stlcfg.lua
 !lua/envcfg.txt
