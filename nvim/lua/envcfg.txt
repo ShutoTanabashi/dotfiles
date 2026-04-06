@@ -5,6 +5,8 @@ neovim settings dependent on environment
 local M = {}
 
 -- Use extra settings
+M.is_vscode = vim.g.vscode == 1
+M.is_unix = vim.fn.has("unix") == 1
 M.use_extra = false
 
 -- PDF viewer
@@ -15,14 +17,13 @@ M.pdf_viewer_options = nil
 -- shell
 -- Configlation of "numToStr/FTerm.nvim". Windows doesn't have `$SHELL` environment variable, so must set them.
 function M.fterm_opts()
-  local opts = {
+  return {
     -- cmd = 'pwsh.exe',
     dimensions = {
       height = 0.9,
       width = 0.9,
     },
   }
-  return opts
 end
 
 -- Provider settings
@@ -59,12 +60,12 @@ vim.g.clipboard = {
     ["*"] = 'wl-copy --foreground --primary --type text/plain',
   },
   paste = {
-    ["+"] = (function()
+    ["+"] = function()
       return vim.fn.systemlist('wl-paste --no-newline|sed -e "s/\r$//"', { '' }, 1)
-    end),
-    ["*"] = (function()
+    end,
+    ["*"] = function()
       return vim.fn.systemlist('wl-paste --primary --no-newline|sed -e "s/\r$//"', { '' }, 1)
-    end),
+    end,
   },
   cache_enabled = true,
 }
