@@ -2,6 +2,30 @@
 neovim settings dependent on environment
 ]]
 
+local M = {}
+
+-- Use extra settings
+M.is_vscode = vim.g.vscode == 1
+M.is_unix = vim.fn.has("unix") == 1
+M.use_extra = false
+
+-- PDF viewer
+-- This setting is used for synctex.
+M.pdf_viewer = "skim"
+M.pdf_viewer_options = nil
+
+-- shell
+-- Configlation of "numToStr/FTerm.nvim". Windows doesn't have `$SHELL` environment variable, so must set them.
+function M.fterm_opts()
+  return {
+    -- cmd = 'pwsh.exe',
+    dimensions = {
+      height = 0.9,
+      width = 0.9,
+    },
+  }
+end
+
 -- Provider settings
 vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.loaded_ruby_provider = 0
@@ -11,36 +35,21 @@ vim.g.loaded_perl_provider = 0
 vim.o.termguicolors = true
 vim.o.guifont = "UDEV Gothic 35NF:h13"
 
--- Use extra settings
-vim.g.use_extra = false
-
--- shell
--- Configlation of "numToStr/FTerm.nvim". Windows doesn't have `$SHELL` environment variable, so must set them.
-function CfgFTerm()
-  local opts = {
-    -- cmd = 'pwsh.exe',
-    dimensions = {
-      height = 0.9,
-      width = 0.9,
-    },
-  }
-  return opts
+vim.g.use_extra = M.use_extra
+if M.use_extra then
+  vim.g.pdf_viewer = M.pdf_viewer
+  vim.g.pdf_viewer_options = M.pdf_viewer_options
 end
 
-if vim.g.extra then
-  -- PDF viewer
-  -- This setting is used for synctex.
-  vim.g.pdf_viewer = "skim"
-  -- Sample for SumatraPDF
-  --[[ vim.g.pdf_viewer = "SumatraPDF"
-    vim.g.pdf_viewer_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
-  -- Sample for zathura
-  -- vim.g.pdf_viewer = "zathura"
-  -- Sample for WSL with SmatraPDF
-  -- Must make ~/.local/bin/sumatrapdf.sh.
-  --[[ let g:vimtex_view_general_viewer = '~/.local/bin/sumatrapdf.sh'
-    let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
-end
+-- Sample for SumatraPDF
+--[[ M.pdf_viewer = "SumatraPDF"
+  M.pdf_viewer_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
+-- Sample for zathura
+-- vim.g.pdf_viewer = "zathura"
+-- Sample for WSL with SmatraPDF
+-- Must make ~/.local/bin/sumatrapdf.sh.
+--[[ let g:vimtex_view_general_viewer = '~/.local/bin/sumatrapdf.sh'
+  let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
 
 -- Clipboard for WLS
 -- Require WSLg and wl-clipboard.
@@ -51,12 +60,12 @@ vim.g.clipboard = {
     ["*"] = 'wl-copy --foreground --primary --type text/plain',
   },
   paste = {
-    ["+"] = (function()
+    ["+"] = function()
       return vim.fn.systemlist('wl-paste --no-newline|sed -e "s/\r$//"', { '' }, 1)
-    end),
-    ["*"] = (function()
+    end,
+    ["*"] = function()
       return vim.fn.systemlist('wl-paste --primary --no-newline|sed -e "s/\r$//"', { '' }, 1)
-    end),
+    end,
   },
   cache_enabled = true,
 }
@@ -64,3 +73,5 @@ vim.g.clipboard = {
 -- For macOS: replace '¥' to '\'
 --[[ vim.keymap.set('!', '¥', '\\', { noremap = true })
 vim.keymap.set('!', '\\', '¥', { noremap = true }) ]]
+
+return M
