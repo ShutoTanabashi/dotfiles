@@ -10,8 +10,8 @@
 [pull]
 	rebase = false
 [diff]
-    tool = nvimdiff
+    tool = nvimdiff2
 [merge]
-    tool = nvimdiff3
+    tool = nvimdiff2
 [include]
 	path = .gitconfig_env
