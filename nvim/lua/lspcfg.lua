@@ -10,31 +10,16 @@ local usrlspcfg = vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
 
 -- diagnostic signs
 -- Using nerd fonts
-vim.fn.sign_define("DiagnosticSignError", {
-  text = "",
-  texthl = "DiagnosticSignError",
-  linehl = "",
-  numhl = "",
-})
-vim.fn.sign_define("DiagnosticSignWarn", {
-  text = "",
-  texthl = "DiagnosticSignWarn",
-  linehl = "",
-  numhl = "",
-})
-
-vim.fn.sign_define("DiagnosticSignInfo", {
-  text = "󰭤",
-  -- other candidate:  󱁯  󰙎 
-  texthl = "DiagnosticSignHint",
-  linehl = "",
-  numhl = "",
-})
-vim.fn.sign_define("DiagnosticSignHint", {
-  text = "󰛩",
-  texthl = "DiagnosticSignHint",
-  linehl = "",
-  numhl = "",
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.INFO] = "󰭤",
+      -- other candidate:  󱁯  󰙎 
+      [vim.diagnostic.severity.HINT] = "󰛩",
+    },
+  },
 })
 
 -- keymaps
