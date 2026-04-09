@@ -1,1 +1,0 @@
-bat build-essential clang curl fastfetch fd-find fzf gh ghostscript git libsixel-bin lua5.1 luarocks nodejs npm ripgrep p7zip-full texlive-full tldr tmux tree tre-command vim-common wezterm wget wl-clipboard xdotool zathura zathura-pdf-poppler zsh
