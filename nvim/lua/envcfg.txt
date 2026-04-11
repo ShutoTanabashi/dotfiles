@@ -5,8 +5,6 @@ neovim settings dependent on environment
 local M = {}
 
 -- Use extra settings
-M.is_vscode = vim.g.vscode == 1
-M.is_unix = vim.fn.has("unix") == 1
 M.use_extra = false
 
 -- PDF viewer

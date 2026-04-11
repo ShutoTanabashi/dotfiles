@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "petertriho/nvim-scrollbar",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   event = { "BufNewFile", "BufRead" },
   config = function()
     require("scrollbar").setup({

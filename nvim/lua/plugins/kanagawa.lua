@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "rebelot/kanagawa.nvim",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   lazy = false,
   priority = 1000,
   config = function()

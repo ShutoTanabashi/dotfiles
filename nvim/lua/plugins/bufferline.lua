@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "akinsho/bufferline.nvim",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   version = "*",
   event = "TabNew",
   opts = {

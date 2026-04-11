@@ -1,7 +1,5 @@
-local env = require("envcfg")
-
 return {
   "Bilal2453/luvit-meta",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   lazy = true,
 }

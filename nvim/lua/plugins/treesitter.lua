@@ -1,10 +1,9 @@
-local env = require("envcfg")
 local version = vim.version()
 local use_main = version.major > 0 or (version.major == 0 and version.minor >= 12)
 
 return {
   "nvim-treesitter/nvim-treesitter",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   lazy = false,
   branch = use_main and "main" or "master",
   build = ":TSUpdate",

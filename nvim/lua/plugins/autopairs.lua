@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "windwp/nvim-autopairs",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   event = "InsertEnter",
   config = true,
 }

@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "simeji/winresizer",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   keys = {
     { "<C-e>" },
   },

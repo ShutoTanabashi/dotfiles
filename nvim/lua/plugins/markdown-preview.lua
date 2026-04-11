@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "iamcco/markdown-preview.nvim",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   build = function()
     vim.fn["mkdp#util#install"]()
   end,

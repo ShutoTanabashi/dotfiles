@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "yuki-yano/fern-preview.vim",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   ft = "fern",
   config = function()
     vim.api.nvim_create_autocmd("FileType", {
