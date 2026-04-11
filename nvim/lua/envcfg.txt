@@ -4,14 +4,6 @@ neovim settings dependent on environment
 
 local M = {}
 
--- Use extra settings
-M.use_extra = false
-
--- PDF viewer
--- This setting is used for synctex.
-M.pdf_viewer = "skim"
-M.pdf_viewer_options = nil
-
 -- Provider settings
 vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.loaded_ruby_provider = 0
@@ -21,20 +13,16 @@ vim.g.loaded_perl_provider = 0
 vim.o.termguicolors = true
 vim.o.guifont = "UDEV Gothic 35NF:h13"
 
-vim.g.use_extra = M.use_extra
-if M.use_extra then
-  vim.g.pdf_viewer = M.pdf_viewer
-  vim.g.pdf_viewer_options = M.pdf_viewer_options
-end
+-- Use extra settings
+M.use_extra = false
 
--- Sample for SumatraPDF
---[[ M.pdf_viewer = "SumatraPDF"
-  M.pdf_viewer_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
--- Sample for zathura
--- vim.g.pdf_viewer = "zathura"
+-- PDF viewer
+-- This setting is used for synctex.
 -- Sample for WSL with SmatraPDF
 -- Must make ~/.local/bin/sumatrapdf.sh.
 --[[ let g:vimtex_view_general_viewer = '~/.local/bin/sumatrapdf.sh'
   let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf' ]]
+M.pdf_viewer = "skim"
+M.pdf_viewer_options = nil
 
 return M
