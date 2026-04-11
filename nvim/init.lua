@@ -5,7 +5,6 @@ vim.loader.enable()
 
 -- Editor settings
 vim.g.mapleader = ' ' -- Space key
-vim.o.clipboard = 'unnamedplus'
 if not vim.g.vscode then
   vim.o.wrap = true
   vim.o.number = true
@@ -13,6 +12,28 @@ if not vim.g.vscode then
   vim.o.splitbelow = true
   vim.o.splitright = true
   vim.g.fileencodings = { 'utf-8', 'sjis', 'utf-16le', 'default', 'ucs-bom', 'latin1' }
+end
+
+-- Clipboard
+vim.o.clipboard = 'unnamedplus'
+if vim.fn.executable("wl-copy") == 1 and vim.fn.executable("wl-paste") == 1 then
+  vim.g.clipboard = {
+    -- clipboard config for Linux (include WSL)
+    name = "wl-clipboard",
+    copy = {
+      ["+"] = 'wl-copy --foreground --type text/plain',
+      ["*"] = 'wl-copy --foreground --primary --type text/plain',
+    },
+    paste = {
+      ["+"] = function()
+        return vim.fn.systemlist('wl-paste --no-newline|sed -e "s/\r$//"', { "" }, 1)
+      end,
+      ["*"] = function()
+        return vim.fn.systemlist('wl-paste --primary --no-newline|sed -e "s/\r$//"', { "" }, 1)
+      end,
+    },
+    cache_enabled = true,
+  }
 end
 
 -- Settings for comments environment
@@ -47,6 +68,7 @@ if not vim.g.vscode then
     end
   })
 end
+
 -- Settngs for terminal
 if not vim.g.vscode then
   vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
@@ -65,6 +87,12 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "text", "gitcommit", "markdown" },
   callback = function() vim.opt_local.spell = true end
 })
+
+-- OS dependent settings
+if vim.uv.os_uname().sysname == "Darwin" then
+  vim.keymap.set('!', '¥', '\\', { noremap = true })
+  vim.keymap.set('!', '\\', '¥', { noremap = true })
+end
 
 -- Load separated setting files
 require("envcfg")
