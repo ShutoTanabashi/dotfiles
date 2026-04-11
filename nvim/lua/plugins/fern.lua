@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "lambdalisue/fern.vim",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   cmd = "Fern",
   init = function()
     vim.g["fern#default_hidden"] = 1

@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "hrsh7th/nvim-cmp",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     "hrsh7th/cmp-buffer",

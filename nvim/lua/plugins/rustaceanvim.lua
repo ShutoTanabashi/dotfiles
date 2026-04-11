@@ -2,7 +2,7 @@ local env = require("envcfg")
 
 return {
   "mrcjkb/rustaceanvim",
-  enabled = env.use_extra,
+  enabled = env.enabled_languages.rust,
   version = "^4",
   lazy = false,
   config = function()

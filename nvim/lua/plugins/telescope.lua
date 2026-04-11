@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "nvim-telescope/telescope.nvim",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   branch = "0.1.x",
   opts = {},
   cmd = "Telescope",

@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "j-hui/fidget.nvim",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   event = "LspAttach",
   tag = "legacy",
   opts = {},

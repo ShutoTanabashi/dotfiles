@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "neovim/nvim-lspconfig",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   lazy = false,
   dependencies = {
     {

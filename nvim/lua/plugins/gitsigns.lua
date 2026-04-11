@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "lewis6991/gitsigns.nvim",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   event = "VeryLazy",
   opts = {
     signcolumn = false,

@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "kevinhwang91/nvim-hlslens",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   dependencies = {
     "haya14busa/vim-asterisk",
   },

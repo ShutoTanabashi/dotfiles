@@ -1,7 +1,5 @@
-local env = require("envcfg")
-
 return {
   "tpope/vim-fugitive",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   cmd = "Git",
 }

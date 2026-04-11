@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "hedyhli/outline.nvim",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   cmd = { "Outline", "OutlineOpen" },
   keys = {
     { "gn", "<cmd>Outline<CR>", mode = "n", desc = "Show table of contens on the side." },

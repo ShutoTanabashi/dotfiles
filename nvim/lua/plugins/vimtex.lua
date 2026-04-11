@@ -2,7 +2,7 @@ local env = require("envcfg")
 
 return {
   "lervag/vimtex",
-  enabled = env.use_extra,
+  enabled = env.enabled_languages.tex,
   lazy = false,
   init = function()
     if env.pdf_viewer_options then

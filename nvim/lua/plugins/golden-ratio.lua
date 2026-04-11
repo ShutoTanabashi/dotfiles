@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "roman/golden-ratio",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   init = function()
     vim.g.golden_ratio_autocommand = 0
   end,

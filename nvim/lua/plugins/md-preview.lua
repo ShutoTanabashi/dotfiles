@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "topazape/md-preview.nvim",
-  enabled = env.is_unix,
+  enabled = vim.fn.has("unix") == 1,
   ft = { "md", "markdown", "mkd", "mkdn", "mdwn", "mdown", "mdtxt", "mdtext", "rmd", "wiki" },
   opts = {
     viewer = {

@@ -1,8 +1,6 @@
-local env = require("envcfg")
-
 return {
   "folke/lazydev.nvim",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   ft = "lua",
   opts = {
     library = {

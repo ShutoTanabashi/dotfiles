@@ -1,7 +1,5 @@
-local env = require("envcfg")
-
 return {
   "mfussenegger/nvim-dap",
-  cond = not env.is_vscode,
+  cond = vim.g.vscode ~= 1,
   lazy = true,
 }
