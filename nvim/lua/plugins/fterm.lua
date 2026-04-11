@@ -1,4 +1,5 @@
-local env = require("envcfg")
+-- Windows doesn't have `$SHELL` environment variable, so must set them.
+local cmd = vim.uv.os_uname().sysname == "Windows" and "pwsh.exe"or os.getenv('SHELL')
 
 return {
   "numToStr/FTerm.nvim",
@@ -7,5 +8,11 @@ return {
     { "<A-i>", function() require("FTerm").toggle() end, mode = "n" },
     { "<A-i>", function() require("FTerm").toggle() end, mode = "t" },
   },
-  opts = env.fterm_opts(),
+  opts = {
+    cmd = cmd,
+    dimensions = {
+      height = 0.9,
+      width = 0.9,
+    },
+  },
 }

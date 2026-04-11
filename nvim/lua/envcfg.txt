@@ -12,18 +12,6 @@ M.use_extra = false
 M.pdf_viewer = "skim"
 M.pdf_viewer_options = nil
 
--- shell
--- Configlation of "numToStr/FTerm.nvim". Windows doesn't have `$SHELL` environment variable, so must set them.
-function M.fterm_opts()
-  return {
-    -- cmd = 'pwsh.exe',
-    dimensions = {
-      height = 0.9,
-      width = 0.9,
-    },
-  }
-end
-
 -- Provider settings
 vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.loaded_ruby_provider = 0
