@@ -18,8 +18,8 @@ M.use_extra = false
 
 -- Languages enabled in this environment.
 M.enabled_languages = {
-  rust = true,
-  tex = true,
+  rust = false,
+  tex = false,
 }
 
 -- PDF viewer
