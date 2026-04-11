@@ -16,6 +16,12 @@ vim.o.guifont = "UDEV Gothic 35NF:h13"
 -- Use extra settings
 M.use_extra = false
 
+-- Languages enabled in this environment.
+M.enabled_languages = {
+  rust = true,
+  tex = true,
+}
+
 -- PDF viewer
 -- This setting is used for synctex.
 -- Sample for WSL with SmatraPDF

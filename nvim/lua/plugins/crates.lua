@@ -2,7 +2,7 @@ local env = require("envcfg")
 
 return {
   "Saecki/crates.nvim",
-  enabled = env.use_extra,
+  enabled = env.enabled_languages.rust,
   ft = "toml",
   opts = {
     lsp = {
