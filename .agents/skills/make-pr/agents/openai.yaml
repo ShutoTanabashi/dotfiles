@@ -1,0 +1,4 @@
+interface:
+  display_name: "Make PR"
+  short_description: "Issue を引いて PR を仕上げる"
+  default_prompt: "Use $make-pr to open a pull request from the current branch and related issue."
