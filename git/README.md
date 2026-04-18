@@ -19,5 +19,4 @@
 
 必要に応じて次のソフトウェアをインストール
 
-*   [bat](https://github.com/sharkdp/bat)
 *   [delta](https://github.com/dandavison/delta)
