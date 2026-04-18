@@ -48,6 +48,7 @@ issue は PR metadata の一次情報として扱う。
 
 PR title は branch 名の繰り返しではなく、実際の変更内容が分かる短い文にする。
 issue の意図とずれていないかを確認する。
+PR title と PR body は、ユーザーが明示的に別言語を求めない限り日本語で書く。
 
 PR body には最低限次を入れる。
 
@@ -81,5 +82,6 @@ issue に assignee や label がない場合は、その事実をそのまま扱
 
 -   branch を新しく切り直さない。
 -   issue から引き継ぐ assignee と label は、ユーザーの追加指定がない限りそのまま全件コピーする。
+-   PR title と PR body は、デフォルトで日本語にする。
 -   issue の metadata を PR に反映できなかった場合は、成功したふりをせず不足分を明示する。
 -   GitHub への書き込みに必要なツールや認証がない場合は、その時点で不足内容を伝える。
