@@ -11,6 +11,8 @@ if not vim.g.vscode then
   vim.o.relativenumber = true
   vim.o.splitbelow = true
   vim.o.splitright = true
+  vim.opt.listchars = { tab = ">.", trail = "·", nbsp = "~", eol = "󰌑" }
+  vim.opt.list = true
   vim.g.fileencodings = { 'utf-8', 'sjis', 'utf-16le', 'default', 'ucs-bom', 'latin1' }
 end
 
