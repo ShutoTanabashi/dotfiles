@@ -31,4 +31,13 @@ M.enabled_languages = {
 M.pdf_viewer = "skim"
 M.pdf_viewer_options = nil
 
+-- LLM settings
+M.llm = {
+  enabled = false,
+  end_point = "https://opencode.ai/zen/go/v1/chat/completions",
+  provider_name = "OpenCode",
+  api_key_env = "OPENCODE_API_KEY",
+  model = "deepseek-v4-flash",
+}
+
 return M
