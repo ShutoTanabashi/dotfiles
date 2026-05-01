@@ -40,4 +40,26 @@ M.llm = {
   model = "deepseek-v4-flash",
 }
 
+-- Markdown preview plugin selection
+M.md_preview = {
+  options = {
+    MD_PREVIEW = "md-preview",
+    PREVIEW = "preview",
+  },
+  prefer = "preview",
+}
+
+-- Returns the plugin to use based on environment
+-- md-preview requires unix + glow, otherwise falls back to preview
+function M.get_md_preview_plugin()
+  if M.md_preview.prefer == M.md_preview.options.MD_PREVIEW then
+    if vim.fn.has("unix") == 1 and vim.fn.executable("glow") == 1 then
+      return M.md_preview.options.MD_PREVIEW
+    else
+      return M.md_preview.options.PREVIEW
+    end
+  end
+  return M.md_preview.prefer
+end
+
 return M

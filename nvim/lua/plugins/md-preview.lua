@@ -1,6 +1,8 @@
+local envcfg = require("envcfg")
 return {
   "topazape/md-preview.nvim",
-  enabled = vim.fn.has("unix") == 1,
+  cond = vim.g.vscode ~= 1,
+  enabled = envcfg.get_md_preview_plugin() == envcfg.md_preview.options.MD_PREVIEW,
   ft = { "md", "markdown", "mkd", "mkdn", "mdwn", "mdown", "mdtxt", "mdtext", "rmd", "wiki" },
   opts = {
     viewer = {
