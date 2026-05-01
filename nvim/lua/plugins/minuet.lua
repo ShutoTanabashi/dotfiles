@@ -4,7 +4,6 @@ local llm = env.llm
 return {
   "milanglacier/minuet-ai.nvim",
   enabled = not vim.g.vscode and llm.enabled,
-  dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     require("minuet").setup({
       provider = "openai_compatible",
