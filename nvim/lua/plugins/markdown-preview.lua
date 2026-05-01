@@ -1,8 +1,13 @@
 return {
   "iamcco/markdown-preview.nvim",
-  cond = vim.g.vscode ~= 1,
-  build = function()
-    vim.fn["mkdp#util#install"]()
+  enabled = function()
+    local sysname = vim.loop.os_uname().sysname
+    if sysname == "Linux" then
+      return not not (vim.env.DISPLAY or vim.env.WAYLAND_DISPLAY)
+    end
+    return true
   end,
-  ft = "markdown",
+  cond = vim.g.vscode ~= 1,
+  build = "cd app && npm install",
+  ft = { "markdown" },
 }
