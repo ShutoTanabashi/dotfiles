@@ -98,15 +98,9 @@ vim.lsp.config("clangd", {
 })
 vim.lsp.enable("clangd")
 
--- Linter and Formatter
-local null_ls = require("null-ls")
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.markdownlint.with({
-      extra_args = { "--config", vim.fn.expand("~/dotfiles/markdownlint/.markdownlint.yaml") },
-    }),
-    null_ls.builtins.diagnostics.markdownlint.with({
-      extra_args = { "--config", vim.fn.expand("~/dotfiles/markdownlint/.markdownlint.yaml") },
-    }),
-  },
+vim.lsp.config("rumdl", {
+  cmd = { "rumdl", "server" },
+  filetypes = { "markdown" },
+  root_markers = { ".git" },
 })
+vim.lsp.enable("rumdl")
