@@ -1,7 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
   cond = vim.g.vscode ~= 1,
-  branch = "0.1.x",
+  version = "*",
   opts = {},
   cmd = "Telescope",
   keys = {
