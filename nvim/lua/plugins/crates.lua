@@ -22,9 +22,5 @@ return {
         min_chars = 3,
       },
     },
-    null_ls = {
-      enabled = true,
-      name = "crates.nvim",
-    },
   },
 }
