@@ -14,6 +14,7 @@
 
 | ディレクトリ名 | 役割 |
 | :-- | :-- |
+| `after/lsp` | LSPサーバごとの設定(nvim-lspconfigのデフォルト設定より優先される) |
 | `snippets` | [nvim-snippy](https://github.com/dcampos/nvim-snippy)用snippets設定 |
 | `spell` | (Neo)vimのスペルチェック用辞書 |
 
