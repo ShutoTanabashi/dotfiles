@@ -17,6 +17,9 @@
 !lua/lspcfg.lua
 !lua/stlcfg.lua
 !lua/envcfg.txt
+!after
+!after/lsp
+!after/lsp/*.lua
 !snippets
 !snippets/*.snippets
 !spell

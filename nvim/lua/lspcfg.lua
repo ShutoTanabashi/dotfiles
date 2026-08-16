@@ -54,53 +54,7 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
   end,
 })
 
--- LSP config
-local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-vim.lsp.config("pyright", {
-  settings = {
-    pyright = {
-      disableOrganizeImports = true,
-    },
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        typeCheckingMode = "basic",
-        useLibraryCodeForTypes = true,
-      },
-    },
-  },
-  on_attach = function(client, _)
-    client.server_capabilities.codeActionProvider = false
-  end,
-  capabilities = cmp_capabilities,
-  handlers = {
-    ["textDocument/publishDiagnostics"] = function() end,
-  },
-})
-
-vim.lsp.config("lua_ls", {
-  capabilities = cmp_capabilities,
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- Get the language server to recognize the 'vim' global
-        globals = { 'vim' }
-      }
-    }
-  }
-}
-)
-
--- LSP config installed outside of Mason
-vim.lsp.config("clangd", {
-  capabilities = cmp_capabilities,
-})
-vim.lsp.enable("clangd")
-
-vim.lsp.config("rumdl", {
-  cmd = { "rumdl", "server" },
-  filetypes = { "markdown" },
-  root_markers = { ".git" },
-})
-vim.lsp.enable("rumdl")
+-- Per-server LSP configs are defined in `after/lsp/<name>.lua`.
+-- Servers installed via Mason are auto-enabled by mason-lspconfig.
+-- Enable servers installed outside of Mason.
+vim.lsp.enable({ "clangd", "rumdl" })

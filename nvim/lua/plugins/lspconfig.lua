@@ -20,9 +20,5 @@ return {
       },
       lazy = false,
     },
-    {
-      "nvimtools/none-ls.nvim",
-      lazy = false,
-    },
   },
 }
