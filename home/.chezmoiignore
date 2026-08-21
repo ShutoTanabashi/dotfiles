@@ -1,0 +1,10 @@
+README.md
+
+{{/* role / variant による配備制御のフック。
+     server 機では GUI 関連ツールを配備しない、といった制御をここに書く。
+     例:
+       {{ if ne .role "desktop" }}
+       wezterm
+       alacritty
+       {{ end }}
+*/}}

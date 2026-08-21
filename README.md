@@ -37,6 +37,8 @@
 ## リポジトリ自体の管理に関するファイル
 
 *   `gentemplate.sh` - 管理に必要なファイルを用意するスクリプト
+*   `docs/chezmoi-migration.md` - chezmoi 移行ガイド
+*   `docs/secrets-management.md` - シークレット管理方針
 
 ## ToDo
 

@@ -1,0 +1,14 @@
+{{- $role := promptStringOnce . "role" "role [desktop|server]" "desktop" -}}
+{{- if and (ne $role "desktop") (ne $role "server") -}}
+{{-   warnf "invalid role %q (expected desktop or server)" $role -}}
+{{-   exit 1 -}}
+{{- end -}}
+{{- $variant := promptStringOnce . "variant" "variant [full|minimal]" "full" -}}
+{{- if and (ne $variant "full") (ne $variant "minimal") -}}
+{{-   warnf "invalid variant %q (expected full or minimal)" $variant -}}
+{{-   exit 1 -}}
+{{- end -}}
+
+[data]
+    role = {{ $role | quote }}
+    variant = {{ $variant | quote }}
