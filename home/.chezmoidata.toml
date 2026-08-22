@@ -27,3 +27,8 @@ end_point = "https://opencode.ai/zen/go/v1/chat/completions"
 provider_name = "OpenCode"
 api_key_env = "OPENCODE_API_KEY"
 model = "deepseek-v4-flash"
+
+[git]
+name = "Shuto Tanabashi"
+email = "shuuto570@outlook.com"
+editor = "nvim"
