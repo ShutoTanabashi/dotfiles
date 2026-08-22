@@ -8,3 +8,4 @@ README.md
        alacritty
        {{ end }}
 */}}
+{{ if ne .variant "full" }}.config/zellij{{ end }}

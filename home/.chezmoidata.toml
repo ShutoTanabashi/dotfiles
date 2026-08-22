@@ -2,9 +2,6 @@
 # 秘密値は絶対にこのファイルへ書かない。実値は gopass または OS の keyring に登録する。
 
 # role: desktop | server (GUI ツール等の配備制御に使用。.chezmoiignore のフックを参照)
-# variant: full | minimal
+# variant: full | minimal (追加ツールは full のみで配備)
 # 上書きは ~/.config/chezmoi/chezmoi.toml の [data] で行う(init 時のプロンプトで生成)。
-
-[tools]
-# 移行済みツールの配備可否。各ツールの移行タスクでキーを追加する。
-# false の場合は .chezmoiignore 側で当該ツールの配備を抑制する。
+# ツール配備は variant で制御するため [tools] による二重管理は行わない。
