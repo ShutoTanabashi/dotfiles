@@ -8,7 +8,14 @@
 {{-   warnf "invalid variant %q (expected full or minimal)" $variant -}}
 {{-   exit 1 -}}
 {{- end -}}
-
 [data]
     role = {{ $role | quote }}
     variant = {{ $variant | quote }}
+{{ if eq .chezmoi.os "linux" }}
+{{ $goneovimExecutable := promptStringOnce . "goneovim.executable" "Goneovim executable path" "/usr/bin/goneovim" -}}
+{{ $goneovimIconPath := promptStringOnce . "goneovim.icon_path" "Goneovim icon path" (printf "%s/.local/share/icons/goneovim.ico" .chezmoi.homeDir) }}
+
+[data.goneovim]
+    executable = {{ $goneovimExecutable | quote }}
+    icon_path = {{ $goneovimIconPath | quote }}
+{{ end }}

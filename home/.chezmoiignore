@@ -10,3 +10,6 @@ README.md
 {{ if not (and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease))) }}.local/bin/sumatrapdf.sh{{ end }}
 {{ if ne .chezmoi.os "linux" }}.config/zathura{{ end }}
 {{ if ne .role "desktop" }}.config/zathura{{ end }}
+{{ if or (ne .role "desktop") (ne .variant "full") }}.config/goneovim{{ end }}
+{{ if or (ne .chezmoi.os "linux") (ne .role "desktop") (ne .variant "full") }}.local/share/applications/goneovim.desktop{{ end }}
+{{ if or (ne .chezmoi.os "linux") (ne .role "desktop") (ne .variant "full") }}.local/share/icons/goneovim.ico{{ end }}
