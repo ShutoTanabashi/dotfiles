@@ -7,7 +7,7 @@ return {
   config = function()
     require("minuet").setup({
       provider = "openai_compatible",
-      request_timeout = 2.5,
+      request_timeout = 3,
       throttle = 2000,
       debounce = 800,
       provider_options = {
@@ -19,7 +19,7 @@ return {
           optional = {
             max_tokens = 56,
             top_p = 0.9,
-            thinking = { type = "disabled" },
+            reasoning_effort = "none",
           },
         },
       },
