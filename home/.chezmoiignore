@@ -5,3 +5,6 @@ README.md
 {{ if ne .chezmoi.os "windows" }}AppData/Roaming/alacritty{{ end }}
 {{ if eq .chezmoi.os "windows" }}.config/alacritty{{ end }}
 {{ if ne .variant "full" }}.config/zellij{{ end }}
+{{ if eq .chezmoi.os "windows" }}.config/nvim{{ end }}
+{{ if ne .chezmoi.os "windows" }}AppData/Local/nvim{{ end }}
+{{ if not (and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease))) }}.local/bin/sumatrapdf.sh{{ end }}

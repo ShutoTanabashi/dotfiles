@@ -1,0 +1,26 @@
+local prefer_md_preview = {{ eq .nvim.markdown_preview "md-preview" }}
+
+return {
+  "topazape/md-preview.nvim",
+  cond = vim.g.vscode ~= 1,
+  enabled = prefer_md_preview and vim.fn.has("unix") == 1 and vim.fn.executable("glow") == 1,
+  ft = { "md", "markdown", "mkd", "mkdn", "mdwn", "mdown", "mdtxt", "mdtext", "rmd", "wiki" },
+  opts = {
+    viewer = {
+      exec = "glow",
+      exec_path = "",
+      args = { "-s", "dark" },
+    },
+    term = {
+      reload = {
+        enable = true,
+        events = { "InsertLeave", "TextChanged" },
+      },
+      direction = "vertical",
+      keys = {
+        close = { "q" },
+        refresh = "r",
+      },
+    },
+  },
+}

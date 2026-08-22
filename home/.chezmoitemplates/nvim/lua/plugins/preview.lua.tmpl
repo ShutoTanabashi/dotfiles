@@ -1,0 +1,11 @@
+local prefer_md_preview = {{ eq .nvim.markdown_preview "md-preview" }}
+
+return {
+  "henriklovhaug/Preview.nvim",
+  cond = vim.g.vscode ~= 1,
+  enabled = not prefer_md_preview or vim.fn.has("unix") ~= 1 or vim.fn.executable("glow") ~= 1,
+  ft = "markdown",
+  config = function()
+    require("preview").setup()
+  end,
+}

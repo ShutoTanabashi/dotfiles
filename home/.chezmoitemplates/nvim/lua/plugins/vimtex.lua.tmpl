@@ -1,0 +1,19 @@
+{{- $isWSL := and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease)) -}}
+local pdf_viewer = {{ if $isWSL }}vim.fn.expand("~/.local/bin/sumatrapdf.sh"){{ else if eq .chezmoi.os "windows" }}"SumatraPDF"{{ else if eq .chezmoi.os "darwin" }}"skim"{{ else }}"zathura"{{ end }}
+local pdf_viewer_options = {{ if or $isWSL (eq .chezmoi.os "windows") }}"-reuse-instance -forward-search @tex @line @pdf"{{ else }}nil{{ end }}
+
+return {
+  "lervag/vimtex",
+  enabled = {{ .nvim.languages.tex }},
+  lazy = false,
+  init = function()
+    if pdf_viewer_options then
+      vim.g.vimtex_view_general_viewer = pdf_viewer
+      vim.g.vimtex_view_general_options = pdf_viewer_options
+    else
+      vim.g.vimtex_view_method = pdf_viewer
+    end
+    vim.g.vimtex_compiler_method = "generic"
+    vim.g.vimtex_compiler_generic = { command = "llmk" }
+  end,
+}

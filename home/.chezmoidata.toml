@@ -11,3 +11,19 @@ family = "UDEV Gothic 35NF"
 
 [alacritty]
 font_size = 12.0
+
+[nvim]
+python3_host_prog = "python3"
+guifont_size = 13
+markdown_preview = "preview"
+
+[nvim.languages]
+rust = false
+tex = false
+
+[nvim.llm]
+enabled = false
+end_point = "https://opencode.ai/zen/go/v1/chat/completions"
+provider_name = "OpenCode"
+api_key_env = "OPENCODE_API_KEY"
+model = "deepseek-v4-flash"
