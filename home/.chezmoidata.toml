@@ -5,3 +5,9 @@
 # variant: full | minimal (追加ツールは full のみで配備)
 # 上書きは ~/.config/chezmoi/chezmoi.toml の [data] で行う(init 時のプロンプトで生成)。
 # ツール配備は variant で制御するため [tools] による二重管理は行わない。
+
+[font]
+family = "UDEV Gothic 35NF"
+
+[alacritty]
+font_size = 12.0
