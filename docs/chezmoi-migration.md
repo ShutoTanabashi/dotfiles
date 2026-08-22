@@ -54,17 +54,6 @@ $ chezmoi apply
 
 `.chezmoiignore` は `role` / `variant` と `.chezmoi.os` を併用して配備を制御する。
 
-## 個別ツール移行状況
-
-### zellij
-
-- **profile:** `variant=full` のみ配備（`minimal` では除外）。`role` による分岐なし。
-- **配置先:** `~/.config/zellij/config.kdl` と `~/.config/zellij/themes/*.kdl`（18テーマ）
-- **source state:** `home/dot_config/zellij/config.kdl.tmpl`（Windows で `default_shell "pwsh.exe"` を分岐）、`home/dot_config/zellij/themes/*.kdl`
-- **OS固有事項:** Windows では `default_shell "pwsh.exe"` を明示指定（`config.kdl.tmpl` で `{{ if eq .chezmoi.os "windows" }}`）、他OSは既定の $SHELL を使用。シークレットなし。
-- **切替方法:** `~/.config/chezmoi/chezmoi.toml` の `data.variant` を `full` / `minimal` に変更後 `chezmoi apply`
-- **ロールバック:** `chezmoi purge` 後に旧コミットを checkout し、必要に応じて `zellij/setup.sh` を再実行（第1コミット checkout で旧シンボリックリンク方式に戻せる）
-
 ## ロールバック方法
 
 - chezmoi 管理をやめる場合は `chezmoi purge` 後に旧コミットを checkout し、必要に応じて `setup.sh` を再実行する
