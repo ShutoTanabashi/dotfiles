@@ -13,3 +13,4 @@ README.md
 {{ if or (ne .role "desktop") (ne .variant "full") }}.config/goneovim{{ end }}
 {{ if or (ne .chezmoi.os "linux") (ne .role "desktop") (ne .variant "full") }}.local/share/applications/goneovim.desktop{{ end }}
 {{ if or (ne .chezmoi.os "linux") (ne .role "desktop") (ne .variant "full") }}.local/share/icons/goneovim.ico{{ end }}
+{{ if not (lookPath "zsh") }}.config/sheldon{{ end }}
