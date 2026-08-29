@@ -20,11 +20,12 @@ Google Drive を `~/GoogleDrive` にマウントする rclone 設定。chezmoi �
    ```
 3. このマシンで有効化:
    ```sh
-   # ~/.config/chezmoi/chezmoi.toml の [data] に追記
-   experimental_rclone = true
+   # ~/.config/chezmoi/chezmoi.toml に追記
+   [data.experimental]
+   rclone = true
    chezmoi apply
    ```
-   （`.chezmoidata.toml` の既定は `experimental_rclone = false`。`.chezmoiignore` で Linux + 実験的フラグが有効な場合のみ `rclone.env` / `service` が配備される）
+   （`.chezmoidata.toml` の既定は `experimental.rclone = false`。`.chezmoiignore` で Linux + 実験的フラグが有効な場合のみ `rclone.env` / `service` が配備される）
 4. 初期認証（token 生成）:
    ```sh
    source ~/.config/rclone/rclone.env
@@ -41,7 +42,7 @@ Google Drive を `~/GoogleDrive` にマウントする rclone 設定。chezmoi �
 
 ## 実験的フラグ
 
-`rclone` は `experimental_rclone` でゲートされる。共有既定 `home/.chezmoidata.toml` は `false`、このマシンの `~/.config/chezmoi/chezmoi.toml` で `true` に上書きして検証。
+`rclone` は `experimental.rclone` でゲートされる。共有既定 `home/.chezmoidata.toml` は `false`、このマシンの `~/.config/chezmoi/chezmoi.toml` で `true` に上書きして検証。
 
 ## 注意
 

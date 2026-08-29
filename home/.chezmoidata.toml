@@ -6,6 +6,9 @@
 # 上書きは ~/.config/chezmoi/chezmoi.toml の [data] で行う(init 時のプロンプトで生成)。
 # ツール配備は variant で制御するため [tools] による二重管理は行わない。
 
+[experimental]
+rclone = false
+
 [font]
 family = "UDEV Gothic 35NF"
 
@@ -32,6 +35,3 @@ model = "deepseek-v4-flash"
 name = "Shuto Tanabashi"
 email = "shuuto570@outlook.com"
 editor = "nvim"
-
-[data]
-experimental_rclone = false
