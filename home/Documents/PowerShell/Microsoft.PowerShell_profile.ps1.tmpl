@@ -5,6 +5,18 @@ chcp 65001 | Out-Null
 Set-Alias exa Get-ChildItem
 Set-Alias vi nvim
 
+# Load the OpenCode API key from the OS credential manager.
+if (-not $env:OPENCODE_API_KEY) {
+	$opencodeApiKey = ""
+	if (Get-Command chezmoi -ErrorAction SilentlyContinue) {
+		$opencodeApiKey = (chezmoi secret keyring get --service=dotfiles --user=opencode_api_key 2>$null)
+	}
+	if ($opencodeApiKey) {
+		$env:OPENCODE_API_KEY = $opencodeApiKey
+	}
+	Remove-Variable opencodeApiKey
+}
+
 # All package upgrade
 function allupgrade() {
 	Write-Host "# scoop" -ForegroundColor Magenta
@@ -14,7 +26,10 @@ function allupgrade() {
 	Write-Host "# cargo" -ForegroundColor Magenta
 	cargo install-update -a
 	Write-Host "# msys2" -ForegroundColor Magenta
-	C:\msys64\usr\bin\bash.exe -l -c "pacman -Syu"
+	$msys2Bash = "{{ .powershell.msys2_bash }}"
+	if ($msys2Bash -and (Test-Path $msys2Bash)) {
+		& $msys2Bash -l -c "pacman -Syu"
+	}
 	Write-Host "# winget" -ForegroundColor 'Magenta'
 	sudo winget upgrade --all
 	Write-Host "Upgrade Complete!" -ForegroundColor 'Magenta'
@@ -31,7 +46,10 @@ function gvi {
 }
 
 # Git completion
-Import-Module C:\Users\ShutoTanabashi\scoop\apps\posh-git\current\posh-git.psd1
+$poshGitManifest = Join-Path $HOME 'scoop/apps/posh-git/current/posh-git.psd1'
+if (Test-Path $poshGitManifest) {
+	Import-Module $poshGitManifest
+}
 
 # cargo (rust builder) completion
 Import-Module posh-cargo

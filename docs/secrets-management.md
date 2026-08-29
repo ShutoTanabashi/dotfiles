@@ -91,10 +91,15 @@ chezmoi 移行後のシークレット(API キー、トークン等)の管理方
 
 ### OpenCode API key
 
-- `opencode_api_key`は設定ファイルへ展開せず、対話zsh起動時に
+- `opencode_api_key`は設定ファイルへ展開せず、シェル起動時に
   keyringまたはgopassから取得する。
+- 取得元はOSごとに次のとおり。
+  - zsh(Linux/macOS): `.secrets.backend`の指定に従いkeyringまたはgopassから取得する
+    （未指定時はgopass、次にkeyringの順で自動判定）。
+  - PowerShell(Windows): OSの資格情報マネージャーのみを使用する
+    （`chezmoi secret keyring get --service=dotfiles --user=opencode_api_key`）。
 - 未登録・backend不在・取得失敗時は`OPENCODE_API_KEY`を設定せず、
-  zsh起動は継続する。
+  シェル起動は継続する。
 - keyringへの登録は次のコマンドを使用する。
   値をシェル履歴へ残すため`--value`は使わない。
 

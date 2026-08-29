@@ -15,6 +15,9 @@ family = "UDEV Gothic 35NF"
 [alacritty]
 font_size = 12.0
 
+[powershell]
+msys2_bash = "C:\\msys64\\usr\\bin\\bash.exe"
+
 [nvim]
 python3_host_prog = "python3"
 guifont_size = 13
