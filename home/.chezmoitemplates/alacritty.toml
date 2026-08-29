@@ -36,7 +36,7 @@ mods = "Alt"
 {{- if eq .data.chezmoi.os "windows" }}
 
 [general]
-working_directory = 'C:\Users\ShutoTanabashi'
+working_directory = '{{ .data.chezmoi.homeDir }}'
 
 [terminal.shell]
 program = "pwsh.exe"
