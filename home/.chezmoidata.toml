@@ -32,3 +32,6 @@ model = "deepseek-v4-flash"
 name = "Shuto Tanabashi"
 email = "shuuto570@outlook.com"
 editor = "nvim"
+
+[data]
+experimental_rclone = false
