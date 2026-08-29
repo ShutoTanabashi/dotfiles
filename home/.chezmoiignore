@@ -2,6 +2,7 @@ README.md
 
 {{/* role / variant による配備制御のフック。*/}}
 {{ if ne .role "desktop" }}.config/alacritty{{ end }}
+{{ if ne .role "desktop" }}.config/wezterm{{ end }}
 {{ if ne .chezmoi.os "windows" }}AppData/Roaming/alacritty{{ end }}
 {{ if eq .chezmoi.os "windows" }}.config/alacritty{{ end }}
 {{ if ne .variant "full" }}.config/zellij{{ end }}
