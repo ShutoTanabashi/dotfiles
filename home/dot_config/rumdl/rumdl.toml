@@ -1,0 +1,15 @@
+[global]
+disable = ["MD013", "MD014", "MD037", "MD041"]
+
+[MD007]
+indent = 4
+style = "fixed"
+
+[MD030]
+ol-multi = 2
+ol-single = 2
+ul-multi = 3
+ul-single = 3
+
+[MD031]
+list-items = false
