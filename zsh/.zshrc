@@ -1,52 +1,70 @@
-# zsh setting by sheldon
-eval "$(sheldon source)"
+# Load zsh plugins when sheldon is available and configured.
+if (( $+commands[sheldon] )) && [[ -f "$HOME/.config/sheldon/plugins.toml" ]]; then
+	eval "$(sheldon source)"
+fi
 
-# CLI editor settings
-export VISUAL="nvim"
-export EDITOR="nvim"
+# CLI editor settings.
+if (( $+commands[nvim] )); then
+	export VISUAL="nvim"
+	export EDITOR="nvim"
+	export SUDO_EDITOR="nvim"
+elif (( $+commands[vim] )); then
+	export VISUAL="vim"
+	export EDITOR="vim"
+	export SUDO_EDITOR="vim"
+fi
 
-# setting which related environments.
-source ~/.zsh_envcfg
+# Environment-dependent settings.
+[[ -r "$HOME/.zsh_envcfg" ]] && source "$HOME/.zsh_envcfg"
 
-# setting for bat
-export BAT_THEME="ansi"
+if (( $+commands[bat] || $+commands[batcat] )); then
+	export BAT_THEME="ansi"
+fi
 
-# setting for fzf
+# fzf settings.
 export FZF_DEFAULT_COMMAND='fd --unrestricted --type file --type directory'
 export FZF_DEFAULT_OPTS='--height=~60% --border=horizontal --preview="bat {} --color always"'
 
-# setting for tre
-tre() {command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
+# tre wrapper.
+if (( $+commands[tre] )); then
+	tre() {
+		command tre "$@" -e || return
+		local aliases_file="/tmp/tre_aliases_${USER}"
+		[[ -r "$aliases_file" ]] && source "$aliases_file"
+	}
+fi
 
-# alias
-alias ls='eza --icons'
-alias la='eza --icons -a'
-alias ll='eza --icons -al --git'
-alias vi='nvim'
-# alias llj="zellij"
-# alias cati='img2sixel --height=600px' # Using libsixel
-alias cati='chafa --colors full --size x19' # Using chafa
+# Aliases for optional tools.
+if (( $+commands[eza] )); then
+	alias ls='eza --icons=auto'
+	alias la='eza --icons=auto -a'
+	alias ll='eza --icons=auto -al --git'
+fi
+if (( $+commands[chafa] )); then
+	alias cati='chafa --colors full --size x19'
+fi
 
-# completion
+# Initialize completion after environment-specific fpath entries are added.
 autoload -Uz compinit && compinit
 
-# My functions
-
-# Make zip file for WindowsOS
-# Warning: This funciton require fd-find and p7zip.
-function zipwin () 
-{
-	# If the argument is "." or not given, the current directory is used as the target directory.
-	if [ -z $1 ] || [ $1 = . ]; then
-		local zip_name="$(basename $(pwd)).zip"
-		fd --type file --strip-cwd-prefix . -X 7z a -tzip -scsWIN $zip_name {}
-	else
-		local loc_dir=$(dirname $1)
-		local target=$(basename $1)
-		local zip_name="$(pwd)/${target}.zip"
-		fd --type file --base-directory=$loc_dir . $target -X 7z a -tzip -scsWIN $zip_name {}
+# Make a zip file for Windows. Requires fd and 7z.
+zipwin() {
+	if (( ! $+commands[fd] || ! $+commands[7z] )); then
+		print -u2 'zipwin: fd and 7z are required'
+		return 127
 	fi
-	# Check zipped files
-	7z l $zip_name
-	return 0	
+
+	local target_arg="${1:-.}"
+	local zip_name
+	if [[ "$target_arg" == "." ]]; then
+		zip_name="${PWD:t}.zip"
+		fd --type file --strip-cwd-prefix . -X 7z a -tzip -scsWIN "$zip_name" {}
+	else
+		local source_dir="${target_arg:h}"
+		local target="${target_arg:t}"
+		zip_name="$PWD/${target}.zip"
+		fd --type file --base-directory="$source_dir" . "$target" -X 7z a -tzip -scsWIN "$zip_name" {}
+	fi
+
+	7z l -- "$zip_name"
 }
