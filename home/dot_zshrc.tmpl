@@ -1,4 +1,5 @@
 {{- $isWSL := and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease)) -}}
+{{- $isDebianLike := and (eq .chezmoi.os "linux") (or (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.osRelease.id "ubuntu")) -}}
 {{- $secretBackend := "" -}}
 {{- if and (hasKey . "secrets") (hasKey .secrets "backend") -}}
 {{-   $secretBackend = .secrets.backend -}}
@@ -24,10 +25,12 @@ lso() {
 	command ls "$@"
 }
 
-# Debian and Ubuntu may install bat as batcat.
+{{ if $isDebianLike -}}
+# Debian and Ubuntu install bat as batcat on some releases.
 if (( ! $+commands[bat] && $+commands[batcat] )); then
 	alias bat='batcat'
 fi
+{{ end -}}
 
 {{ if eq .chezmoi.os "darwin" -}}
 # Homebrew completions and macOS-specific tools.

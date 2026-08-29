@@ -57,6 +57,35 @@ chezmoi apply
 `.chezmoiignore` は `role` / `variant` / `experimental_<tool>` と
 `.chezmoi.os` を併用して配備を制御する。
 
+## 生成時と実行時の条件分岐
+
+テンプレートで生成するshell設定は、条件が変化する時点に応じて責務を分ける。
+
+| 判定時点 | 対象 | 判定方法 |
+| --- | --- | --- |
+| chezmoi生成時 | OS、distribution、WSL、role、variant、machine data | `.chezmoi.os`、`.chezmoi.osRelease.id`、kernel、data |
+| shell起動時 | コマンド、ファイル、ディレクトリ、keyringの現在状態 | `$commands`、`-r`、`-d`、取得コマンドの終了状態 |
+
+- OSやdistributionが限定される設定は、chezmoiテンプレートで対象環境にだけ
+  書き出す。zshrc内の`OSTYPE`等で同じ判定を重ねない。
+- 任意ツールはインストール後・削除後に再applyなしで追従できるよう、
+  shell起動時にも存在確認する。
+- 両方の条件が必要な場合は、生成時に対象環境を限定し、生成された処理内で
+  現在のコマンドやパスを検査する。
+- `lookPath`は設定ファイル全体の配備判定に使用できる。zshrc内の任意機能には
+  原則として使用せず、起動時判定を使う。
+- シークレットは値を生成物へ埋め込まず、選択されたbackendからshell起動時に
+  取得する。未登録・取得失敗時の挙動はツールごとに明示する。
+
+zshでは次の分担を使用する。
+
+- Debian / Ubuntuの`batcat` aliasはdistributionで生成を限定し、生成後も
+  `bat`と`batcat`の有無を確認する。
+- Homebrew / OpenJDK / Ruby / SkimはmacOSだけへ生成し、各実体を起動時に確認する。
+- CUDAはLinuxだけへ生成し、`/opt/cuda`が存在する場合だけ環境変数を設定する。
+- WINHOME / WSLgはWSLだけへ生成し、machine dataとsocketを起動時に確認する。
+- eza、sheldon、pyenv等のOS非依存な任意ツールは、zsh起動時の検出だけで制御する。
+
 ## ロールバック方法
 
 - chezmoi 管理をやめる場合は `chezmoi purge` 後に旧コミットを
