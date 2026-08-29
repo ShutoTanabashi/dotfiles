@@ -19,3 +19,9 @@
     executable = {{ $goneovimExecutable | quote }}
     icon_path = {{ $goneovimIconPath | quote }}
 {{ end }}
+{{ if and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease)) }}
+{{ $windowsHome := promptStringOnce . "zsh.windows_home" "Windows home path for WSL (empty to disable WINHOME)" "" -}}
+
+[data.zsh]
+    windows_home = {{ $windowsHome | quote }}
+{{ end }}

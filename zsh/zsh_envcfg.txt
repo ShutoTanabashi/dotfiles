@@ -69,7 +69,13 @@ if [[ -r /proc/sys/kernel/osrelease ]] && [[ "${$(</proc/sys/kernel/osrelease):l
 	fi
 fi
 
+# Initialize the gitstatus prompt when the optional prompt script exists.
+_gitstatus_prompt_file="${XDG_DATA_HOME:-$HOME/.local/share}/sheldon/repos/github.com/romkatv/gitstatus/gitstatus.prompt.zsh"
+[[ -r "$_gitstatus_prompt_file" ]] && source "$_gitstatus_prompt_file"
+unset _gitstatus_prompt_file
+
 # Prompt.
+setopt prompt_subst
 PROMPT='%F{44}%n%f %c $GITSTATUS_PROMPT%F{44}%B %# %b%f'
 RPROMPT='%F{66}%3~%f %F{244}%m%f'
 

@@ -24,11 +24,12 @@ docs/               # 文書(HOME 配備対象外)
 
 ## 新規マシンの初期化手順
 
-```console
-$ chezmoi init <repo-url>   # role / variant を対話入力([data] 配下に生成される)
-$ chezmoi apply             # 未登録のシークレットがある場合はここでエラーになる
-# gopass insert dotfiles/<key> または secret-tool store --label=dotfiles dotfiles <key> で値を登録
-$ chezmoi apply
+```sh
+chezmoi init <repo-url>   # role / variant を対話入力([data] 配下に生成される)
+chezmoi apply             # 未登録のシークレットがある場合はここでエラーになる
+# gopass insert dotfiles/<key>、または次のコマンドで値を登録
+chezmoi secret keyring set --service=dotfiles --user=<key>
+chezmoi apply
 ```
 
 ## 設定値の置き場所の役割分担
@@ -53,11 +54,13 @@ $ chezmoi apply
 | `data.variant` | `full` / `minimal` | 構成の規模（`full` のみ追加ツールを含む） |
 | `data.experimental_<tool>` | `true` / `false` | 実験的ツールの個別 opt-in（例: `experimental_rclone`。既定 false） |
 
-`.chezmoiignore` は `role` / `variant` / `experimental_<tool>` と `.chezmoi.os` を併用して配備を制御する。
+`.chezmoiignore` は `role` / `variant` / `experimental_<tool>` と
+`.chezmoi.os` を併用して配備を制御する。
 
 ## ロールバック方法
 
-- chezmoi 管理をやめる場合は `chezmoi purge` 後に旧コミットを checkout し、必要に応じて `setup.sh` を再実行する
+- chezmoi 管理をやめる場合は `chezmoi purge` 後に旧コミットを
+  checkout し、必要に応じて `setup.sh` を再実行する
 
 ## OS 固有事項
 
