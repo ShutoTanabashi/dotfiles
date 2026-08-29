@@ -35,10 +35,10 @@ $ chezmoi apply
 
 | 置き場所 | 役割 | 例 |
 | --- | --- | --- |
-| `~/.config/chezmoi/chezmoi.toml` の `[data]` | マシン固有の選択(init プロンプトで生成) | `role`, `variant`, `secrets.backend` |
-| source state の `home/.chezmoidata.toml` | 全マシン共通の既定値の単一ソース | 共通既定値（ツール配備は `variant` で制御） |
+| `~/.config/chezmoi/chezmoi.toml` の `[data]` | マシン固有の選択(init プロンプトで生成) + 実験的 opt-in | `role`, `variant`, `secrets.backend`, `experimental_<tool>` |
+| source state の `home/.chezmoidata.toml` | 全マシン共通の既定値の単一ソース | 共通既定値（`variant` / `experimental_<tool>` で配備制御） |
 | gopass / OS keyring | シークレット実値(apply 時に解決) | `dotfiles/github_token` |
-| `.chezmoiignore`(テンプレート可) | role / variant による配備抑制 | server なら GUI ツールを ignore |
+| `.chezmoiignore`(テンプレート可) | role / variant / experimental による配備抑制 | 実験的ツールは `experimental_rclone` で opt-in |
 
 注意: chezmoi は設定ファイルのトップレベルの未知キーをテンプレートデータに
 反映しないため、machine 固有の変数は必ず `[data]` 配下に置く。
@@ -51,8 +51,9 @@ $ chezmoi apply
 | --- | --- | --- |
 | `data.role` | `desktop` / `server` | 役割別の配備制御(GUI ツール等) |
 | `data.variant` | `full` / `minimal` | 構成の規模（`full` のみ追加ツールを含む） |
+| `data.experimental_<tool>` | `true` / `false` | 実験的ツールの個別 opt-in（例: `experimental_rclone`。既定 false） |
 
-`.chezmoiignore` は `role` / `variant` と `.chezmoi.os` を併用して配備を制御する。
+`.chezmoiignore` は `role` / `variant` / `experimental_<tool>` と `.chezmoi.os` を併用して配備を制御する。
 
 ## ロールバック方法
 
