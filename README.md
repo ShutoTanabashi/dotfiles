@@ -23,7 +23,7 @@ chezmoi apply
 
 ## 管理するツール
 
-alacritty, fcitx5, git, goneovim, homebrew, ibus, mozc, nvim, PowerShell,
+alacritty, fcitx5, git, goneovim, Herdr, homebrew, ibus, mozc, nvim, PowerShell,
 rclone, rumdl, sheldon, tealdeer, wezterm, zathura, zellij, zsh
 
 配備の対象・規模は `~/.config/chezmoi/chezmoi.toml` の
