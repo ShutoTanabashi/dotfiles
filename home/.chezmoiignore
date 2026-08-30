@@ -10,6 +10,8 @@ README.md
 {{ if ne .chezmoi.os "windows" }}AppData/Local/nvim{{ end }}
 {{ if eq .chezmoi.os "windows" }}.config/rumdl{{ end }}
 {{ if ne .chezmoi.os "windows" }}AppData/Roaming/rumdl{{ end }}
+{{ if ne .chezmoi.os "windows" }}AppData/Roaming/herdr{{ end }}
+{{ if eq .chezmoi.os "windows" }}.config/herdr{{ end }}
 {{ if not (and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease))) }}.local/bin/sumatrapdf.sh{{ end }}
 {{ if ne .chezmoi.os "linux" }}.config/zathura{{ end }}
 {{ if ne .role "desktop" }}.config/zathura{{ end }}

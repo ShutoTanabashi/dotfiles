@@ -23,9 +23,14 @@ chezmoi apply
 
 ## 管理するツール
 
-alacritty, fcitx5, git, goneovim, homebrew, ibus, mozc, nvim, PowerShell,
+alacritty, fcitx5, git, goneovim, Herdr, homebrew, ibus, mozc, nvim, PowerShell,
 rclone, rumdl, sheldon, tealdeer, wezterm, zathura, zellij, zsh
 
 配備の対象・規模は `~/.config/chezmoi/chezmoi.toml` の
 `role`(`desktop` / `server`)と `variant`(`full` / `minimal`)で制御する。
 実験的ツール(rclone / fcitx / ibus / mozc)は `experimental.<tool>` で個別に opt-in する。
+
+## Herdr
+
+Herdr の設定は chezmoi により Linux/macOS では `~/.config/herdr/config.toml`、
+Windows では `%APPDATA%\\herdr\\config.toml` へ配備される。

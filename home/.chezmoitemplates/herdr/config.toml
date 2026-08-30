@@ -1,0 +1,37 @@
+onboarding = false
+
+[theme]
+name = "terminal"
+auto_switch = false
+
+[ui]
+host_cursor = "native"
+agent_panel_sort = "priority"
+hide_tab_bar_when_single_tab = true
+prompt_new_tab_name = false
+show_agent_labels_on_pane_borders = true
+
+[ui.toast]
+delivery = "system"
+
+[ui.sound]
+enabled = true
+
+[keys]
+prefix = "ctrl+k"
+split_vertical = "prefix+percent"
+split_horizontal = "prefix+double_quote"
+next_agent = "prefix+d"
+previous_agent = "prefix+t"
+copy_mode = "prefix+y"
+previous_workspace = "prefix+["
+next_workspace = "prefix+]"
+new_workspace = ""
+switch_tab = "prefix+alt+1..9"
+focus_agent = "prefix+1..9"
+
+[[keys.command]]
+key = "prefix+shift+n"
+type = "shell"
+command = "herdr workspace create --cwd ~ --focus"
+description = "new workspace in home"
