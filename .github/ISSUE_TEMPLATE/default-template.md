@@ -7,8 +7,8 @@ assignees: ShutoTanabashi
 
 ---
 
-## As Is
+## Goal
 
 
 
-## To Be
+## Context
