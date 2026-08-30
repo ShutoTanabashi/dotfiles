@@ -20,7 +20,31 @@ home/               # HOME へ配備する source state
 pkg/                # パッケージリスト(HOME 配備対象外)
 hhkb/               # HHKB 設定(HOME 配備対象外)
 docs/               # 文書(HOME 配備対象外)
+.agents/            # エージェント用スキル等(HOME 配備対象外)
+.github/            # リポジトリ運用用テンプレート等(HOME 配備対象外)
 ```
+
+## 非配備資産の管理方針
+
+`hhkb/`、`pkg/`、`.agents/`、`.github/`、`docs/` は HOME へ配備せず、
+この Git リポジトリ上の現位置で継続管理する。`source state` は `.chezmoiroot`
+により `home/` に限定されているため、これらは `chezmoi managed` にも
+apply 対象にも含まれない(一時 HOME への apply で配備されないことを検証済み)。
+
+| ディレクトリ | 内容 | 管理 |
+| --- | --- | --- |
+| `hhkb/` | HHKB キーマップ(`.hks`)・参考画像・README | Git のみ(手動で配布) |
+| `pkg/` | OS 別パッケージインストールリスト(apt / brew / cargo / snap / arch / windows) | Git のみ(セットアップ時に参照) |
+| `.agents/` | エージェント用スキル | Git のみ |
+| `.github/` | issue テンプレート等 | Git のみ |
+| `docs/` | 移行・シークレット管理の文書 | Git のみ |
+
+### `gentemplate.sh` の扱い
+
+`gentemplate.sh` はシンボリックリンク方式の新規ツール用ディレクトリ
+(`README.md` / `.gitignore` / `setup.sh`)を生成するスクリプトだった。
+chezmoi 移行後は新規ツールの追加は `chezmoi add` で行うため役割を終え、
+**廃止する**。
 
 ## 新規マシンの初期化手順
 
