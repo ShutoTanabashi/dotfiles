@@ -34,7 +34,7 @@ apply 対象にも含まれない(一時 HOME への apply で配備されない
 | ディレクトリ | 内容 | 管理 |
 | --- | --- | --- |
 | `hhkb/` | HHKB キーマップ(`.hks`)・参考画像・README | Git のみ(手動で配布) |
-| `pkg/` | OS 別パッケージインストールリスト(apt / brew / cargo / snap / arch / windows) | Git のみ(セットアップ時に参照) |
+| `pkg/` | [OS・chezmoi profile 別パッケージインストールリスト](../pkg/README.md) | Git のみ(セットアップ時に参照) |
 | `.agents/` | エージェント用スキル | Git のみ |
 | `.github/` | issue テンプレート等 | Git のみ |
 | `docs/` | 移行・シークレット管理の文書 | Git のみ |

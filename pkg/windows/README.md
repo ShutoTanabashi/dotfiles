@@ -1,6 +1,19 @@
-# Windows の手動インストール
+# Windows のパッケージ導入
 
 パッケージリストに含められない手順、または追加の設定が必要なツールの導入手順を記載する。
+
+## Scoop、winget、MSYS2
+
+desktop / full の例。各 profile の合成規則は [../README.md](../README.md) を参照する。
+
+```powershell
+Get-Content scoop-server-minimal.txt, scoop-server-full.txt, scoop-desktop-minimal.txt, scoop-desktop-full.txt |
+  ForEach-Object { scoop install $_ }
+Get-Content winget-server-minimal.txt, winget-desktop-minimal.txt |
+  ForEach-Object { winget install --id $_ --exact }
+Get-Content msys2-server-minimal.txt |
+  ForEach-Object { & C:\msys64\usr\bin\bash.exe -lc "pacman -S --needed --noconfirm $_" }
+```
 
 ## APM
 

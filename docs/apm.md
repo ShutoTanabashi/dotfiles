@@ -5,9 +5,9 @@
 
 ## 管理方針
 
--   APM 本体は、利用する OS のパッケージ一覧または OS 別の手順に従って導入する。
-    [Linux](../pkg/linux/README.md) と [Windows](../pkg/windows/README.md) の
-    手動導入手順も参照する。
+-   APM 本体は、利用する OS の[パッケージ一覧](../pkg/README.md)または OS 別の
+    手順に従って導入する。[Ubuntu](../pkg/ubuntu/README.md)と
+    [Windows](../pkg/windows/README.md)の手動導入手順も参照する。
 -   依存関係の定義はユーザースコープの `~/.apm/apm.yml` で管理し、chezmoi で
     配備する。`~/.apm/apm.lock.yaml` は APM がローカルに生成する解決結果であり、
     chezmoi では管理しない。

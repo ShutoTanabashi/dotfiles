@@ -18,7 +18,7 @@ chezmoi apply
 | :-- | :-- | :-- |
 | `home/` | chezmoi の source state(HOME へ配備) | chezmoi |
 | `hhkb/` | HHKB キーマップ(`.hks`)・参考画像 | Git のみ |
-| `pkg/` | OS 別パッケージインストールリスト | Git のみ |
+| [`pkg/`](pkg/README.md) | OS・chezmoi profile 別パッケージインストールリスト | Git のみ |
 | `docs/` | 移行ガイド・シークレット管理方針 | Git のみ |
 | `.agents/` / `.github/` | エージェント用スキル・リポジトリ運用用 | Git のみ |
 
