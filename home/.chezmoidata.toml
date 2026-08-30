@@ -10,9 +10,13 @@
 rclone = false
 fcitx = false
 ibus = false
+mozc = false
 
 [font]
 family = "UDEV Gothic 35NF"
+
+[mozc]
+tool_path = "/usr/lib/mozc/mozc_tool"
 
 [alacritty]
 font_size = 12.0
