@@ -1,0 +1,15 @@
+[Unit]
+Description=Rclone mount for Google Drive
+After=network-online.target
+RequiresMountsFor={{ .chezmoi.homeDir }}/GoogleDrive
+
+[Service]
+Type=forking
+ExecStartPre=/bin/sh -c 'mkdir -p {{ .chezmoi.homeDir }}/GoogleDrive'
+ExecStart=/bin/sh -c '. {{ .chezmoi.homeDir }}/.config/rclone/rclone.env && exec /usr/bin/rclone mount gdrive: {{ .chezmoi.homeDir }}/GoogleDrive --vfs-cache-mode writes --allow-non-empty --daemon'
+ExecStop=/usr/bin/fusermount -uz {{ .chezmoi.homeDir }}/GoogleDrive
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

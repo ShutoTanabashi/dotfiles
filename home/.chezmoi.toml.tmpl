@@ -1,0 +1,27 @@
+{{- $role := promptStringOnce . "role" "role [desktop|server]" "desktop" -}}
+{{- if and (ne $role "desktop") (ne $role "server") -}}
+{{-   warnf "invalid role %q (expected desktop or server)" $role -}}
+{{-   exit 1 -}}
+{{- end -}}
+{{- $variant := promptStringOnce . "variant" "variant [full|minimal]" "full" -}}
+{{- if and (ne $variant "full") (ne $variant "minimal") -}}
+{{-   warnf "invalid variant %q (expected full or minimal)" $variant -}}
+{{-   exit 1 -}}
+{{- end -}}
+[data]
+    role = {{ $role | quote }}
+    variant = {{ $variant | quote }}
+{{ if eq .chezmoi.os "linux" }}
+{{ $goneovimExecutable := promptStringOnce . "goneovim.executable" "Goneovim executable path" "/usr/bin/goneovim" -}}
+{{ $goneovimIconPath := promptStringOnce . "goneovim.icon_path" "Goneovim icon path" (printf "%s/.local/share/icons/goneovim.ico" .chezmoi.homeDir) }}
+
+[data.goneovim]
+    executable = {{ $goneovimExecutable | quote }}
+    icon_path = {{ $goneovimIconPath | quote }}
+{{ end }}
+{{ if and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease)) }}
+{{ $windowsHome := promptStringOnce . "zsh.windows_home" "Windows home path for WSL (empty to disable WINHOME)" "" -}}
+
+[data.zsh]
+    windows_home = {{ $windowsHome | quote }}
+{{ end }}

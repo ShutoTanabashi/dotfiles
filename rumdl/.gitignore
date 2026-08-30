@@ -1,8 +1,0 @@
-# .gitignore
-*
-
-# Whitelist
-!.gitignore
-!README.md
-!setup.sh
-!.rumdl.toml

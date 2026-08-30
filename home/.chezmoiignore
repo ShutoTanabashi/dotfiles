@@ -1,0 +1,25 @@
+README.md
+
+{{/* role / variant による配備制御のフック。*/}}
+{{ if ne .role "desktop" }}.config/alacritty{{ end }}
+{{ if ne .role "desktop" }}.config/wezterm{{ end }}
+{{ if ne .chezmoi.os "windows" }}AppData/Roaming/alacritty{{ end }}
+{{ if eq .chezmoi.os "windows" }}.config/alacritty{{ end }}
+{{ if ne .variant "full" }}.config/zellij{{ end }}
+{{ if eq .chezmoi.os "windows" }}.config/nvim{{ end }}
+{{ if ne .chezmoi.os "windows" }}AppData/Local/nvim{{ end }}
+{{ if eq .chezmoi.os "windows" }}.config/rumdl{{ end }}
+{{ if ne .chezmoi.os "windows" }}AppData/Roaming/rumdl{{ end }}
+{{ if not (and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease))) }}.local/bin/sumatrapdf.sh{{ end }}
+{{ if ne .chezmoi.os "linux" }}.config/zathura{{ end }}
+{{ if ne .role "desktop" }}.config/zathura{{ end }}
+{{ if or (ne .role "desktop") (ne .variant "full") }}.config/goneovim{{ end }}
+{{ if or (ne .chezmoi.os "linux") (ne .role "desktop") (ne .variant "full") }}.local/share/applications/goneovim.desktop{{ end }}
+{{ if or (ne .chezmoi.os "linux") (ne .role "desktop") (ne .variant "full") }}.local/share/icons/goneovim.ico{{ end }}
+{{ if or (not (or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin"))) (not (lookPath "zsh")) }}.zshrc
+.config/sheldon{{ end }}
+{{ if ne .chezmoi.os "windows" }}Documents/PowerShell{{ end }}
+{{ if or (ne .chezmoi.os "linux") (not .experimental.rclone) }}.config/rclone/rclone.env
+.config/systemd/user/rclone-googledrive.service{{ end }}
+{{ if or (ne .chezmoi.os "linux") (ne .role "desktop") (not (or .experimental.fcitx .experimental.ibus)) }}.xprofile{{ end }}
+{{ if or (ne .chezmoi.os "linux") (ne .role "desktop") (not .experimental.mozc) }}.local/share/applications/mozc_tool.desktop{{ end }}

@@ -1,0 +1,195 @@
+{{- $isWSL := and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease)) -}}
+{{- $isDebianLike := and (eq .chezmoi.os "linux") (or (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.osRelease.id "ubuntu")) -}}
+{{- $secretBackend := "" -}}
+{{- if and (hasKey . "secrets") (hasKey .secrets "backend") -}}
+{{-   $secretBackend = .secrets.backend -}}
+{{- end -}}
+# Load zsh plugins when sheldon is available and configured.
+if (( $+commands[sheldon] )) && [[ -f "$HOME/.config/sheldon/plugins.toml" ]]; then
+	eval "$(sheldon source)"
+fi
+
+# CLI editor settings.
+if (( $+commands[nvim] )); then
+	export VISUAL="nvim"
+	export EDITOR="nvim"
+	export SUDO_EDITOR="nvim"
+elif (( $+commands[vim] )); then
+	export VISUAL="vim"
+	export EDITOR="vim"
+	export SUDO_EDITOR="vim"
+fi
+
+# Keep a direct route to the system ls when eza aliases are active.
+lso() {
+	command ls "$@"
+}
+
+{{ if $isDebianLike -}}
+# Debian and Ubuntu install bat as batcat on some releases.
+if (( ! $+commands[bat] && $+commands[batcat] )); then
+	alias bat='batcat'
+fi
+{{ end -}}
+
+{{ if eq .chezmoi.os "darwin" -}}
+# Homebrew completions and macOS-specific tools.
+export HOMEBREW_AUTO_UPDATE_SECS=3600
+if (( $+commands[brew] )); then
+	_brew_prefix="$(brew --prefix 2>/dev/null)"
+	if [[ -n "$_brew_prefix" ]]; then
+		[[ -d "$_brew_prefix/share/zsh-completions" ]] && fpath=("$_brew_prefix/share/zsh-completions" $fpath)
+		[[ -d "$_brew_prefix/share/zsh/site-functions" ]] && fpath=("$_brew_prefix/share/zsh/site-functions" $fpath)
+	fi
+
+	_openjdk_prefix="$(brew --prefix openjdk 2>/dev/null)"
+	if [[ -d "$_openjdk_prefix" ]]; then
+		export JAVA_HOME="$_openjdk_prefix"
+		path=("$_openjdk_prefix/bin" $path)
+	fi
+
+	_ruby_prefix="$(brew --prefix ruby 2>/dev/null)"
+	if [[ -d "$_ruby_prefix" ]]; then
+		path=("$_ruby_prefix/bin" $path)
+		export LDFLAGS="-L$_ruby_prefix/lib${LDFLAGS:+ $LDFLAGS}"
+		export CPPFLAGS="-I$_ruby_prefix/include${CPPFLAGS:+ $CPPFLAGS}"
+		export PKG_CONFIG_PATH="$_ruby_prefix/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+	fi
+
+	if [[ -d "/Applications/Skim.app" || -d "$HOME/Applications/Skim.app" ]]; then
+		export PDFVIEWER_texdoc="open -a Skim.app"
+	fi
+
+	unset _brew_prefix _openjdk_prefix _ruby_prefix
+fi
+{{ end -}}
+
+{{ if eq .chezmoi.os "linux" -}}
+# CUDA settings.
+if [[ -d "/opt/cuda" ]]; then
+	export CUDA_HOME="/opt/cuda"
+	path+=("$CUDA_HOME/bin")
+	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}/opt/cuda/lib64:/opt/cuda/extras/CUPTI/lib64"
+fi
+{{ end -}}
+
+# rustup completions.
+[[ -d "$HOME/.zfunc" ]] && fpath+=("$HOME/.zfunc")
+
+# pyenv settings.
+if (( $+commands[pyenv] )); then
+	export PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
+	[[ -d "$PYENV_ROOT/bin" ]] && path=("$PYENV_ROOT/bin" $path)
+	eval "$(pyenv init --path 2>/dev/null)"
+	eval "$(pyenv init - 2>/dev/null)"
+fi
+
+{{ if $isWSL -}}
+{{- $windowsHome := "" -}}
+{{- if and (hasKey . "zsh") (hasKey .zsh "windows_home") -}}
+{{-   $windowsHome = .zsh.windows_home -}}
+{{- end -}}
+# WSL-specific settings.
+{{ if ne $windowsHome "" -}}
+export WINHOME={{ $windowsHome | quote }}
+{{ end -}}
+if [[ -n "${XDG_RUNTIME_DIR:-}" && ! -e "$XDG_RUNTIME_DIR/wayland-0" ]]; then
+	for _wslg_socket in /mnt/wslg/runtime-dir/wayland-0(N); do
+		ln -s "$_wslg_socket" "$XDG_RUNTIME_DIR/wayland-0" 2>/dev/null || true
+		break
+	done
+	unset _wslg_socket
+fi
+{{ end -}}
+
+# Initialize the gitstatus prompt when the optional prompt script exists.
+_gitstatus_prompt_file="${XDG_DATA_HOME:-$HOME/.local/share}/sheldon/repos/github.com/romkatv/gitstatus/gitstatus.prompt.zsh"
+[[ -r "$_gitstatus_prompt_file" ]] && source "$_gitstatus_prompt_file"
+unset _gitstatus_prompt_file
+
+# Prompt.
+setopt prompt_subst
+PROMPT='%F{44}%n%f %c $GITSTATUS_PROMPT%F{44}%B %# %b%f'
+RPROMPT='%F{66}%3~%f %F{244}%m%f'
+
+# Load OpenCode API key at shell startup without storing it in this file.
+if [[ -z "${OPENCODE_API_KEY:-}" ]]; then
+	_opencode_api_key=""
+{{ if eq $secretBackend "gopass" }}
+	if (( $+commands[gopass] )); then
+		_opencode_api_key="$(gopass show -o dotfiles/opencode_api_key 2>/dev/null)"
+	fi
+{{ else if eq $secretBackend "keyring" }}
+	if (( $+commands[chezmoi] )); then
+		_opencode_api_key="$(chezmoi secret keyring get --service=dotfiles --user=opencode_api_key 2>/dev/null)"
+	fi
+{{ else }}
+	if (( $+commands[gopass] )); then
+		_opencode_api_key="$(gopass show -o dotfiles/opencode_api_key 2>/dev/null)"
+	elif (( $+commands[chezmoi] )); then
+		_opencode_api_key="$(chezmoi secret keyring get --service=dotfiles --user=opencode_api_key 2>/dev/null)"
+	fi
+{{ end }}
+	if [[ -n "$_opencode_api_key" ]]; then
+		export OPENCODE_API_KEY="$_opencode_api_key"
+	fi
+	unset _opencode_api_key
+fi
+
+# User-local executable paths.
+typeset -U path PATH
+path=("$HOME/.local/bin" $path)
+[[ -d "$HOME/.opencode/bin" ]] && path=("$HOME/.opencode/bin" $path)
+[[ -r "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
+
+if (( $+commands[bat] || $+commands[batcat] )); then
+	export BAT_THEME="ansi"
+fi
+
+# fzf settings.
+export FZF_DEFAULT_COMMAND='fd --unrestricted --type file --type directory'
+export FZF_DEFAULT_OPTS='--height=~60% --border=horizontal --preview="bat {} --color always"'
+
+# tre wrapper.
+if (( $+commands[tre] )); then
+	tre() {
+		command tre "$@" -e || return
+		local aliases_file="/tmp/tre_aliases_${USER}"
+		[[ -r "$aliases_file" ]] && source "$aliases_file"
+	}
+fi
+
+# Aliases for optional tools.
+if (( $+commands[eza] )); then
+	alias ls='eza --icons=auto'
+	alias la='eza --icons=auto -a'
+	alias ll='eza --icons=auto -al --git'
+fi
+if (( $+commands[chafa] )); then
+	alias cati='chafa --colors full --size x19'
+fi
+
+# Initialize completion after environment-specific fpath entries are added.
+autoload -Uz compinit && compinit
+
+# Make a zip file for Windows. Requires fd and 7z.
+zipwin() {
+	if (( ! $+commands[fd] || ! $+commands[7z] )); then
+		print -u2 'zipwin: fd and 7z are required'
+		return 127
+	fi
+
+	local target_arg="${1:-.}"
+	local zip_name
+	if [[ "$target_arg" == "." ]]; then
+		zip_name="${PWD:t}.zip"
+		fd --type file --strip-cwd-prefix . -X 7z a -tzip -scsWIN "$zip_name" {}
+	else
+		local source_dir="${target_arg:h}"
+		local target="${target_arg:t}"
+		zip_name="$PWD/${target}.zip"
+		fd --type file --base-directory="$source_dir" . "$target" -X 7z a -tzip -scsWIN "$zip_name" {}
+	fi
+
+	7z l -- "$zip_name"
+}

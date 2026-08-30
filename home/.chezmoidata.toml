@@ -1,0 +1,46 @@
+# 全マシン共通の既定値の単一ソース。
+# 秘密値は絶対にこのファイルへ書かない。実値は gopass または OS の keyring に登録する。
+
+# role: desktop | server (GUI ツール等の配備制御に使用。.chezmoiignore のフックを参照)
+# variant: full | minimal (追加ツールは full のみで配備)
+# 上書きは ~/.config/chezmoi/chezmoi.toml の [data] で行う(init 時のプロンプトで生成)。
+# ツール配備は variant で制御するため [tools] による二重管理は行わない。
+
+[experimental]
+rclone = false
+fcitx = false
+ibus = false
+mozc = false
+
+[font]
+family = "UDEV Gothic 35NF"
+
+[mozc]
+tool_path = "/usr/lib/mozc/mozc_tool"
+
+[alacritty]
+font_size = 12.0
+
+[powershell]
+msys2_bash = "C:\\msys64\\usr\\bin\\bash.exe"
+
+[nvim]
+python3_host_prog = "python3"
+guifont_size = 13
+markdown_preview = "preview"
+
+[nvim.languages]
+rust = false
+tex = false
+
+[nvim.llm]
+enabled = false
+end_point = "https://opencode.ai/zen/go/v1/chat/completions"
+provider_name = "OpenCode"
+api_key_env = "OPENCODE_API_KEY"
+model = "deepseek-v4-flash"
+
+[git]
+name = "Shuto Tanabashi"
+email = "shuuto570@outlook.com"
+editor = "nvim"

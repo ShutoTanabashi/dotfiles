@@ -1,7 +1,0 @@
-# .gitignore
-*
-
-# Whitelist
-!.gitignore
-!README.md
-!Microsoft.PowerShell_profile.ps1

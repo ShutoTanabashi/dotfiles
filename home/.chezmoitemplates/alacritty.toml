@@ -1,0 +1,44 @@
+[colors.primary]
+background = "#1e1e1e"
+foreground = "#c0c0c0"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = {{ .data.alacritty.font_size }}
+
+[font.normal]
+family = "{{ .data.font.family }}"
+
+[font.offset]
+x = 0
+y = 7
+
+[scrolling]
+history = 5000
+
+[window.padding]
+x = 10
+y = 0
+
+{{- if eq .data.chezmoi.os "darwin" }}
+
+[window]
+option_as_alt = "Both"
+
+[[keyboard.bindings]]
+chars = '\'
+key = "Backslash"
+mods = "Alt"
+{{- end }}
+
+{{- if eq .data.chezmoi.os "windows" }}
+
+[general]
+working_directory = '{{ .data.chezmoi.homeDir }}'
+
+[terminal.shell]
+program = "pwsh.exe"
+args = ["-NoLogo"]
+{{- end }}

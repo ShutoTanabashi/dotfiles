@@ -1,0 +1,46 @@
+{{- $editor := .git.editor | default "nvim" -}}
+[user]
+	name = {{ .git.name | quote }}
+	email = {{ .git.email | quote }}
+[core]
+	editor = {{ $editor | quote }}
+	quotePath = false
+{{- if lookPath "delta" }}
+	pager = delta
+{{- end }}
+[init]
+	defaultBranch = main
+[advice]
+	addIgnoredFile = false
+[pull]
+	rebase = false
+{{- if eq $editor "nvim" }}
+[diff]
+	tool = nvimdiff
+[merge]
+	tool = nvimdiff2
+{{- else if eq $editor "vim" }}
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff2
+{{- end }}
+{{- if lookPath "delta" }}
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	line-numbers = true
+{{- end }}
+{{- if eq .chezmoi.os "darwin" }}
+[credential]
+	helper = osxkeychain
+{{- else if eq .chezmoi.os "windows" }}
+[credential]
+	helper = manager
+{{- else }}
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
+{{- end }}

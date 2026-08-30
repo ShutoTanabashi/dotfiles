@@ -1,43 +1,31 @@
 # 設定ファイル集
 
-（主にUnix系システム向けの）設定ファイルを管理する。  
-環境依存のファイルがある場合は`txt`ファイルで保存し、環境に合わせて適宜変更する。
+chezmoi で管理する dotfiles リポジトリ。
+セットアップ手順と移行の経緯は [docs/chezmoi-migration.md](docs/chezmoi-migration.md)、
+シークレット管理方針は [docs/secrets-management.md](docs/secrets-management.md) を参照。
 
-## 管理するファイル一覧
+## セットアップ
 
-| ディレクトリ | ソフトウェア | 環境依存のある部分 |
+```sh
+chezmoi init ShutoTanabashi/dotfiles   # role / variant を対話入力
+chezmoi apply
+```
+
+## ディレクトリ構成
+
+| ディレクトリ | 内容 | 管理 |
 | :-- | :-- | :-- |
-| alacritty | [Alacritty](https://github.com/alacritty/alacritty) | `envcfg.toml` |
-| fcitx | [fcitx5](https://fcitx-im.org/wiki/Fcitx_5) |  |
-| git | [git](https://git-scm.com) | `.gitconfig.env` |
-| goneovim | [goneovim](https://github.com/akiyosi/goneovim) |  |
-| hhkb | [HHKB](https://happyhackingkb.com/jp/download/#tool) |  |
-| homebrew | [Homebrew](https://brew.sh/ja/) |  |
-| ibus | [ibus](https://github.com/ibus/ibus) |  |
-| rumdl | [rumdl](https://github.com/rvben/rumdl) |  |
-| mozc | [mozc](https://github.com/google/mozc) |  |
-| nvim | [Neovim](https://neovim.io) | `lua/envcfg.lua` |
-| PowerShell | [PowerShell](https://github.com/PowerShell/PowerShell) | |
-| rclone | [Rclone](https://rclone.org) | `*.service` |
-| sheldon | [sheldon](https://github.com/rossmacarthur/sheldon) |  |
-| tealdeer | [tealdeer](https://github.com/dbrgn/tealdeer) | 設定ファイルのパス |
-| wezterm | [WezTerm](https://wezfurlong.org/wezterm/index.html) | `envcfg.lua` |
-| zathura | [zathura](https://pwmt.org/projects/zathura/) |  |
-| zsh | [zsh](https://www.zsh.org) | `.zsh_envcfg` |
+| `home/` | chezmoi の source state(HOME へ配備) | chezmoi |
+| `hhkb/` | HHKB キーマップ(`.hks`)・参考画像 | Git のみ |
+| `pkg/` | OS 別パッケージインストールリスト | Git のみ |
+| `docs/` | 移行ガイド・シークレット管理方針 | Git のみ |
+| `.agents/` / `.github/` | エージェント用スキル・リポジトリ運用用 | Git のみ |
 
-## 管理方法
+## 管理するツール
 
-*   本リポジトリはホームディレクトリに置くこと
-*   ソフトウェア毎に`README.md`を記載する
-*   環境依存ファイルはテンプレートを`ドットを除いたファイル名.txt`として保存
-*   環境依存ファイルは適宜書き換えて利用する
-*   ソフトウェア毎に`.gitignore`を作成してホワイトリスト管理
-*   シンボリックリンクの貼り方は各ディレクトリの`setup.sh`に記載
+alacritty, fcitx5, git, goneovim, homebrew, ibus, mozc, nvim, PowerShell,
+rclone, rumdl, sheldon, tealdeer, wezterm, zathura, zellij, zsh
 
-## リポジトリ自体の管理に関するファイル
-
-*   `gentemplate.sh` - 管理に必要なファイルを用意するスクリプト
-
-## ToDo
-
-*   [ ] zellijのREADME.md
+配備の対象・規模は `~/.config/chezmoi/chezmoi.toml` の
+`role`(`desktop` / `server`)と `variant`(`full` / `minimal`)で制御する。
+実験的ツール(rclone / fcitx / ibus / mozc)は `experimental.<tool>` で個別に opt-in する。

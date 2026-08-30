@@ -1,0 +1,27 @@
+local llm_enabled = {{ .nvim.llm.enabled }}
+
+return {
+  "milanglacier/minuet-ai.nvim",
+  enabled = not vim.g.vscode and llm_enabled,
+  config = function()
+    require("minuet").setup({
+      provider = "openai_compatible",
+      request_timeout = 3,
+      throttle = 2000,
+      debounce = 800,
+      provider_options = {
+        openai_compatible = {
+          api_key = {{ .nvim.llm.api_key_env | quote }},
+          end_point = {{ .nvim.llm.end_point | quote }},
+          model = {{ .nvim.llm.model | quote }},
+          name = {{ .nvim.llm.provider_name | quote }},
+          optional = {
+            max_tokens = 56,
+            top_p = 0.9,
+            reasoning_effort = "none",
+          },
+        },
+      },
+    })
+  end,
+}
