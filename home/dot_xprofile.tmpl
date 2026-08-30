@@ -1,6 +1,13 @@
 {{ if and .experimental.fcitx .experimental.ibus }}{{ fail "experimental.fcitx and experimental.ibus are mutually exclusive" }}{{ end -}}
-{{ if and (eq .chezmoi.os "linux") (eq .role "desktop") .experimental.fcitx -}}
+{{ if and (eq .chezmoi.os "linux") (eq .role "desktop") (or .experimental.fcitx .experimental.ibus) -}}
+{{- if .experimental.fcitx -}}
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-{{ end -}}
+{{- else -}}
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export MOZC_IBUS_CANDIDATE_WINDOW=ibus
+{{- end }}
+{{- end }}
