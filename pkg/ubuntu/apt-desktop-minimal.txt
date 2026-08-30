@@ -1,0 +1,6 @@
+alacritty
+gnome-keyring
+seahorse
+xdotool
+zathura
+zathura-pdf-poppler

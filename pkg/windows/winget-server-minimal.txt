@@ -1,0 +1,4 @@
+Git.Git
+ImageMagick.ImageMagick
+Microsoft.PowerShell
+Microsoft.VisualStudio.2022.BuildTools

@@ -1,0 +1,7 @@
+niri
+swww
+waypaper
+waybar
+wofi
+wlogout
+mako
