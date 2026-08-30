@@ -119,6 +119,51 @@ zshでは次の分担を使用する。
 
 | OS | シークレット取得先 | 状態 |
 | --- | --- | --- |
-| Linux Desktop(Arch) | Secret Service(GNOME Keyring) | 実機検証対象 |
+| Linux Desktop(Arch) | Secret Service(GNOME Keyring) | 実機検証済み |
 | macOS / Windows | OS keyring(Keychain / Credential Manager) | 配置・テンプレート・手順のみ整備(未検証) |
 | Linux Server / WSL | gopass | 同上 |
+
+### Windows
+
+- 配置先が `%APPDATA%` / `%LOCALAPPDATA%` 系のツールは `home/AppData/` 配下の
+  薄いテンプレートで配備する(nvim: `AppData/Local/nvim`、rumdl:
+  `AppData/Roaming/rumdl`、alacritty: `AppData/Roaming/alacritty`)。
+  Unix 系配置先(`.config/*`)は `.chezmoiignore` で除外される。
+- PowerShell プロファイルは `Documents/PowerShell/` に配備される。msys2 の bash
+  パスは `.chezmoidata.toml` の `[powershell]` で既定値を持つ。
+- zsh・zathura・systemd ユニット(rclone)は Windows では配備されない。
+- git の credential helper は `manager`(Git Credential Manager)へ分岐する。
+- WSL(Linux)では `sumatrapdf.sh` が配備され、zsh に WSL 固有の WINHOME /
+  WSLg 処理が生成される(`init` 時に Windows home パスを入力)。
+- **未検証**: 実機での apply・各アプリの起動確認(テンプレートのレンダリング
+  論理は `execute-template` で確認済み)。
+
+### macOS
+
+- zsh に Homebrew / OpenJDK / Ruby / Skim 向けの処理が生成される。
+  alacritty は `option_as_alt` + Alt+Backslash の分岐が入る。
+- wezterm の `default_prog` は OS 既定のまま(Windows のみ pwsh 分岐)。
+- git の credential helper は `osxkeychain` へ分岐する。
+- **未検証**: 実機での apply・各アプリの起動確認(テンプレートのレンダリング
+  論理は `execute-template` で確認済み)。
+
+### Linux Server
+
+- `role=server` により GUI ツール(alacritty / wezterm / zathura / goneovim /
+  `.xprofile` / mozc デスクトップエントリ)は配備されない。
+- シークレット取得先は gopass を想定する(`secrets.backend` で明示可能)。
+  Secret Service が無い環境では keyring バックエンドが使えないため、
+  `gopass insert dotfiles/<key>` で登録する。
+- systemd ユーザサービス(rclone)は experimental opt-in のときのみ配備。
+- **未検証**: 実機での apply・gopass でのシークレット解決(一時 HOME での
+  `role=server` の配備結果は検証済み)。
+
+## 移行時の注意(共通)
+
+- 旧シンボリックリンク運用からの切替は、`chezmoi apply` が symlink を
+  実ファイルへ置き換える。切替前に旧 `setup.sh` によるリンクを残したままで
+  問題ないが、適用後は `chezmoi diff` が空であることを確認する。
+- `chezmoi init` 後に `config file template has changed` 警告が出た場合は
+  `chezmoi init` を再実行して設定ファイルを再生成する。
+- goneovim を使う Linux では `init` 時に実行ファイルパスとアイコンパスの
+  入力が必要(`[data.goneovim]` が未設定だと apply が失敗する)。

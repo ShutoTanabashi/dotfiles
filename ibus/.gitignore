@@ -1,8 +1,0 @@
-# .gitignore
-*
-
-# whitelist
-!.gitignore
-!README.md
-!setup.sh
-!.xprofile
