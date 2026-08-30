@@ -21,3 +21,4 @@ README.md
 {{ if ne .chezmoi.os "windows" }}Documents/PowerShell{{ end }}
 {{ if or (ne .chezmoi.os "linux") (not .experimental.rclone) }}.config/rclone/rclone.env
 .config/systemd/user/rclone-googledrive.service{{ end }}
+{{ if or (ne .chezmoi.os "linux") (ne .role "desktop") (not (or .experimental.fcitx .experimental.ibus)) }}.xprofile{{ end }}

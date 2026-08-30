@@ -1,0 +1,6 @@
+{{ if and .experimental.fcitx .experimental.ibus }}{{ fail "experimental.fcitx and experimental.ibus are mutually exclusive" }}{{ end -}}
+{{ if and (eq .chezmoi.os "linux") (eq .role "desktop") .experimental.fcitx -}}
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+{{ end -}}

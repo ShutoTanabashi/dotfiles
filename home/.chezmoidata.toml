@@ -8,6 +8,8 @@
 
 [experimental]
 rclone = false
+fcitx = false
+ibus = false
 
 [font]
 family = "UDEV Gothic 35NF"
