@@ -2,7 +2,8 @@
 
 chezmoi で管理する dotfiles リポジトリ。
 セットアップ手順と移行の経緯は [docs/chezmoi-migration.md](docs/chezmoi-migration.md)、
-シークレット管理方針は [docs/secrets-management.md](docs/secrets-management.md) を参照。
+シークレット管理方針は [docs/secrets-management.md](docs/secrets-management.md)、
+APM によるエージェント設定の管理は [docs/apm.md](docs/apm.md) を参照。
 
 ## セットアップ
 
