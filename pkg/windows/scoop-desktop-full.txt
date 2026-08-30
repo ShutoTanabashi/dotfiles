@@ -1,0 +1,4 @@
+goneovim
+neovide
+nvy
+rstudio

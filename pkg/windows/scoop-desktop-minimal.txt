@@ -1,0 +1,2 @@
+foxit-pdf-reader
+okular

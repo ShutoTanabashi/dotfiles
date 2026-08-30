@@ -1,1 +1,0 @@
-bat chezmoi cpufetch eza fastfetch fd fzf gh gibo git herdr libsixel microsoft/apm/apm node p7zip ripgrep tealdeer tre-command wget
