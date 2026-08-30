@@ -8,8 +8,9 @@
 -   APM 本体は、利用する OS のパッケージ一覧または OS 別の手順に従って導入する。
     [Linux](../pkg/linux/README.md) と [Windows](../pkg/windows/README.md) の
     手動導入手順も参照する。
--   依存関係の定義はユーザースコープの `~/.apm/apm.yml`、解決結果は
-    `~/.apm/apm.lock.yaml` で管理し、chezmoi で再現可能にする。
+-   依存関係の定義はユーザースコープの `~/.apm/apm.yml` で管理し、chezmoi で
+    配備する。`~/.apm/apm.lock.yaml` は APM がローカルに生成する解決結果であり、
+    chezmoi では管理しない。
 -   スキルの実体は APM が `~/.agents/skills/<skill-name>/` に配備する。ここは
     生成物のため、直接編集も chezmoi による配備も行わない。
 -   リポジトリ直下の `.agents/` は、このリポジトリ固有のスキルを Git 管理する
