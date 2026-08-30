@@ -1,0 +1,12 @@
+name: agent-settings
+version: 1.0.0
+description: Global agent settings
+targets:
+  - codex
+  - opencode
+dependencies:
+  apm:
+    - herdrdev/herdr/skills/herdr
+  mcp: []
+includes: auto
+scripts: {}
